@@ -1,0 +1,28 @@
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\Tester.exe.config
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\Tester.exe
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\Tester.pdb
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\03 - AutomataDataAccessLayer.dll
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\04 - AutomataEntitiesLayer.dll
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\EntityFramework.dll
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\03 - AutomataDataAccessLayer.pdb
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\04 - AutomataEntitiesLayer.pdb
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\EntityFramework.xml
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\obj\Debug\Tester.exe
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\obj\Debug\Tester.pdb
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\EntityFramework.SqlServer.dll
+c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Tester.exe.config
+C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.exe
+C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.pdb
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Tester.exe
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Tester.pdb
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\03 - AutomataDataAccessLayer.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\04 - AutomataEntitiesLayer.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\03 - AutomataDataAccessLayer.pdb
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\04 - AutomataEntitiesLayer.pdb
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.xml
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache

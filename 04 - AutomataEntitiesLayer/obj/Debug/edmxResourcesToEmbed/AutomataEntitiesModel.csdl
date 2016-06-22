@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AutomataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="AutomataEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Assemblies" EntityType="AutomataModel.Assembly" />
+    <EntitySet Name="Parameters" EntityType="AutomataModel.Parameter" />
+    <EntitySet Name="ParameterTypes" EntityType="AutomataModel.ParameterType" />
+    <EntitySet Name="Procedures" EntityType="AutomataModel.Procedure" />
+    <EntitySet Name="Projects" EntityType="AutomataModel.Project" />
+    <EntitySet Name="TestProcedures" EntityType="AutomataModel.TestProcedure" />
+    <EntitySet Name="Tests" EntityType="AutomataModel.Test" />
+    <EntitySet Name="Users" EntityType="AutomataModel.User" />
+    <AssociationSet Name="FK_Procedures_Assemblies" Association="AutomataModel.FK_Procedures_Assemblies">
+      <End Role="Assembly" EntitySet="Assemblies" />
+      <End Role="Procedure" EntitySet="Procedures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Assemblies" Association="AutomataModel.FK_Users_Assemblies">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Assembly" EntitySet="Assemblies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parameters_ParameterTypes" Association="AutomataModel.FK_Parameters_ParameterTypes">
+      <End Role="ParameterType" EntitySet="ParameterTypes" />
+      <End Role="Parameter" EntitySet="Parameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Parameters_Procedures" Association="AutomataModel.FK_Parameters_Procedures">
+      <End Role="Procedure" EntitySet="Procedures" />
+      <End Role="Parameter" EntitySet="Parameters" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProceduresXTest_Procedures" Association="AutomataModel.FK_ProceduresXTest_Procedures">
+      <End Role="Procedure" EntitySet="Procedures" />
+      <End Role="TestProcedure" EntitySet="TestProcedures" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Tests_Project" Association="AutomataModel.FK_Tests_Project">
+      <End Role="Project" EntitySet="Projects" />
+      <End Role="Test" EntitySet="Tests" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Users_Projects" Association="AutomataModel.FK_Users_Projects">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ProceduresXTest_Tests" Association="AutomataModel.FK_ProceduresXTest_Tests">
+      <End Role="Test" EntitySet="Tests" />
+      <End Role="TestProcedure" EntitySet="TestProcedures" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Assembly">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Code" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Procedures" Relationship="AutomataModel.FK_Procedures_Assemblies" FromRole="Assembly" ToRole="Procedure" />
+    <NavigationProperty Name="User" Relationship="AutomataModel.FK_Users_Assemblies" FromRole="Assembly" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Parameter">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Position" Type="Int32" Nullable="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="ParameterType" Relationship="AutomataModel.FK_Parameters_ParameterTypes" FromRole="Parameter" ToRole="ParameterType" />
+    <NavigationProperty Name="Procedure" Relationship="AutomataModel.FK_Parameters_Procedures" FromRole="Parameter" ToRole="Procedure" />
+  </EntityType>
+  <EntityType Name="ParameterType">
+    <Key>
+      <PropertyRef Name="PK_Type" />
+    </Key>
+    <Property Name="PK_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Procedure">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="400" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Parameters" Relationship="AutomataModel.FK_Parameters_Procedures" FromRole="Procedure" ToRole="Parameter" />
+  </EntityType>
+  <EntityType Name="Project">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Url" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Tests" Relationship="AutomataModel.FK_Tests_Project" FromRole="Project" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="TestProcedure">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Order" Type="Int32" Nullable="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Procedure" Relationship="AutomataModel.FK_ProceduresXTest_Procedures" FromRole="TestProcedure" ToRole="Procedure" />
+    <NavigationProperty Name="Test" Relationship="AutomataModel.FK_ProceduresXTest_Tests" FromRole="TestProcedure" ToRole="Test" />
+  </EntityType>
+  <EntityType Name="Test">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Project" Relationship="AutomataModel.FK_Tests_Project" FromRole="Test" ToRole="Project" />
+    <NavigationProperty Name="TestProcedures" Relationship="AutomataModel.FK_ProceduresXTest_Tests" FromRole="Test" ToRole="TestProcedure" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecretAnswer" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Assemblies" Relationship="AutomataModel.FK_Users_Assemblies" FromRole="User" ToRole="Assembly" />
+    <NavigationProperty Name="Projects" Relationship="AutomataModel.FK_Users_Projects" FromRole="User" ToRole="Project" />
+  </EntityType>
+  <Association Name="FK_Procedures_Assemblies">
+    <End Type="AutomataModel.Assembly" Role="Assembly" Multiplicity="1" />
+    <End Type="AutomataModel.Procedure" Role="Procedure" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Users_Assemblies">
+    <End Type="AutomataModel.User" Role="User" Multiplicity="1" />
+    <End Type="AutomataModel.Assembly" Role="Assembly" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Parameters_ParameterTypes">
+    <End Type="AutomataModel.ParameterType" Role="ParameterType" Multiplicity="1" />
+    <End Type="AutomataModel.Parameter" Role="Parameter" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Parameters_Procedures">
+    <End Type="AutomataModel.Procedure" Role="Procedure" Multiplicity="1" />
+    <End Type="AutomataModel.Parameter" Role="Parameter" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_ProceduresXTest_Procedures">
+    <End Type="AutomataModel.Procedure" Role="Procedure" Multiplicity="1" />
+    <End Type="AutomataModel.TestProcedure" Role="TestProcedure" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Tests_Project">
+    <End Type="AutomataModel.Project" Role="Project" Multiplicity="1" />
+    <End Type="AutomataModel.Test" Role="Test" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Users_Projects">
+    <End Type="AutomataModel.User" Role="User" Multiplicity="1" />
+    <End Type="AutomataModel.Project" Role="Project" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_ProceduresXTest_Tests">
+    <End Type="AutomataModel.Test" Role="Test" Multiplicity="1" />
+    <End Type="AutomataModel.TestProcedure" Role="TestProcedure" Multiplicity="*" />
+  </Association>
+</Schema>
