@@ -48,59 +48,62 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutomataEntitiesModel.Context.cs">
+    <Compile Include="Model\Assembly.cs">
+      <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\AutomataEntitiesModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AutomataEntitiesModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="AutomataEntitiesModel.cs">
+    <Compile Include="Model\AutomataEntitiesModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="AutomataEntitiesModel.Designer.cs">
+    <Compile Include="Model\AutomataEntitiesModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>AutomataEntitiesModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Parameter.cs">
+    <Compile Include="Model\Parameter.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="ParameterType.cs">
+    <Compile Include="Model\ParameterType.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Procedure.cs">
+    <Compile Include="Model\Procedure.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Project.cs">
+    <Compile Include="Model\Project.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Test.cs">
+    <Compile Include="Model\Test.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="TestProcedure.cs">
+    <Compile Include="Model\TestProcedure.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="User.cs">
+    <Compile Include="Model\User.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <EntityDeploy Include="AutomataEntitiesModel.edmx">
+    <EntityDeploy Include="Model\AutomataEntitiesModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AutomataEntitiesModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="AutomataEntitiesModel.Context.tt">
+    <None Include="Model\AutomataEntitiesModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AutomataEntitiesModel.edmx</DependentUpon>
       <LastGenOutput>AutomataEntitiesModel.Context.cs</LastGenOutput>
     </None>
-    <None Include="AutomataEntitiesModel.edmx.diagram">
+    <None Include="Model\AutomataEntitiesModel.edmx.diagram">
       <DependentUpon>AutomataEntitiesModel.edmx</DependentUpon>
     </None>
-    <None Include="AutomataEntitiesModel.tt">
+    <None Include="Model\AutomataEntitiesModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AutomataEntitiesModel.edmx</DependentUpon>
       <LastGenOutput>AutomataEntitiesModel.cs</LastGenOutput>
@@ -108,7 +111,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="AutomataEntitiesModel.edmx.sql" />
+    <Content Include="Model\AutomataEntitiesModel.edmx.sql" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using AutomataEntitiesLayer;
+using AutomataEntitiesLayer.Model;
 using System.Data.Entity;
 
 namespace AutomataDataAccessLayer
@@ -13,9 +13,9 @@ namespace AutomataDataAccessLayer
         private Exception exception;
 
         #region SELECT
-        public AutomataEntitiesLayer.User SelectUser(string userName, string password)
+        public User SelectUser(string userName, string password)
         {
-            AutomataEntitiesLayer.User user = null;
+            User user = null;
             
             try
             {
@@ -41,7 +41,7 @@ namespace AutomataDataAccessLayer
         #endregion
 
         #region INSERT
-        public void InsertUser(AutomataEntitiesLayer.User user)
+        public void InsertUser(User user)
         {
             try
             {
@@ -67,7 +67,7 @@ namespace AutomataDataAccessLayer
             if (exception != null)
                 throw exception;
         }
-        public void InsertProject(AutomataEntitiesLayer.User user, AutomataEntitiesLayer.Project project)
+        public void InsertProject(User user, Project project)
         {
             try
             {

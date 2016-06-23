@@ -7,26 +7,24 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutomataEntitiesLayer
+namespace AutomataEntitiesLayer.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Procedure
+    public partial class Project
     {
-        public Procedure()
+        public Project()
         {
-            this.Parameters = new HashSet<Parameter>();
-            this.TestProcedures = new HashSet<TestProcedure>();
+            this.Tests = new HashSet<Test>();
         }
     
         public int PK_Id { get; set; }
         public string Name { get; set; }
-        public string Description { get; set; }
+        public string Url { get; set; }
         public bool Active { get; set; }
     
-        public virtual Assembly Assembly { get; set; }
-        public virtual ICollection<Parameter> Parameters { get; set; }
-        public virtual ICollection<TestProcedure> TestProcedures { get; set; }
+        public virtual ICollection<Test> Tests { get; set; }
+        public virtual User User { get; set; }
     }
 }

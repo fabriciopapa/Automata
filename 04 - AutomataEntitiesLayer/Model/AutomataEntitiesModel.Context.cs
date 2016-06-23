@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutomataEntitiesLayer
+namespace AutomataEntitiesLayer.Model
 {
     using System;
     using System.Data.Entity;

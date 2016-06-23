@@ -85,8 +85,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRunner.cs" />
-    <Compile Include="Runner.cs" />
+    <Compile Include="Compilers\CSharpCompiler.cs" />
+    <Compile Include="Compilers\ICompiler.cs" />
+    <Compile Include="Runners\IRunner.cs" />
+    <Compile Include="Runners\NUnitRunner.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,18 +7,25 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutomataEntitiesLayer
+namespace AutomataEntitiesLayer.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class TestProcedure
+    public partial class Assembly
     {
+        public Assembly()
+        {
+            this.Procedures = new HashSet<Procedure>();
+        }
+    
         public int PK_Id { get; set; }
-        public int Order { get; set; }
+        public string Name { get; set; }
+        public byte[] Code { get; set; }
+        public bool Public { get; set; }
         public bool Active { get; set; }
     
-        public virtual Procedure Procedure { get; set; }
-        public virtual Test Test { get; set; }
+        public virtual ICollection<Procedure> Procedures { get; set; }
+        public virtual User User { get; set; }
     }
 }

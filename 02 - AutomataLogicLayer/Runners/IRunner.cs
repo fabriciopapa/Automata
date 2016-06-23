@@ -5,10 +5,10 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AutomataLogicLayer
+namespace AutomataLogicLayer.Runners
 {
     public interface IRunner
     {
-        void CompileAndRun(string code);
+        void Run(Assembly code);
     }
 }

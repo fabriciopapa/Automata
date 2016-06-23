@@ -12,6 +12,7 @@
           <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Code" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Public" Type="bit" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="FK_User" Type="int" Nullable="false" />
         </EntityType>
@@ -275,6 +276,7 @@
           <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Code" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="Public" Type="Boolean" Nullable="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Procedures" Relationship="AutomataModel.FK_Procedures_Assemblies" FromRole="Assembly" ToRole="Procedure" />
           <NavigationProperty Name="User" Relationship="AutomataModel.FK_Users_Assemblies" FromRole="Assembly" ToRole="User" />
@@ -288,14 +290,12 @@
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="ParameterType" Relationship="AutomataModel.FK_Parameters_ParameterTypes" FromRole="Parameter" ToRole="ParameterType" />
-          <NavigationProperty Name="Procedure" Relationship="AutomataModel.FK_Parameters_Procedures" FromRole="Parameter" ToRole="Procedure" />
         </EntityType>
         <EntityType Name="ParameterType">
           <Key>
             <PropertyRef Name="PK_Type" />
           </Key>
           <Property Name="PK_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Parameters" Relationship="AutomataModel.FK_Parameters_ParameterTypes" FromRole="ParameterType" ToRole="Parameter" />
         </EntityType>
         <EntityType Name="Procedure">
           <Key>
@@ -397,6 +397,7 @@
             <EntityTypeMapping TypeName="AutomataModel.Assembly">
               <MappingFragment StoreEntitySet="Assemblies">
                 <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Public" ColumnName="Public" />
                 <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />

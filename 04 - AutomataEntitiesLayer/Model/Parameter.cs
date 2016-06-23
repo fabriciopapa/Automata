@@ -7,24 +7,18 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AutomataEntitiesLayer
+namespace AutomataEntitiesLayer.Model
 {
     using System;
     using System.Collections.Generic;
     
-    public partial class Assembly
+    public partial class Parameter
     {
-        public Assembly()
-        {
-            this.Procedures = new HashSet<Procedure>();
-        }
-    
         public int PK_Id { get; set; }
+        public int Position { get; set; }
         public string Name { get; set; }
-        public byte[] Code { get; set; }
         public bool Active { get; set; }
     
-        public virtual ICollection<Procedure> Procedures { get; set; }
-        public virtual User User { get; set; }
+        public virtual ParameterType ParameterType { get; set; }
     }
 }
