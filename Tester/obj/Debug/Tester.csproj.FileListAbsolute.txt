@@ -13,16 +13,30 @@ c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\obj\Debu
 c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\EntityFramework.SqlServer.dll
 c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\Tester\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Tester.exe.config
-C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.exe
-C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.pdb
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Tester.exe
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Tester.pdb
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\02 - AutomataLogicLayer.dll
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\03 - AutomataDataAccessLayer.dll
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\04 - AutomataEntitiesLayer.dll
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.dll
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Ionic.Zip.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Selenium.WebDriverBackedSelenium.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\ThoughtWorks.Selenium.Core.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\02 - AutomataLogicLayer.pdb
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\03 - AutomataDataAccessLayer.pdb
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\04 - AutomataEntitiesLayer.pdb
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.xml
 C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\Selenium.WebDriverBackedSelenium.xml
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\ThoughtWorks.Selenium.Core.xml
 C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.csprojResolveAssemblyReference.cache
+C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.exe
+C:\Users\Papeitor\Documents\Automata\Tester\obj\Debug\Tester.pdb
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\nunit.framework.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\nunit.framework.xml
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\nunit.core.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\nunit.core.interfaces.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\nunit.util.dll
+C:\Users\Papeitor\Documents\Automata\Tester\bin\Debug\NUnit.VisualStudio.TestAdapter.dll

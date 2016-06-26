@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 using AutomataDataAccessLayer;
 using AutomataEntitiesLayer;
+using AutomataLogicLayer.Runners;
+using AutomataLogicLayer.Compilers;
+
 
 namespace Tester
 {
@@ -16,35 +19,49 @@ namespace Tester
         static void Main(string[] args)
         {
             //InsertUser();
-            InsertProject();
+            Test();
             Console.ReadLine();
         }
 
         static void InsertUser()
         {
-            AutomataEntitiesLayer.User user = new AutomataEntitiesLayer.User() { UserName = "fabriciop", Password = "Password01", Name = "Fabricio", LastName = "Papa", SecretAnswer = "respuesta", Projects = null, Active = true };
-            try
-            {
-                new EntitiesConnector().InsertUser(user);
-                Console.WriteLine("Success!");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
+            //AutomataEntitiesLayer.User user = new AutomataEntitiesLayer.User() { UserName = "fabriciop", Password = "Password01", Name = "Fabricio", LastName = "Papa", SecretAnswer = "respuesta", Projects = null, Active = true };
+            //try
+            //{
+            //    new EntitiesConnector().InsertUser(user);
+            //    Console.WriteLine("Success!");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
         }
         static void InsertProject()
         {
-            AutomataEntitiesLayer.User user = new EntitiesConnector().SelectUser("fabriciop", "Password01");
-            AutomataEntitiesLayer.Project project = new AutomataEntitiesLayer.Project() { Name = "Proyecto2", Url = "http://www.prueba.com", Tests = null, Active = true };
+            //AutomataEntitiesLayer.User user = new EntitiesConnector().SelectUser("fabriciop", "Password01");
+            //AutomataEntitiesLayer.Project project = new AutomataEntitiesLayer.Project() { Name = "Proyecto2", Url = "http://www.prueba.com", Tests = null, Active = true };
+            //try
+            //{
+            //    new EntitiesConnector().InsertProject(user, project);
+            //    Console.WriteLine("Éxito!");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine(ex.Message);
+            //}
+        }
+
+        static void Test()
+        {
             try
             {
-                new EntitiesConnector().InsertProject(user, project);
-                Console.WriteLine("Éxito!");
+                
+                new NUnitRunner().prueba();
+                
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine(ex.Message);
+                throw;
             }
         }
     }

@@ -48,6 +48,16 @@
     <Property Name="Active" Type="bit" Nullable="false" />
     <Property Name="FK_User" Type="int" Nullable="false" />
   </EntityType>
+  <EntityType Name="TestParameters">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FK_TestProcedure" Type="int" Nullable="false" />
+    <Property Name="FK_Parameter" Type="int" Nullable="false" />
+    <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
+    <Property Name="Active" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="TestProcedures">
     <Key>
       <PropertyRef Name="PK_Id" />
@@ -140,6 +150,18 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TestParameters_TestProcedure">
+    <End Role="TestProcedures" Type="Self.TestProcedures" Multiplicity="1" />
+    <End Role="TestParameters" Type="Self.TestParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TestProcedures">
+        <PropertyRef Name="PK_Id" />
+      </Principal>
+      <Dependent Role="TestParameters">
+        <PropertyRef Name="FK_TestProcedure" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_Tests_Project">
     <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
     <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
@@ -176,12 +198,25 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ValuesXTestProcedure_Parameters">
+    <End Role="Parameters" Type="Self.Parameters" Multiplicity="1" />
+    <End Role="TestParameters" Type="Self.TestParameters" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Parameters">
+        <PropertyRef Name="PK_Id" />
+      </Principal>
+      <Dependent Role="TestParameters">
+        <PropertyRef Name="FK_Parameter" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="AutomataModelStoreContainer">
     <EntitySet Name="Assemblies" EntityType="Self.Assemblies" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Parameters" EntityType="Self.Parameters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ParameterTypes" EntityType="Self.ParameterTypes" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Procedures" EntityType="Self.Procedures" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TestParameters" EntityType="Self.TestParameters" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TestProcedures" EntityType="Self.TestProcedures" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
@@ -205,6 +240,10 @@
       <End Role="Tests" EntitySet="Tests" />
       <End Role="TestProcedures" EntitySet="TestProcedures" />
     </AssociationSet>
+    <AssociationSet Name="FK_TestParameters_TestProcedure" Association="Self.FK_TestParameters_TestProcedure">
+      <End Role="TestProcedures" EntitySet="TestProcedures" />
+      <End Role="TestParameters" EntitySet="TestParameters" />
+    </AssociationSet>
     <AssociationSet Name="FK_Tests_Project" Association="Self.FK_Tests_Project">
       <End Role="Projects" EntitySet="Projects" />
       <End Role="Tests" EntitySet="Tests" />
@@ -216,6 +255,10 @@
     <AssociationSet Name="FK_Users_Projects" Association="Self.FK_Users_Projects">
       <End Role="Users" EntitySet="Users" />
       <End Role="Projects" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ValuesXTestProcedure_Parameters" Association="Self.FK_ValuesXTestProcedure_Parameters">
+      <End Role="Parameters" EntitySet="Parameters" />
+      <End Role="TestParameters" EntitySet="TestParameters" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

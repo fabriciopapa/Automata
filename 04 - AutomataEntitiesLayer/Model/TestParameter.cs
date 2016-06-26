@@ -12,19 +12,13 @@ namespace AutomataEntitiesLayer.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class Procedure
+    public partial class TestParameter
     {
-        public Procedure()
-        {
-            this.Parameters = new HashSet<Parameter>();
-        }
-    
         public int PK_Id { get; set; }
-        public string Name { get; set; }
-        public string Description { get; set; }
+        public string Value { get; set; }
         public bool Active { get; set; }
     
-        public virtual Assembly Assembly { get; set; }
-        public virtual ICollection<Parameter> Parameters { get; set; }
+        public virtual Parameter Parameter { get; set; }
+        public virtual TestProcedure TestProcedure { get; set; }
     }
 }

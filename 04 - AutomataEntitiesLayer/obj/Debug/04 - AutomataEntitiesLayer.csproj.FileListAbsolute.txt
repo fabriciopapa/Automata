@@ -8,8 +8,6 @@ c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\04 - AutomataEn
 c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.dll
 c:\Users\Papeitor\documents\visual studio 2013\Projects\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.pdb
 C:\Users\Papeitor\Documents\Visual Studio 2013\Projects\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.csprojResolveAssemblyReference.cache
-C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.dll
-C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.pdb
 C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\04 - AutomataEntitiesLayer.dll.config
 C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\04 - AutomataEntitiesLayer.dll
 C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\04 - AutomataEntitiesLayer.pdb
@@ -17,3 +15,6 @@ C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\Entity
 C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\EntityFramework.xml
 C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.dll
+C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.pdb
+C:\Users\Papeitor\Documents\Automata\04 - AutomataEntitiesLayer\obj\Debug\04 - AutomataEntitiesLayer.csprojResolveAssemblyReference.cache

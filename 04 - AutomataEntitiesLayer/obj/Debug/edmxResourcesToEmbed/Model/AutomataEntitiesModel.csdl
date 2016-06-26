@@ -6,6 +6,7 @@
     <EntitySet Name="ParameterTypes" EntityType="AutomataModel.ParameterType" />
     <EntitySet Name="Procedures" EntityType="AutomataModel.Procedure" />
     <EntitySet Name="Projects" EntityType="AutomataModel.Project" />
+    <EntitySet Name="TestParameters" EntityType="AutomataModel.TestParameter" />
     <EntitySet Name="TestProcedures" EntityType="AutomataModel.TestProcedure" />
     <EntitySet Name="Tests" EntityType="AutomataModel.Test" />
     <EntitySet Name="Users" EntityType="AutomataModel.User" />
@@ -25,6 +26,10 @@
       <End Role="Procedure" EntitySet="Procedures" />
       <End Role="Parameter" EntitySet="Parameters" />
     </AssociationSet>
+    <AssociationSet Name="FK_ValuesXTestProcedure_Parameters" Association="AutomataModel.FK_ValuesXTestProcedure_Parameters">
+      <End Role="Parameter" EntitySet="Parameters" />
+      <End Role="TestParameter" EntitySet="TestParameters" />
+    </AssociationSet>
     <AssociationSet Name="FK_ProceduresXTest_Procedures" Association="AutomataModel.FK_ProceduresXTest_Procedures">
       <End Role="Procedure" EntitySet="Procedures" />
       <End Role="TestProcedure" EntitySet="TestProcedures" />
@@ -36,6 +41,10 @@
     <AssociationSet Name="FK_Users_Projects" Association="AutomataModel.FK_Users_Projects">
       <End Role="User" EntitySet="Users" />
       <End Role="Project" EntitySet="Projects" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TestParameters_TestProcedure" Association="AutomataModel.FK_TestParameters_TestProcedure">
+      <End Role="TestProcedure" EntitySet="TestProcedures" />
+      <End Role="TestParameter" EntitySet="TestParameters" />
     </AssociationSet>
     <AssociationSet Name="FK_ProceduresXTest_Tests" Association="AutomataModel.FK_ProceduresXTest_Tests">
       <End Role="Test" EntitySet="Tests" />
@@ -63,6 +72,7 @@
     <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="ParameterType" Relationship="AutomataModel.FK_Parameters_ParameterTypes" FromRole="Parameter" ToRole="ParameterType" />
+    <NavigationProperty Name="Procedure" Relationship="AutomataModel.FK_Parameters_Procedures" FromRole="Parameter" ToRole="Procedure" />
   </EntityType>
   <EntityType Name="ParameterType">
     <Key>
@@ -80,7 +90,6 @@
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Assembly" Relationship="AutomataModel.FK_Procedures_Assemblies" FromRole="Procedure" ToRole="Assembly" />
     <NavigationProperty Name="Parameters" Relationship="AutomataModel.FK_Parameters_Procedures" FromRole="Procedure" ToRole="Parameter" />
-    <NavigationProperty Name="TestProcedures" Relationship="AutomataModel.FK_ProceduresXTest_Procedures" FromRole="Procedure" ToRole="TestProcedure" />
   </EntityType>
   <EntityType Name="Project">
     <Key>
@@ -93,6 +102,16 @@
     <NavigationProperty Name="Tests" Relationship="AutomataModel.FK_Tests_Project" FromRole="Project" ToRole="Test" />
     <NavigationProperty Name="User" Relationship="AutomataModel.FK_Users_Projects" FromRole="Project" ToRole="User" />
   </EntityType>
+  <EntityType Name="TestParameter">
+    <Key>
+      <PropertyRef Name="PK_Id" />
+    </Key>
+    <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Value" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Active" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Parameter" Relationship="AutomataModel.FK_ValuesXTestProcedure_Parameters" FromRole="TestParameter" ToRole="Parameter" />
+    <NavigationProperty Name="TestProcedure" Relationship="AutomataModel.FK_TestParameters_TestProcedure" FromRole="TestParameter" ToRole="TestProcedure" />
+  </EntityType>
   <EntityType Name="TestProcedure">
     <Key>
       <PropertyRef Name="PK_Id" />
@@ -101,6 +120,7 @@
     <Property Name="Order" Type="Int32" Nullable="false" />
     <Property Name="Active" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="Procedure" Relationship="AutomataModel.FK_ProceduresXTest_Procedures" FromRole="TestProcedure" ToRole="Procedure" />
+    <NavigationProperty Name="TestParameters" Relationship="AutomataModel.FK_TestParameters_TestProcedure" FromRole="TestProcedure" ToRole="TestParameter" />
     <NavigationProperty Name="Test" Relationship="AutomataModel.FK_ProceduresXTest_Tests" FromRole="TestProcedure" ToRole="Test" />
   </EntityType>
   <EntityType Name="Test">
@@ -144,6 +164,10 @@
     <End Type="AutomataModel.Procedure" Role="Procedure" Multiplicity="1" />
     <End Type="AutomataModel.Parameter" Role="Parameter" Multiplicity="*" />
   </Association>
+  <Association Name="FK_ValuesXTestProcedure_Parameters">
+    <End Type="AutomataModel.Parameter" Role="Parameter" Multiplicity="1" />
+    <End Type="AutomataModel.TestParameter" Role="TestParameter" Multiplicity="*" />
+  </Association>
   <Association Name="FK_ProceduresXTest_Procedures">
     <End Type="AutomataModel.Procedure" Role="Procedure" Multiplicity="1" />
     <End Type="AutomataModel.TestProcedure" Role="TestProcedure" Multiplicity="*" />
@@ -155,6 +179,10 @@
   <Association Name="FK_Users_Projects">
     <End Type="AutomataModel.User" Role="User" Multiplicity="1" />
     <End Type="AutomataModel.Project" Role="Project" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_TestParameters_TestProcedure">
+    <End Type="AutomataModel.TestProcedure" Role="TestProcedure" Multiplicity="1" />
+    <End Type="AutomataModel.TestParameter" Role="TestParameter" Multiplicity="*" />
   </Association>
   <Association Name="FK_ProceduresXTest_Tests">
     <End Type="AutomataModel.Test" Role="Test" Multiplicity="1" />

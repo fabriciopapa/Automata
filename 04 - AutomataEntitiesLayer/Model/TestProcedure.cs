@@ -14,11 +14,17 @@ namespace AutomataEntitiesLayer.Model
     
     public partial class TestProcedure
     {
+        public TestProcedure()
+        {
+            this.TestParameters = new HashSet<TestParameter>();
+        }
+    
         public int PK_Id { get; set; }
         public int Order { get; set; }
         public bool Active { get; set; }
     
         public virtual Procedure Procedure { get; set; }
+        public virtual ICollection<TestParameter> TestParameters { get; set; }
         public virtual Test Test { get; set; }
     }
 }

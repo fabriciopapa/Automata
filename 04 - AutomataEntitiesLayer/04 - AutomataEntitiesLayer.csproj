@@ -78,6 +78,9 @@
     <Compile Include="Model\Project.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\TestParameter.cs">
+      <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Test.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>

@@ -20,5 +20,6 @@ namespace AutomataEntitiesLayer.Model
         public bool Active { get; set; }
     
         public virtual ParameterType ParameterType { get; set; }
+        public virtual Procedure Procedure { get; set; }
     }
 }

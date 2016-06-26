@@ -8,7 +8,6 @@ C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\EntityFra
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\EntityFramework.SqlServer.dll
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\Ionic.Zip.dll
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\Newtonsoft.Json.dll
-C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\nunit.framework.dll
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\Selenium.WebDriverBackedSelenium.dll
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\ThoughtWorks.Selenium.Core.dll
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\WebDriver.dll
@@ -17,7 +16,6 @@ C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\03 - Auto
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\04 - AutomataEntitiesLayer.pdb
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\EntityFramework.xml
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\nunit.framework.xml
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\Selenium.WebDriverBackedSelenium.xml
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\ThoughtWorks.Selenium.Core.xml
 C:\Users\Papeitor\Documents\Automata\02 - AutomataLogicLayer\bin\Debug\WebDriver.xml

@@ -30,6 +30,7 @@ namespace AutomataEntitiesLayer.Model
         public virtual DbSet<ParameterType> ParameterTypes { get; set; }
         public virtual DbSet<Procedure> Procedures { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<TestParameter> TestParameters { get; set; }
         public virtual DbSet<TestProcedure> TestProcedures { get; set; }
         public virtual DbSet<Test> Tests { get; set; }
         public virtual DbSet<User> Users { get; set; }
