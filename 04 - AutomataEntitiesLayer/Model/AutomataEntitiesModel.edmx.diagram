@@ -5,14 +5,14 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="88519df036294475bdfd69078c9479ba" Name="Diagram1" ZoomLevel="81">
-        <EntityTypeShape EntityType="AutomataModel.Assembly" Width="1.5" PointX="3" PointY="3.25" />
-        <EntityTypeShape EntityType="AutomataModel.Parameter" Width="1.5" PointX="7.5" PointY="3.25" />
-        <EntityTypeShape EntityType="AutomataModel.ParameterType" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="AutomataModel.Assembly" Width="1.5" PointX="3" PointY="3.125" />
+        <EntityTypeShape EntityType="AutomataModel.Parameter" Width="1.5" PointX="5.25" PointY="0.5" />
+        <EntityTypeShape EntityType="AutomataModel.ParameterType" Width="1.5" PointX="3" PointY="1.25" />
         <EntityTypeShape EntityType="AutomataModel.Procedure" Width="1.5" PointX="5.25" PointY="3.25" />
-        <EntityTypeShape EntityType="AutomataModel.Project" Width="1.5" PointX="3" PointY="6.375" />
-        <EntityTypeShape EntityType="AutomataModel.TestParameter" Width="1.5" PointX="9.75" PointY="5.125" />
-        <EntityTypeShape EntityType="AutomataModel.TestProcedure" Width="1.5" PointX="7.625" PointY="6.25" />
-        <EntityTypeShape EntityType="AutomataModel.Test" Width="1.5" PointX="5.25" PointY="6.375" />
+        <EntityTypeShape EntityType="AutomataModel.Project" Width="1.5" PointX="3" PointY="6.25" />
+        <EntityTypeShape EntityType="AutomataModel.TestParameter" Width="1.5" PointX="7.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AutomataModel.TestProcedure" Width="1.5" PointX="7.375" PointY="6.25" />
+        <EntityTypeShape EntityType="AutomataModel.Test" Width="1.5" PointX="5.25" PointY="6.25" />
         <EntityTypeShape EntityType="AutomataModel.User" Width="1.5" PointX="0.75" PointY="4.5" />
         <AssociationConnector Association="AutomataModel.FK_Procedures_Assemblies" />
         <AssociationConnector Association="AutomataModel.FK_Users_Assemblies" />

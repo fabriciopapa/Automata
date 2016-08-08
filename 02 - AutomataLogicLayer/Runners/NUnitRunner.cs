@@ -179,6 +179,8 @@ namespace AutomataLogicLayer.Runners
             }
         }
 
+        private void Instantiate()
+
         public void prueba()
         {
             CompileAndRun(codestring);            
