@@ -97,17 +97,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\02 - AutomataLogicLayer\02 - AutomataLogicLayer.csproj">
-      <Project>{8f8b8be1-0ba6-42c2-ab08-a36b03a4913f}</Project>
-      <Name>02 - AutomataLogicLayer</Name>
-    </ProjectReference>
     <ProjectReference Include="..\03 - AutomataDataAccessLayer\03 - AutomataDataAccessLayer.csproj">
       <Project>{320a78b6-f9e2-48c9-9e79-dce53e83678f}</Project>
       <Name>03 - AutomataDataAccessLayer</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\04 - AutomataEntitiesLayer\04 - AutomataEntitiesLayer.csproj">
-      <Project>{1c5292a4-3509-4988-8cea-12a715f77582}</Project>
-      <Name>04 - AutomataEntitiesLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

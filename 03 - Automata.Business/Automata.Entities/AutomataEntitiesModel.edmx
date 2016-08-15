@@ -1,0 +1,663 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AutomataModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Assemblies">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Code" Type="varbinary(max)" Nullable="false" />
+          <Property Name="Public" Type="bit" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="FK_User" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Parameters">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="int" Nullable="false" />
+          <Property Name="FK_Procedure" Type="int" Nullable="false" />
+          <Property Name="FK_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ParameterTypes">
+          <Key>
+            <PropertyRef Name="PK_Type" />
+          </Key>
+          <Property Name="PK_Type" Type="varchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Procedures">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="varchar" MaxLength="400" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="FK_Assembly" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Projects">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Url" Type="varchar(max)" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="FK_User" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestParameters">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_TestProcedure" Type="int" Nullable="false" />
+          <Property Name="FK_Parameter" Type="int" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TestProcedures">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FK_Procedure" Type="int" Nullable="false" />
+          <Property Name="FK_Test" Type="int" Nullable="false" />
+          <Property Name="Order" Type="int" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tests">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="FK_Project" Type="int" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Password" Type="varchar(max)" Nullable="false" />
+          <Property Name="Name" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="SecretAnswer" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Parameters_ParameterTypes">
+          <End Role="ParameterTypes" Type="Self.ParameterTypes" Multiplicity="1" />
+          <End Role="Parameters" Type="Self.Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParameterTypes">
+              <PropertyRef Name="PK_Type" />
+            </Principal>
+            <Dependent Role="Parameters">
+              <PropertyRef Name="FK_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Parameters_Procedures">
+          <End Role="Procedures" Type="Self.Procedures" Multiplicity="1" />
+          <End Role="Parameters" Type="Self.Parameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedures">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="Parameters">
+              <PropertyRef Name="FK_Procedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Procedures_Assemblies">
+          <End Role="Assemblies" Type="Self.Assemblies" Multiplicity="1" />
+          <End Role="Procedures" Type="Self.Procedures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Assemblies">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="Procedures">
+              <PropertyRef Name="FK_Assembly" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProceduresXTest_Procedures">
+          <End Role="Procedures" Type="Self.Procedures" Multiplicity="1" />
+          <End Role="TestProcedures" Type="Self.TestProcedures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Procedures">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="TestProcedures">
+              <PropertyRef Name="FK_Procedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProceduresXTest_Tests">
+          <End Role="Tests" Type="Self.Tests" Multiplicity="1" />
+          <End Role="TestProcedures" Type="Self.TestProcedures" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tests">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="TestProcedures">
+              <PropertyRef Name="FK_Test" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TestParameters_TestProcedure">
+          <End Role="TestProcedures" Type="Self.TestProcedures" Multiplicity="1" />
+          <End Role="TestParameters" Type="Self.TestParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TestProcedures">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="TestParameters">
+              <PropertyRef Name="FK_TestProcedure" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Tests_Project">
+          <End Role="Projects" Type="Self.Projects" Multiplicity="1" />
+          <End Role="Tests" Type="Self.Tests" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Projects">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="Tests">
+              <PropertyRef Name="FK_Project" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Assemblies">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Assemblies" Type="Self.Assemblies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="Assemblies">
+              <PropertyRef Name="FK_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Users_Projects">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Projects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="Projects">
+              <PropertyRef Name="FK_User" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ValuesXTestProcedure_Parameters">
+          <End Role="Parameters" Type="Self.Parameters" Multiplicity="1" />
+          <End Role="TestParameters" Type="Self.TestParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parameters">
+              <PropertyRef Name="PK_Id" />
+            </Principal>
+            <Dependent Role="TestParameters">
+              <PropertyRef Name="FK_Parameter" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AutomataModelStoreContainer">
+          <EntitySet Name="Assemblies" EntityType="Self.Assemblies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParameterTypes" EntityType="Self.ParameterTypes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Projects" EntityType="Self.Projects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestParameters" EntityType="Self.TestParameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TestProcedures" EntityType="Self.TestProcedures" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Tests" EntityType="Self.Tests" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Parameters_ParameterTypes" Association="Self.FK_Parameters_ParameterTypes">
+            <End Role="ParameterTypes" EntitySet="ParameterTypes" />
+            <End Role="Parameters" EntitySet="Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameters_Procedures" Association="Self.FK_Parameters_Procedures">
+            <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="Parameters" EntitySet="Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Procedures_Assemblies" Association="Self.FK_Procedures_Assemblies">
+            <End Role="Assemblies" EntitySet="Assemblies" />
+            <End Role="Procedures" EntitySet="Procedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProceduresXTest_Procedures" Association="Self.FK_ProceduresXTest_Procedures">
+            <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="TestProcedures" EntitySet="TestProcedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProceduresXTest_Tests" Association="Self.FK_ProceduresXTest_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="TestProcedures" EntitySet="TestProcedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestParameters_TestProcedure" Association="Self.FK_TestParameters_TestProcedure">
+            <End Role="TestProcedures" EntitySet="TestProcedures" />
+            <End Role="TestParameters" EntitySet="TestParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tests_Project" Association="Self.FK_Tests_Project">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Assemblies" Association="Self.FK_Users_Assemblies">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Assemblies" EntitySet="Assemblies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Projects" Association="Self.FK_Users_Projects">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValuesXTestProcedure_Parameters" Association="Self.FK_ValuesXTestProcedure_Parameters">
+            <End Role="Parameters" EntitySet="Parameters" />
+            <End Role="TestParameters" EntitySet="TestParameters" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AutomataModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Assembly">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="Binary" MaxLength="Max" FixedLength="false" Nullable="false" />
+          <Property Name="Public" Type="Boolean" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Procedures" Relationship="Self.FK_Procedures_Assemblies" FromRole="Assemblies" ToRole="Procedures" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Users_Assemblies" FromRole="Assemblies" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Parameter">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ParameterType" Relationship="Self.FK_Parameters_ParameterTypes" FromRole="Parameters" ToRole="ParameterTypes" />
+          <NavigationProperty Name="Procedure" Relationship="Self.FK_Parameters_Procedures" FromRole="Parameters" ToRole="Procedures" />
+          <NavigationProperty Name="TestParameters" Relationship="Self.FK_ValuesXTestProcedure_Parameters" FromRole="Parameters" ToRole="TestParameters" />
+        </EntityType>
+        <EntityType Name="ParameterType">
+          <Key>
+            <PropertyRef Name="PK_Type" />
+          </Key>
+          <Property Name="PK_Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Parameters" Relationship="Self.FK_Parameters_ParameterTypes" FromRole="ParameterTypes" ToRole="Parameters" />
+        </EntityType>
+        <EntityType Name="Procedure">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="400" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Assembly" Relationship="Self.FK_Procedures_Assemblies" FromRole="Procedures" ToRole="Assemblies" />
+          <NavigationProperty Name="Parameters" Relationship="Self.FK_Parameters_Procedures" FromRole="Procedures" ToRole="Parameters" />
+          <NavigationProperty Name="TestProcedures" Relationship="Self.FK_ProceduresXTest_Procedures" FromRole="Procedures" ToRole="TestProcedures" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Tests" Relationship="Self.FK_Tests_Project" FromRole="Projects" ToRole="Tests" />
+          <NavigationProperty Name="User" Relationship="Self.FK_Users_Projects" FromRole="Projects" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="TestParameter">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Value" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Parameter" Relationship="Self.FK_ValuesXTestProcedure_Parameters" FromRole="TestParameters" ToRole="Parameters" />
+          <NavigationProperty Name="TestProcedure" Relationship="Self.FK_TestParameters_TestProcedure" FromRole="TestParameters" ToRole="TestProcedures" />
+        </EntityType>
+        <EntityType Name="TestProcedure">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Order" Type="Int32" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Procedure" Relationship="Self.FK_ProceduresXTest_Procedures" FromRole="TestProcedures" ToRole="Procedures" />
+          <NavigationProperty Name="TestParameters" Relationship="Self.FK_TestParameters_TestProcedure" FromRole="TestProcedures" ToRole="TestParameters" />
+          <NavigationProperty Name="Test" Relationship="Self.FK_ProceduresXTest_Tests" FromRole="TestProcedures" ToRole="Tests" />
+        </EntityType>
+        <EntityType Name="Test">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.FK_Tests_Project" FromRole="Tests" ToRole="Projects" />
+          <NavigationProperty Name="TestProcedures" Relationship="Self.FK_ProceduresXTest_Tests" FromRole="Tests" ToRole="TestProcedures" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="PK_Id" />
+          </Key>
+          <Property Name="PK_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SecretAnswer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Assemblies" Relationship="Self.FK_Users_Assemblies" FromRole="Users" ToRole="Assemblies" />
+          <NavigationProperty Name="Projects" Relationship="Self.FK_Users_Projects" FromRole="Users" ToRole="Projects" />
+        </EntityType>
+        <Association Name="FK_Procedures_Assemblies">
+          <End Role="Assemblies" Type="Self.Assembly" Multiplicity="1" />
+          <End Role="Procedures" Type="Self.Procedure" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Users_Assemblies">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Assemblies" Type="Self.Assembly" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Parameters_ParameterTypes">
+          <End Role="ParameterTypes" Type="Self.ParameterType" Multiplicity="1" />
+          <End Role="Parameters" Type="Self.Parameter" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Parameters_Procedures">
+          <End Role="Procedures" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="Parameters" Type="Self.Parameter" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ValuesXTestProcedure_Parameters">
+          <End Role="Parameters" Type="Self.Parameter" Multiplicity="1" />
+          <End Role="TestParameters" Type="Self.TestParameter" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ProceduresXTest_Procedures">
+          <End Role="Procedures" Type="Self.Procedure" Multiplicity="1" />
+          <End Role="TestProcedures" Type="Self.TestProcedure" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Tests_Project">
+          <End Role="Projects" Type="Self.Project" Multiplicity="1" />
+          <End Role="Tests" Type="Self.Test" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_Users_Projects">
+          <End Role="Users" Type="Self.User" Multiplicity="1" />
+          <End Role="Projects" Type="Self.Project" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_TestParameters_TestProcedure">
+          <End Role="TestProcedures" Type="Self.TestProcedure" Multiplicity="1" />
+          <End Role="TestParameters" Type="Self.TestParameter" Multiplicity="*" />
+        </Association>
+        <Association Name="FK_ProceduresXTest_Tests">
+          <End Role="Tests" Type="Self.Test" Multiplicity="1" />
+          <End Role="TestProcedures" Type="Self.TestProcedure" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="AutomataEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Assemblies" EntityType="Self.Assembly" />
+          <EntitySet Name="Parameters" EntityType="Self.Parameter" />
+          <EntitySet Name="ParameterTypes" EntityType="Self.ParameterType" />
+          <EntitySet Name="Procedures" EntityType="Self.Procedure" />
+          <EntitySet Name="Projects" EntityType="Self.Project" />
+          <EntitySet Name="TestParameters" EntityType="Self.TestParameter" />
+          <EntitySet Name="TestProcedures" EntityType="Self.TestProcedure" />
+          <EntitySet Name="Tests" EntityType="Self.Test" />
+          <EntitySet Name="Users" EntityType="Self.User" />
+          <AssociationSet Name="FK_Procedures_Assemblies" Association="Self.FK_Procedures_Assemblies">
+            <End Role="Assemblies" EntitySet="Assemblies" />
+            <End Role="Procedures" EntitySet="Procedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Assemblies" Association="Self.FK_Users_Assemblies">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Assemblies" EntitySet="Assemblies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameters_ParameterTypes" Association="Self.FK_Parameters_ParameterTypes">
+            <End Role="ParameterTypes" EntitySet="ParameterTypes" />
+            <End Role="Parameters" EntitySet="Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Parameters_Procedures" Association="Self.FK_Parameters_Procedures">
+            <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="Parameters" EntitySet="Parameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ValuesXTestProcedure_Parameters" Association="Self.FK_ValuesXTestProcedure_Parameters">
+            <End Role="Parameters" EntitySet="Parameters" />
+            <End Role="TestParameters" EntitySet="TestParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProceduresXTest_Procedures" Association="Self.FK_ProceduresXTest_Procedures">
+            <End Role="Procedures" EntitySet="Procedures" />
+            <End Role="TestProcedures" EntitySet="TestProcedures" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Tests_Project" Association="Self.FK_Tests_Project">
+            <End Role="Projects" EntitySet="Projects" />
+            <End Role="Tests" EntitySet="Tests" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Users_Projects" Association="Self.FK_Users_Projects">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Projects" EntitySet="Projects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TestParameters_TestProcedure" Association="Self.FK_TestParameters_TestProcedure">
+            <End Role="TestProcedures" EntitySet="TestProcedures" />
+            <End Role="TestParameters" EntitySet="TestParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProceduresXTest_Tests" Association="Self.FK_ProceduresXTest_Tests">
+            <End Role="Tests" EntitySet="Tests" />
+            <End Role="TestProcedures" EntitySet="TestProcedures" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AutomataModelStoreContainer" CdmEntityContainer="AutomataEntities">
+          <EntitySetMapping Name="Assemblies">
+            <EntityTypeMapping TypeName="AutomataModel.Assembly">
+              <MappingFragment StoreEntitySet="Assemblies">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Public" ColumnName="Public" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parameters">
+            <EntityTypeMapping TypeName="AutomataModel.Parameter">
+              <MappingFragment StoreEntitySet="Parameters">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParameterTypes">
+            <EntityTypeMapping TypeName="AutomataModel.ParameterType">
+              <MappingFragment StoreEntitySet="ParameterTypes">
+                <ScalarProperty Name="PK_Type" ColumnName="PK_Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Procedures">
+            <EntityTypeMapping TypeName="AutomataModel.Procedure">
+              <MappingFragment StoreEntitySet="Procedures">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Projects">
+            <EntityTypeMapping TypeName="AutomataModel.Project">
+              <MappingFragment StoreEntitySet="Projects">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestParameters">
+            <EntityTypeMapping TypeName="AutomataModel.TestParameter">
+              <MappingFragment StoreEntitySet="TestParameters">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TestProcedures">
+            <EntityTypeMapping TypeName="AutomataModel.TestProcedure">
+              <MappingFragment StoreEntitySet="TestProcedures">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Order" ColumnName="Order" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tests">
+            <EntityTypeMapping TypeName="AutomataModel.Test">
+              <MappingFragment StoreEntitySet="Tests">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="AutomataModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="FK_Procedures_Assemblies" TypeName="AutomataModel.FK_Procedures_Assemblies" StoreEntitySet="Procedures">
+            <EndProperty Name="Assemblies">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_Assembly" />
+            </EndProperty>
+            <EndProperty Name="Procedures">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Users_Assemblies" TypeName="AutomataModel.FK_Users_Assemblies" StoreEntitySet="Assemblies">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_User" />
+            </EndProperty>
+            <EndProperty Name="Assemblies">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Parameters_ParameterTypes" TypeName="AutomataModel.FK_Parameters_ParameterTypes" StoreEntitySet="Parameters">
+            <EndProperty Name="ParameterTypes">
+              <ScalarProperty Name="PK_Type" ColumnName="FK_Type" />
+            </EndProperty>
+            <EndProperty Name="Parameters">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Parameters_Procedures" TypeName="AutomataModel.FK_Parameters_Procedures" StoreEntitySet="Parameters">
+            <EndProperty Name="Procedures">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_Procedure" />
+            </EndProperty>
+            <EndProperty Name="Parameters">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ValuesXTestProcedure_Parameters" TypeName="AutomataModel.FK_ValuesXTestProcedure_Parameters" StoreEntitySet="TestParameters">
+            <EndProperty Name="Parameters">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_Parameter" />
+            </EndProperty>
+            <EndProperty Name="TestParameters">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ProceduresXTest_Procedures" TypeName="AutomataModel.FK_ProceduresXTest_Procedures" StoreEntitySet="TestProcedures">
+            <EndProperty Name="Procedures">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_Procedure" />
+            </EndProperty>
+            <EndProperty Name="TestProcedures">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Tests_Project" TypeName="AutomataModel.FK_Tests_Project" StoreEntitySet="Tests">
+            <EndProperty Name="Projects">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_Project" />
+            </EndProperty>
+            <EndProperty Name="Tests">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_Users_Projects" TypeName="AutomataModel.FK_Users_Projects" StoreEntitySet="Projects">
+            <EndProperty Name="Users">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_User" />
+            </EndProperty>
+            <EndProperty Name="Projects">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_TestParameters_TestProcedure" TypeName="AutomataModel.FK_TestParameters_TestProcedure" StoreEntitySet="TestParameters">
+            <EndProperty Name="TestProcedures">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_TestProcedure" />
+            </EndProperty>
+            <EndProperty Name="TestParameters">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="FK_ProceduresXTest_Tests" TypeName="AutomataModel.FK_ProceduresXTest_Tests" StoreEntitySet="TestProcedures">
+            <EndProperty Name="Tests">
+              <ScalarProperty Name="PK_Id" ColumnName="FK_Test" />
+            </EndProperty>
+            <EndProperty Name="TestProcedures">
+              <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

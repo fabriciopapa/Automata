@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="f01ef39b9ced4f738cbd6872ed5630e0" Name="Diagram1">
+        <EntityTypeShape EntityType="AutomataModel.Assembly" Width="1.5" PointX="3" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.Parameter" Width="1.5" PointX="7.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.ParameterType" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.Procedure" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.Project" Width="1.5" PointX="3" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.TestParameter" Width="1.5" PointX="9.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.TestProcedure" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.Test" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="AutomataModel.User" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <AssociationConnector Association="AutomataModel.FK_Procedures_Assemblies" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_Users_Assemblies" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_Parameters_ParameterTypes" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_Parameters_Procedures" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_ValuesXTestProcedure_Parameters" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_ProceduresXTest_Procedures" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_Tests_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_Users_Projects" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_TestParameters_TestProcedure" ManuallyRouted="false" />
+        <AssociationConnector Association="AutomataModel.FK_ProceduresXTest_Tests" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
