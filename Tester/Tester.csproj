@@ -96,12 +96,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\03 - AutomataDataAccessLayer\03 - AutomataDataAccessLayer.csproj">
-      <Project>{320a78b6-f9e2-48c9-9e79-dce53e83678f}</Project>
-      <Name>03 - AutomataDataAccessLayer</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

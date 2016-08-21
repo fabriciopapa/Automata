@@ -8,8 +8,8 @@ using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.OAuth;
 using Owin;
-using Automata.WebApi.Providers;
 using Automata.WebApi.Models;
+using Automata.WebApi.Providers;
 
 namespace Automata.WebApi
 {
