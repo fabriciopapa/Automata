@@ -22,6 +22,7 @@ namespace Automata.WebApi.Controllers
     {
         public ProjectsController() { }
 
+        [HttpGet]
         [Route("GetProjects")]
         public GetProjectsOut GetProjects(GetProjectsIn input)
         {
