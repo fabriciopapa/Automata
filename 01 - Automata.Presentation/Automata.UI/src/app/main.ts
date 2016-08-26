@@ -3,25 +3,21 @@ import {bootstrap} from 'angular2/platform/browser';
 import {HTTP_PROVIDERS} from 'angular2/http';
 import {FORM_PROVIDERS} from 'angular2/common';
 import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
-// import './rxjs';
+import 'rxjs/Rx';
 
-//Components
-import {Dashboard, Projects, Sidebar} from './components/components.module'
-
-//Services
-import {UserListService} from './services/user_list';
-import {ServerListService} from './services/server_list';
+import {BaseComponent, DashboardComponent, ProjectsComponent} from './components/components.module'
+import './components/components.module'
 
 @Component({
     selector: 'app',
     templateUrl: 'app/main.html',
     styleUrls: ['app/main.css'],
-    directives: [ROUTER_DIRECTIVES, Sidebar]
+    directives: [ROUTER_DIRECTIVES]
 })
 
 @RouteConfig([
-    {path: '/', component: Dashboard, name: 'Dashboard'},
-    {path: '/projects', component: Projects, name: 'Projects'}
+    {path: '/', component: DashboardComponent, name: 'Dashboard'},
+    {path: '/projects', component: ProjectsComponent, name: 'Projects'}
 ])
 
 class Main {
@@ -63,4 +59,5 @@ class Main {
     }
 }
 
-bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
+//bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
+bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, bind(LocationStrategy).toClass(HashLocationStrategy)]);

@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 'angular2/common', 'angular2/router', './components/components.module', './services/user_list', './services/server_list'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 'angular2/common', 'angular2/router', 'rxjs/Rx', './components/components.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, browser_1, http_1, common_1, router_1, components_module_1, user_list_1, server_list_1;
+    var core_1, browser_1, http_1, common_1, router_1, components_module_1;
     var Main;
     return {
         setters:[
@@ -29,14 +29,9 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
             function (router_1_1) {
                 router_1 = router_1_1;
             },
+            function (_1) {},
             function (components_module_1_1) {
                 components_module_1 = components_module_1_1;
-            },
-            function (user_list_1_1) {
-                user_list_1 = user_list_1_1;
-            },
-            function (server_list_1_1) {
-                server_list_1 = server_list_1_1;
             }],
         execute: function() {
             Main = (function () {
@@ -78,17 +73,18 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                         selector: 'app',
                         templateUrl: 'app/main.html',
                         styleUrls: ['app/main.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.Sidebar]
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }),
                     router_1.RouteConfig([
-                        { path: '/', component: components_module_1.Dashboard, name: 'Dashboard' },
-                        { path: '/projects', component: components_module_1.Projects, name: 'Projects' }
+                        { path: '/', component: components_module_1.DashboardComponent, name: 'Dashboard' },
+                        { path: '/projects', component: components_module_1.ProjectsComponent, name: 'Projects' }
                     ]), 
                     __metadata('design:paramtypes', [])
                 ], Main);
                 return Main;
             }());
-            browser_1.bootstrap(Main, [router_1.ROUTER_PROVIDERS, common_1.FORM_PROVIDERS, router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, user_list_1.UserListService, server_list_1.ServerListService, core_1.bind(router_1.LocationStrategy).toClass(router_1.HashLocationStrategy)]);
+            //bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
+            browser_1.bootstrap(Main, [router_1.ROUTER_PROVIDERS, common_1.FORM_PROVIDERS, router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, core_1.bind(router_1.LocationStrategy).toClass(router_1.HashLocationStrategy)]);
         }
     }
 });

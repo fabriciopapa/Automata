@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/http"], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http", 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -19,16 +19,17 @@ System.register(["angular2/core", "angular2/http"], function(exports_1, context_
             },
             function (http_1_1) {
                 http_1 = http_1_1;
-            }],
+            },
+            function (_1) {}],
         execute: function() {
             ProjectsService = (function () {
                 function ProjectsService(http) {
                     this.http = http;
-                    this.heroesUrl = 'http://localhost:8080/api/Projects/GetProjects';
+                    this.heroesUrl = 'http://192.168.1.43:8080/api/Projects/GetProjects';
                 }
                 ProjectsService.prototype.getProjects = function () {
-                    this.http.get(this.heroesUrl)
-                        .map(this.extractData);
+                    var _this = this;
+                    return this.http.get(this.heroesUrl).map(function (res) { return _this.extractData(res); });
                 };
                 ProjectsService.prototype.extractData = function (res) {
                     var body = res.json();

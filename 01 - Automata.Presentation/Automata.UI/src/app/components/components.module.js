@@ -1,22 +1,20 @@
-System.register(['./dashboard/dashboard', './projects/projects', './sidebar/sidebar'], function(exports_1, context_1) {
+System.register(['./common.UI/common.module', './projects.UI/projects.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    function exportStar_1(m) {
+        var exports = {};
+        for(var n in m) {
+            if (n !== "default") exports[n] = m[n];
+        }
+        exports_1(exports);
+    }
     return {
         setters:[
-            function (dashboard_1_1) {
-                exports_1({
-                    "Dashboard": dashboard_1_1["Dashboard"]
-                });
+            function (common_module_1_1) {
+                exportStar_1(common_module_1_1);
             },
-            function (projects_1_1) {
-                exports_1({
-                    "Projects": projects_1_1["Projects"]
-                });
-            },
-            function (sidebar_1_1) {
-                exports_1({
-                    "Sidebar": sidebar_1_1["Sidebar"]
-                });
+            function (projects_module_1_1) {
+                exportStar_1(projects_module_1_1);
             }],
         execute: function() {
         }
