@@ -11,38 +11,28 @@ System.register(['angular2/core'], function(exports_1, context_1) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1;
-    var RdWidgetBody;
+    var WidgetButtonComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             }],
         execute: function() {
-            RdWidgetBody = (function () {
-                function RdWidgetBody() {
-                    this.loading = false;
-                    this.classes = '';
+            WidgetButtonComponent = (function () {
+                function WidgetButtonComponent() {
                 }
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', Boolean)
-                ], RdWidgetBody.prototype, "loading", void 0);
-                __decorate([
-                    core_1.Input(), 
-                    __metadata('design:type', String)
-                ], RdWidgetBody.prototype, "classes", void 0);
-                RdWidgetBody = __decorate([
+                WidgetButtonComponent = __decorate([
                     core_1.Component({
-                        selector: 'widget-body',
-                        properties: ['loading', 'classes'],
-                        templateUrl: 'app/components/rd-widget-body/rd-widget-body.html'
+                        selector: 'widget-button',
+                        styleUrls: ['app/components/common.UI/widget-button/widget-button.component.css'],
+                        templateUrl: 'app/components/common.UI/widget-button/widget-button.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], RdWidgetBody);
-                return RdWidgetBody;
+                ], WidgetButtonComponent);
+                return WidgetButtonComponent;
             }());
-            exports_1("RdWidgetBody", RdWidgetBody);
+            exports_1("WidgetButtonComponent", WidgetButtonComponent);
         }
     }
 });
-//# sourceMappingURL=widgetBody.component.js.map
+//# sourceMappingURL=widget-button.component.js.map

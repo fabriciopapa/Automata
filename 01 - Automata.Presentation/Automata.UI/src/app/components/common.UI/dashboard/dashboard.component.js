@@ -34,7 +34,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
                         selector: 'dashboard',
                         templateUrl: 'app/components/common.UI/dashboard/dashboard.component.html',
                         styleUrls: ['app/components/common.UI/dashboard/dashboard.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetButtonComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DashboardComponent);

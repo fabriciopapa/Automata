@@ -91,23 +91,3 @@
   font-size: 28px;
   display: block;
 }
-
-
-.animate
-{
-	transition: all 0.1s;
-	-webkit-transition: all 0.1s;
-}
-.action-button
-{
-	position: relative;
-  margin: 0px 10px 10px 0px;
-	border-radius: 10px;
-	text-decoration: none;	
-}
-.action-button:active
-{
-  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.05);
-	transform: translate(0px,5px);
-  -webkit-transform: translate(0px,5px);
-}
