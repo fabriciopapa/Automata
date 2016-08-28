@@ -1,13 +1,13 @@
 import {Component} from 'angular2/core';
-import {AppConfig} from '../../../appConfig'
+import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, Location} from 'angular2/router';
+import {ConfigurationManager} from '../../../configurationManager'
 
 export class BaseComponent {
 
-    private _appConfig : AppConfig;
+    private _configurationManager : ConfigurationManager;
 
-    get AppConfig() { return this._appConfig; }
+    get ConfigurationManager() { return new ConfigurationManager(); }
 
     constructor() {
-        this._appConfig = new AppConfig();
     }
 }

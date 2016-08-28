@@ -1,4 +1,4 @@
-System.register(["angular2/core", 'rxjs/Rx', '../services.module'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../components.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -15,39 +15,37 @@ System.register(["angular2/core", 'rxjs/Rx', '../services.module'], function(exp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, services_module_1;
-    var ProjectsService;
+    var core_1, router_1, components_module_1;
+    var TopComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (_1) {},
-            function (services_module_1_1) {
-                services_module_1 = services_module_1_1;
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (components_module_1_1) {
+                components_module_1 = components_module_1_1;
             }],
         execute: function() {
-            ProjectsService = (function (_super) {
-                __extends(ProjectsService, _super);
-                function ProjectsService() {
+            TopComponent = (function (_super) {
+                __extends(TopComponent, _super);
+                function TopComponent() {
                     _super.call(this);
                 }
-                ProjectsService.prototype.getProjects = function () {
-                    // return this.executeGet('Projects', 'GetProjects').map((res:Response) => this.extractData(res));
-                    return null;
-                };
-                ProjectsService.prototype.extractData = function (res) {
-                    var body = res.json();
-                    return body.data || {};
-                };
-                ProjectsService = __decorate([
-                    core_1.Injectable(), 
+                TopComponent = __decorate([
+                    core_1.Component({
+                        selector: 'top',
+                        templateUrl: 'app/components/common.UI/top/top.component.html',
+                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetButtonComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
+                    }), 
                     __metadata('design:paramtypes', [])
-                ], ProjectsService);
-                return ProjectsService;
-            }(services_module_1.BaseService));
-            exports_1("ProjectsService", ProjectsService);
+                ], TopComponent);
+                return TopComponent;
+            }(components_module_1.BaseComponent));
+            exports_1("TopComponent", TopComponent);
         }
     }
 });
-//# sourceMappingURL=projects.service.js.map
+//# sourceMappingURL=top.component.js.map

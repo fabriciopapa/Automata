@@ -1,8 +1,13 @@
-System.register(['./loading/loading.component', './widget-footer/widget-footer.component', './widget-body/widget-body.component', './widget-header/widget-header.component', './widget-button/widget-button.component', './widget/widget.component', './dashboard/dashboard.component', './base/base.component'], function(exports_1, context_1) {
+System.register(['./base/base.component', './loading/loading.component', './widget-footer/widget-footer.component', './widget-body/widget-body.component', './widget-header/widget-header.component', './widget-button/widget-button.component', './widget/widget.component', './top/top.component', './sidebar/sidebar.component', './dashboard/dashboard.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     return {
         setters:[
+            function (base_component_1_1) {
+                exports_1({
+                    "BaseComponent": base_component_1_1["BaseComponent"]
+                });
+            },
             function (loading_component_1_1) {
                 exports_1({
                     "LoadingComponent": loading_component_1_1["LoadingComponent"]
@@ -33,14 +38,19 @@ System.register(['./loading/loading.component', './widget-footer/widget-footer.c
                     "WidgetComponent": widget_component_1_1["WidgetComponent"]
                 });
             },
+            function (top_component_1_1) {
+                exports_1({
+                    "TopComponent": top_component_1_1["TopComponent"]
+                });
+            },
+            function (sidebar_component_1_1) {
+                exports_1({
+                    "SidebarComponent": sidebar_component_1_1["SidebarComponent"]
+                });
+            },
             function (dashboard_component_1_1) {
                 exports_1({
                     "DashboardComponent": dashboard_component_1_1["DashboardComponent"]
-                });
-            },
-            function (base_component_1_1) {
-                exports_1({
-                    "BaseComponent": base_component_1_1["BaseComponent"]
                 });
             }],
         execute: function() {

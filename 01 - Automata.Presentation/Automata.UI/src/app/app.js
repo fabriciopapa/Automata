@@ -11,7 +11,7 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, browser_1, http_1, common_1, router_1, components_module_1;
-    var Main;
+    var App;
     return {
         setters:[
             function (core_1_1) {
@@ -34,58 +34,42 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                 components_module_1 = components_module_1_1;
             }],
         execute: function() {
-            Main = (function () {
-                function Main() {
-                    this.mobileView = 992;
-                    this.toggle = false;
-                    this.attachEvents();
+            App = (function () {
+                function App() {
+                    this._toggle = false;
                 }
-                Main.prototype.attachEvents = function () {
-                    var _this = this;
-                    window.onresize = function () {
-                        if (_this.getWidth() >= _this.mobileView) {
-                            if (localStorage.getItem('toggle')) {
-                                _this.toggle = !localStorage.getItem('toggle') ? false : true;
-                            }
-                            else {
-                                _this.toggle = true;
-                            }
-                        }
-                        else {
-                            _this.toggle = false;
-                        }
-                    };
+                Object.defineProperty(App.prototype, "toggle", {
+                    get: function () { return this._toggle; },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(App.prototype, "sidebarOptionName", {
+                    get: function () { return this._sidebarOptionName; },
+                    enumerable: true,
+                    configurable: true
+                });
+                App.prototype.processSidebarToggle = function (event) {
+                    this._toggle = event.value;
+                    this._sidebarOptionName = event.name;
                 };
-                Main.prototype.getWidth = function () {
-                    return window.innerWidth;
-                };
-                Main.prototype.toggleSidebar = function () {
-                    this.toggle = !this.toggle;
-                    localStorage.setItem('toggle', this.toggle.toString());
-                };
-                Main.prototype.toggleQuickOption = function () {
-                    if (this.toggle) {
-                        this.toggleSidebar();
-                    }
-                };
-                Main = __decorate([
+                App = __decorate([
                     core_1.Component({
                         selector: 'app',
-                        templateUrl: 'app/main.html',
-                        styleUrls: ['app/main.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES]
+                        templateUrl: 'app/app.html',
+                        styleUrls: ['app/app.css'],
+                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.SidebarComponent, components_module_1.TopComponent, components_module_1.DashboardComponent]
                     }),
                     router_1.RouteConfig([
-                        { path: '/', component: components_module_1.DashboardComponent, name: 'Dashboard' },
-                        { path: '/projects', component: components_module_1.ProjectsComponent, name: 'Projects' }
+                        { path: '/', component: components_module_1.DashboardComponent, name: 'DashboardComponent' },
+                        { path: '/projects', component: components_module_1.ProjectsComponent, name: 'ProjectsComponent' }
                     ]), 
                     __metadata('design:paramtypes', [])
-                ], Main);
-                return Main;
+                ], App);
+                return App;
             }());
             //bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
-            browser_1.bootstrap(Main, [router_1.ROUTER_PROVIDERS, common_1.FORM_PROVIDERS, router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, core_1.bind(router_1.LocationStrategy).toClass(router_1.HashLocationStrategy)]);
+            browser_1.bootstrap(App, [router_1.ROUTER_PROVIDERS, common_1.FORM_PROVIDERS, router_1.ROUTER_PROVIDERS, http_1.HTTP_PROVIDERS, core_1.bind(router_1.LocationStrategy).toClass(router_1.HashLocationStrategy)]);
         }
     }
 });
-//# sourceMappingURL=main.js.map
+//# sourceMappingURL=app.js.map

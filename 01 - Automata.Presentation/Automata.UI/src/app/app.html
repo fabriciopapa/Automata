@@ -1,0 +1,5 @@
+<div id="page-wrapper" [ngClass]="{'open': toggle}">
+    <sidebar (onToggled)="processSidebarToggle($event)"></sidebar>
+    <top></top>
+    <router-outlet></router-outlet>
+</div>

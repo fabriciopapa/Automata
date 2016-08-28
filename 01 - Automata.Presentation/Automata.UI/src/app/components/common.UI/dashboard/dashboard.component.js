@@ -1,6 +1,11 @@
 System.register(['angular2/core', 'angular2/router', '../../components.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var __extends = (this && this.__extends) || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -24,8 +29,10 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
                 components_module_1 = components_module_1_1;
             }],
         execute: function() {
-            DashboardComponent = (function () {
+            DashboardComponent = (function (_super) {
+                __extends(DashboardComponent, _super);
                 function DashboardComponent() {
+                    _super.call(this);
                 }
                 DashboardComponent.prototype.ngOnInit = function () {
                 };
@@ -39,7 +46,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
                     __metadata('design:paramtypes', [])
                 ], DashboardComponent);
                 return DashboardComponent;
-            }());
+            }(components_module_1.BaseComponent));
             exports_1("DashboardComponent", DashboardComponent);
         }
     }

@@ -1,0 +1,29 @@
+<div id="sidebar-wrapper">
+    <ul class="sidebar">
+        <li class="sidebar-main">
+            <a (click)="toggleSidebar()">
+                Automata
+                <span class="menu-icon glyphicon glyphicon-transfer"></span>
+            </a>
+        </li>
+        <li class="sidebar-list">
+            <a [routerLink]="['DashboardComponent']" (click)="toggleQuickOption('DashboardComponent')" ngClass="{{isMenuOptionActive('DashboardComponent') ? 'active' : ''}}">
+                Dashboard 
+                <span class="menu-icon fa fa-home" ngClass="{{isQuickOptionActive('DashboardComponent') ? 'active' : ''}}"></span>
+            </a>
+        </li>
+        <li class="sidebar-list">
+            <a [routerLink]="['ProjectsComponent']" (click)="toggleQuickOption('ProjectsComponent')" ngClass="{{isMenuOptionActive('ProjectsComponent') ? 'active' : ''}}">
+                Projects 
+                <span class="menu-icon fa fa-table" ngClass="{{isQuickOptionActive('ProjectsComponent') ? 'active' : ''}}"></span>
+            </a>
+        </li>
+    </ul>
+    <div class="sidebar-footer">
+        <div class="col-xs-4">
+            <a href="https://github.com/ziyasal/rdash-angular2/blob/master/README.md" target="_blank">
+                About
+            </a>
+        </div>
+    </div>
+</div>
