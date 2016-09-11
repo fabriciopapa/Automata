@@ -1,4 +1,4 @@
-System.register(["angular2/core", 'rxjs/Rx', '../services.module'], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http", 'rxjs/Rx', '../services.module', '../../entities/entities.module', '../../classes/classes.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -15,34 +15,52 @@ System.register(["angular2/core", 'rxjs/Rx', '../services.module'], function(exp
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, services_module_1;
+    var core_1, http_1, services_module_1, entities_module_1, classes_module_1;
     var ProjectsService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
+            function (http_1_1) {
+                http_1 = http_1_1;
+            },
             function (_1) {},
             function (services_module_1_1) {
                 services_module_1 = services_module_1_1;
+            },
+            function (entities_module_1_1) {
+                entities_module_1 = entities_module_1_1;
+            },
+            function (classes_module_1_1) {
+                classes_module_1 = classes_module_1_1;
             }],
         execute: function() {
             ProjectsService = (function (_super) {
                 __extends(ProjectsService, _super);
-                function ProjectsService() {
-                    _super.call(this);
+                function ProjectsService(http) {
+                    _super.call(this, http);
                 }
-                ProjectsService.prototype.getProjects = function () {
-                    // return this.executeGet('Projects', 'GetProjects').map((res:Response) => this.extractData(res));
-                    return null;
+                ProjectsService.prototype.getProjects = function (input) {
+                    var _this = this;
+                    return this.executeGet('Projects', 'GetProjects').map(function (res) { return _this.extractGetProjects(res); });
                 };
-                ProjectsService.prototype.extractData = function (res) {
+                ProjectsService.prototype.extractGetProjects = function (res) {
                     var body = res.json();
-                    return body.data || {};
+                    var output = new classes_module_1.GetProjectsOut();
+                    output.Projects = [];
+                    for (var i = 0; i < body.Projects.length; i++) {
+                        var project = new entities_module_1.Project();
+                        project.Id = body.Projects[i].Id;
+                        project.Name = body.Projects[i].Name;
+                        project.Url = body.Projects[i].Url;
+                        output.Projects.push(project);
+                    }
+                    return output;
                 };
                 ProjectsService = __decorate([
                     core_1.Injectable(), 
-                    __metadata('design:paramtypes', [])
+                    __metadata('design:paramtypes', [http_1.Http])
                 ], ProjectsService);
                 return ProjectsService;
             }(services_module_1.BaseService));

@@ -57,7 +57,8 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                         selector: 'app',
                         templateUrl: 'app/app.html',
                         styleUrls: ['app/app.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.SidebarComponent, components_module_1.TopComponent, components_module_1.DashboardComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.SidebarComponent, components_module_1.TopComponent, components_module_1.DashboardComponent],
+                        providers: [http_1.HTTP_PROVIDERS]
                     }),
                     router_1.RouteConfig([
                         { path: '/', component: components_module_1.DashboardComponent, name: 'DashboardComponent' },

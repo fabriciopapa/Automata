@@ -12,7 +12,8 @@ import {SidebarToggleEvent} from './classes/classes.module';
     selector: 'app',
     templateUrl: 'app/app.html',
     styleUrls: ['app/app.css'],
-    directives: [ROUTER_DIRECTIVES, SidebarComponent, TopComponent, DashboardComponent]
+    directives: [ROUTER_DIRECTIVES, SidebarComponent, TopComponent, DashboardComponent],
+    providers: [HTTP_PROVIDERS]
 })
 
 @RouteConfig([

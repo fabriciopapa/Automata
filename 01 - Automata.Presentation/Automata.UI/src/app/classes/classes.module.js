@@ -1,4 +1,4 @@
-System.register(['./events/events.module'], function(exports_1, context_1) {
+System.register(['./events/events.module', './method-parameters/method-parameters.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function exportStar_1(m) {
@@ -12,6 +12,9 @@ System.register(['./events/events.module'], function(exports_1, context_1) {
         setters:[
             function (events_module_1_1) {
                 exportStar_1(events_module_1_1);
+            },
+            function (method_parameters_module_1_1) {
+                exportStar_1(method_parameters_module_1_1);
             }],
         execute: function() {
         }

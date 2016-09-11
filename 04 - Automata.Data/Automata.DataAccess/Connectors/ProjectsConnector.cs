@@ -11,7 +11,7 @@ namespace Automata.DataAccess.Connectors
     {
         private Exception exception;
 
-        public void InsertProject(User user, Project project)
+        public void GetProjects()
         {
             try
             {

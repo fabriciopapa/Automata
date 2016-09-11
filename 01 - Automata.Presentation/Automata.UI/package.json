@@ -1,8 +1,8 @@
 {
-  "name": "rdash-angular2",
+  "name": "automata",
   "version": "0.0.2",
-  "description": "AngularJS2 implementation of the RDash admin dashboard theme http://rdash.github.io",
-  "repository": "https://github.com/ziyasal/rdash-angular2",
+  "description": "N/A",
+  "repository": "https://github.com/fabriciopapa/Automata",
   "scripts": {
     "postinstall": "npm run typings",
     "tsc": "tsc",
@@ -11,12 +11,12 @@
     "start": "concurrently \"npm run tsc:w\" \"npm run live\" ",
     "typings": "typings install"
   },
-  "author": "Ziya SARIKAYA <ziyasal>",
+  "author": "Fabrice Le Pap",
   "license": "MIT",
   "devDependencies": {
     "concurrently": "^2.0.0",
     "live-server": "^0.9.2",
-    "typescript": "^1.8.9",
+    "typescript": "1.8.10",
     "typings": "^0.7.11"
   },
   "dependencies": {

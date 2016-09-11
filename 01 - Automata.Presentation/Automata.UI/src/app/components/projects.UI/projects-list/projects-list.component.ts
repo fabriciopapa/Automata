@@ -1,5 +1,6 @@
 import {Component} from 'angular2/core';
 import {ProjectsService} from '../../../services/projects/projects.service';
+import {GetProjectsIn, GetProjectsOut} from '../../../classes/classes.module';
 
 @Component({
     selector: 'projects-list',
@@ -16,11 +17,16 @@ export class ProjectsListComponent {
         this.model = [];
     }
 
-    ngOnInit() { this.getHeroes(); }
+    ngOnInit() { 
+        this.getProjectsFromService(); 
+    }
 
-    getHeroes() {
-        var ea : any;
+    protected getProjectsFromService(): void {
+        let getProjectsIn: GetProjectsIn = new GetProjectsIn();
+        this.projectsService.getProjects(getProjectsIn).subscribe(response => this.mapGetProjectsFromService(response));
+    }
 
-        this.projectsService.getProjects().subscribe();
-  }
+    protected mapGetProjectsFromService(response: GetProjectsOut): void {
+        this.model = response.Projects;
+    }
 }

@@ -1,0 +1,4 @@
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UI\bin\Debug\Automata.UI.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UI\bin\Debug\Automata.UI.pdb
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UI\obj\Debug\Automata.UI.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UI\obj\Debug\Automata.UI.pdb

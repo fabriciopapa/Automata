@@ -2,8 +2,9 @@
     <table class="table">
         <tbody>
             <tr *ngFor="#server of model">
-                <td>{{server.name}}</td>
-                <td>{{server.ip}}</td>
+                <td>{{server.Id}}</td>
+                <td>{{server.Name}}</td>
+                <td>{{server.Url}}</td>
                 <td>
                     <span class="{{server.tooltipcls}}">
                         <i class="fa {{server.icon}}"></i>

@@ -1,5 +1,5 @@
 import {Injectable}     from "angular2/core";
-import {Http, Response} from "angular2/http";
+import {Http, Response, HTTP_PROVIDERS} from "angular2/http";
 import {Observable} from 'rxjs/Rx';
 import {ConfigurationManager} from '../../configurationManager'
 
@@ -9,7 +9,7 @@ export class BaseService {
 
     get Http() : Http { return this._http; }
 
-    constructor (http?: Http) {
+    constructor(http: Http) {
         this._http = http;
     }
 

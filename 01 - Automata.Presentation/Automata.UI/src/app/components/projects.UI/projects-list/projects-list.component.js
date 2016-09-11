@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../../services/projects/projects.service'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../../services/projects/projects.service', '../../../classes/classes.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../../../services/projects/projects.service']
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, projects_service_1;
+    var core_1, projects_service_1, classes_module_1;
     var ProjectsListComponent;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(['angular2/core', '../../../services/projects/projects.service']
             },
             function (projects_service_1_1) {
                 projects_service_1 = projects_service_1_1;
+            },
+            function (classes_module_1_1) {
+                classes_module_1 = classes_module_1_1;
             }],
         execute: function() {
             ProjectsListComponent = (function () {
@@ -26,10 +29,16 @@ System.register(['angular2/core', '../../../services/projects/projects.service']
                     this.projectsService = projectsService;
                     this.model = [];
                 }
-                ProjectsListComponent.prototype.ngOnInit = function () { this.getHeroes(); };
-                ProjectsListComponent.prototype.getHeroes = function () {
-                    var ea;
-                    this.projectsService.getProjects().subscribe();
+                ProjectsListComponent.prototype.ngOnInit = function () {
+                    this.getProjectsFromService();
+                };
+                ProjectsListComponent.prototype.getProjectsFromService = function () {
+                    var _this = this;
+                    var getProjectsIn = new classes_module_1.GetProjectsIn();
+                    this.projectsService.getProjects(getProjectsIn).subscribe(function (response) { return _this.mapGetProjectsFromService(response); });
+                };
+                ProjectsListComponent.prototype.mapGetProjectsFromService = function (response) {
+                    this.model = response.Projects;
                 };
                 ProjectsListComponent = __decorate([
                     core_1.Component({
