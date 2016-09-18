@@ -10,3 +10,15 @@ C:\Users\Papeitor\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\
 C:\Users\Papeitor\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Papeitor\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\Automata.DataAccess.dll
 C:\Users\Papeitor\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\Automata.DataAccess.pdb
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\Automata.DataAccess.csprojResolveAssemblyReference.cache
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.DataAccess.dll.config
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.DataAccess.dll
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.DataAccess.pdb
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.Entities.dll
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.Entities.pdb
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\Automata.DataAccess.dll
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\Automata.DataAccess.pdb

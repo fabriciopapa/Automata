@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automata.UI", "01 - Automat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automata.Logic", "02 - Automata.Logic\Automata.Logic\Automata.Logic.csproj", "{331D367D-3217-4C21-95D1-A11B30E61D69}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automata.WebApi", "02 - Automata.Logic\Automata.WebApi\Automata.WebApi.csproj", "{80F06E9B-2388-4341-8C06-E0B791780C5C}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 - Automata.Business", "03 - Automata.Business", "{C2DFD3BA-B8FF-4D64-AE6D-35C56EC9AA2F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04 - Automata.Data", "04 - Automata.Data", "{1AEAF7E9-1B3A-42F4-8B98-31E3021E40C2}"
@@ -20,6 +18,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automata.DataAccess", "04 - Automata.Data\Automata.DataAccess\Automata.DataAccess.csproj", "{BF3E30D5-850A-413E-9904-983365EF4E28}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automata.Entities", "03 - Automata.Business\Automata.Entities\Automata.Entities.csproj", "{7BE009E1-0AC7-4EF6-A87A-B274DA79C002}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automata.WebApi", "02 - Automata.Logic\Automata.WebApi\Automata.WebApi.csproj", "{A6E3C008-9B02-47F2-9FF0-1658E514A704}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +35,6 @@ Global
 		{331D367D-3217-4C21-95D1-A11B30E61D69}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{331D367D-3217-4C21-95D1-A11B30E61D69}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{331D367D-3217-4C21-95D1-A11B30E61D69}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80F06E9B-2388-4341-8C06-E0B791780C5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80F06E9B-2388-4341-8C06-E0B791780C5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80F06E9B-2388-4341-8C06-E0B791780C5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80F06E9B-2388-4341-8C06-E0B791780C5C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BF3E30D5-850A-413E-9904-983365EF4E28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BF3E30D5-850A-413E-9904-983365EF4E28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BF3E30D5-850A-413E-9904-983365EF4E28}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -47,6 +43,10 @@ Global
 		{7BE009E1-0AC7-4EF6-A87A-B274DA79C002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7BE009E1-0AC7-4EF6-A87A-B274DA79C002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7BE009E1-0AC7-4EF6-A87A-B274DA79C002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6E3C008-9B02-47F2-9FF0-1658E514A704}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6E3C008-9B02-47F2-9FF0-1658E514A704}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6E3C008-9B02-47F2-9FF0-1658E514A704}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6E3C008-9B02-47F2-9FF0-1658E514A704}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -54,8 +54,8 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{395F3283-684E-4C50-922B-BA103F17BE77} = {CFD067F9-D7F3-48C9-8747-38037DDCF7E2}
 		{331D367D-3217-4C21-95D1-A11B30E61D69} = {0E275E06-71D5-40F4-9999-C8E08558DEF7}
-		{80F06E9B-2388-4341-8C06-E0B791780C5C} = {0E275E06-71D5-40F4-9999-C8E08558DEF7}
 		{BF3E30D5-850A-413E-9904-983365EF4E28} = {1AEAF7E9-1B3A-42F4-8B98-31E3021E40C2}
 		{7BE009E1-0AC7-4EF6-A87A-B274DA79C002} = {C2DFD3BA-B8FF-4D64-AE6D-35C56EC9AA2F}
+		{A6E3C008-9B02-47F2-9FF0-1658E514A704} = {0E275E06-71D5-40F4-9999-C8E08558DEF7}
 	EndGlobalSection
 EndGlobal

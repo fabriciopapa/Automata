@@ -1,30 +1,20 @@
-﻿using System;
+﻿using Automata.WebApi.Entities;
+using Automata.WebApi.Parameters;
+using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 using System.Net.Http;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.ModelBinding;
-using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
-using Microsoft.AspNet.Identity.Owin;
-using Microsoft.Owin.Security;
-using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.OAuth;
-using Automata.WebApi.Parameters.Projects;
-using Automata.WebApi.Entities;
 
 namespace Automata.WebApi.Controllers
 {
-    [RoutePrefix("api/Projects")]
     public class ProjectsController : ApiController
     {
         public ProjectsController() { }
 
         [HttpGet]
-        [Route("GetProjects")]
+        [ActionName("GetProjects")]
         public GetProjectsOut GetProjects(GetProjectsIn input)
         {
             List<Project> projects = new List<Project>();

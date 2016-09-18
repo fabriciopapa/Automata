@@ -7,3 +7,13 @@ C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.Entities\bi
 C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.dll
 C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.pdb
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\Automata.Entities.dll.config
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\Automata.Entities.dll
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\Automata.Entities.pdb
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.dll
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.xml
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.dll
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.pdb
+C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.csprojResolveAssemblyReference.cache
