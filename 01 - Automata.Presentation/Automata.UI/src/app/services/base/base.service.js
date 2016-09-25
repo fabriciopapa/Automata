@@ -1,4 +1,4 @@
-System.register(["angular2/core", "angular2/http", '../../configurationManager'], function(exports_1, context_1) {
+System.register(["angular2/core", "angular2/http", 'rxjs/Rx', '../../configurationManager'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(["angular2/core", "angular2/http", '../../configurationManager']
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, http_1, configurationManager_1;
+    var core_1, http_1, Rx_1, configurationManager_1;
     var BaseService;
     return {
         setters:[
@@ -19,6 +19,9 @@ System.register(["angular2/core", "angular2/http", '../../configurationManager']
             },
             function (http_1_1) {
                 http_1 = http_1_1;
+            },
+            function (Rx_1_1) {
+                Rx_1 = Rx_1_1;
             },
             function (configurationManager_1_1) {
                 configurationManager_1 = configurationManager_1_1;
@@ -34,7 +37,11 @@ System.register(["angular2/core", "angular2/http", '../../configurationManager']
                     configurable: true
                 });
                 BaseService.prototype.executeGet = function (controller, operation) {
-                    return this._http.get(configurationManager_1.ConfigurationManager.Keys.WebApiBaseUrl + "/" + controller + "/" + operation);
+                    return this._http.get(configurationManager_1.ConfigurationManager.Keys.WebApiBaseUrl + "/" + controller + "/" + operation).catch(this.handleError);
+                };
+                BaseService.prototype.handleError = function (error) {
+                    var errMsg = (error.message) ? error.message : error.status ? error.status + " - " + error.statusText : 'Server error';
+                    return Rx_1.Observable.throw(errMsg);
                 };
                 BaseService = __decorate([
                     core_1.Injectable(), 

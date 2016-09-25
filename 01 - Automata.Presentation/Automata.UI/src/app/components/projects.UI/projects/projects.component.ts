@@ -11,7 +11,4 @@ export class ProjectsComponent {
     
     constructor() {
     }
-    
-    ngOnInit() {
-    }
 }

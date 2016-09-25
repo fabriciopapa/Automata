@@ -13,7 +13,12 @@ export class BaseService {
         this._http = http;
     }
 
-    public executeGet(controller: string, operation: string) : Observable<Response> {
-        return this._http.get(`${ConfigurationManager.Keys.WebApiBaseUrl}/${controller}/${operation}`);
+    public executeGet(controller: string, operation: string): Observable<Response> {
+        return this._http.get(`${ConfigurationManager.Keys.WebApiBaseUrl}/${controller}/${operation}`).catch(this.handleError);
+    }
+
+    private handleError(error: any){
+        let errMsg = (error.message) ? error.message : error.status ? `${error.status} - ${error.statusText}` : 'Server error';
+        return Observable.throw(errMsg);
     }
 }

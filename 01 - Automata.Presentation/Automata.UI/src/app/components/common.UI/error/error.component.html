@@ -1,0 +1,5 @@
+<div class="alert ng-isolate-scope alert-danger alert-dismissable" ng-class="['alert-' + (type || 'warning'), closeable ? 'alert-dismissable' : null]" role="alert" data-ng-repeat="alert in alerts" type="danger" close="closeAlert($index)">
+    <div ng-transclude="">
+        <span class="ng-binding ng-scope">{{ errorMessage }}</span>
+    </div>
+</div>

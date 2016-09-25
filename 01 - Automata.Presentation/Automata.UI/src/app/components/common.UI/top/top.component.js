@@ -33,11 +33,21 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
                 __extends(TopComponent, _super);
                 function TopComponent() {
                     _super.call(this);
+                    this._onLogout = new core_1.EventEmitter();
                 }
+                Object.defineProperty(TopComponent.prototype, "onLogout", {
+                    get: function () { return this._onLogout; },
+                    enumerable: true,
+                    configurable: true
+                });
+                TopComponent.prototype.logout = function () {
+                    this._onLogout.emit({});
+                };
                 TopComponent = __decorate([
                     core_1.Component({
                         selector: 'top',
                         templateUrl: 'app/components/common.UI/top/top.component.html',
+                        outputs: ['onLogout'],
                         directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetButtonComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
                     }), 
                     __metadata('design:paramtypes', [])

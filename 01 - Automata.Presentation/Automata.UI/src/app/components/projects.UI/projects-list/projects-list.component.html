@@ -1,16 +1,36 @@
-<div class="table-responsive">
-    <table class="table">
-        <tbody>
-            <tr *ngFor="#server of model">
-                <td>{{server.Id}}</td>
-                <td>{{server.Name}}</td>
-                <td>{{server.Url}}</td>
-                <td>
-                    <span class="{{server.tooltipcls}}">
-                        <i class="fa {{server.icon}}"></i>
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</div>
+<widget>
+    <widget-header icon="fa-tasks" title="Projects">
+    <input type="text" placeholder="Search" class="form-control input-sm"/>
+    </widget-header>
+
+    <widget-body classes="large no-padding">
+        <loading *ngIf='isLoading'></loading>
+        <error *ngIf='isError' [errorMessage]='errorMessage'></error>
+        <div *ngIf='!isLoading && !isError' class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th class="text-center">ID</th>
+                        <th class="text-center">Name</th>
+                        <th class="text-center">Url</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#project of projectsList">
+                        <td class="text-center">{{project.Id}}</td>
+                        <td class="text-center">
+                            <input [(ngModel)]="project.Name" placeholder="name" class="listCell">
+                        </td>
+                        <td class="text-center">
+                            <input [(ngModel)]="project.Url" placeholder="url" class="listCell">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </widget-body>
+
+    <widget-footer>
+    <button type="button" (click)="processSave()">Save</button>
+    </widget-footer>
+</widget>

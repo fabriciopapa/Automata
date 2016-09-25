@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../components.module'], function(exports_1, context_1) {
+System.register(['angular2/core'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,32 +10,36 @@ System.register(['angular2/core', '../../components.module'], function(exports_1
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, components_module_1;
-    var ProjectsComponent;
+    var core_1;
+    var ErrorComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (components_module_1_1) {
-                components_module_1 = components_module_1_1;
             }],
         execute: function() {
-            ProjectsComponent = (function () {
-                function ProjectsComponent() {
+            ErrorComponent = (function () {
+                function ErrorComponent() {
+                    this._errorMessage = '';
                 }
-                ProjectsComponent = __decorate([
+                Object.defineProperty(ErrorComponent.prototype, "errorMessage", {
+                    get: function () { return this._errorMessage; },
+                    set: function (value) { this._errorMessage = value; },
+                    enumerable: true,
+                    configurable: true
+                });
+                ErrorComponent = __decorate([
                     core_1.Component({
-                        selector: 'projects',
-                        templateUrl: 'app/components/projects.UI/projects/projects.component.html',
-                        directives: [components_module_1.WidgetBodyComponent, components_module_1.WidgetComponent, components_module_1.WidgetFooterComponent, components_module_1.WidgetHeaderComponent, components_module_1.LoadingComponent, components_module_1.ProjectsListComponent]
+                        selector: 'error',
+                        inputs: ['errorMessage'],
+                        templateUrl: 'app/components/common.UI/error/error.component.html'
                     }), 
                     __metadata('design:paramtypes', [])
-                ], ProjectsComponent);
-                return ProjectsComponent;
+                ], ErrorComponent);
+                return ErrorComponent;
             }());
-            exports_1("ProjectsComponent", ProjectsComponent);
+            exports_1("ErrorComponent", ErrorComponent);
         }
     }
 });
-//# sourceMappingURL=projects.component.js.map
+//# sourceMappingURL=error.component.js.map
