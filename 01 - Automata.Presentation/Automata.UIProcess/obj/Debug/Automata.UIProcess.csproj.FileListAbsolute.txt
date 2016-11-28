@@ -1,0 +1,5 @@
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.UIProcess.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.UIProcess.pdb
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\obj\Debug\Automata.UIProcess.csprojResolveAssemblyReference.cache
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\obj\Debug\Automata.UIProcess.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\obj\Debug\Automata.UIProcess.pdb
