@@ -39,7 +39,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Connectors\ProjectsConnector.cs" />
+    <Compile Include="Connectors\Projects\ProjectsConnector.cs" />
+    <Compile Include="Connectors\Users\UsersConnector.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="EntityFramework">
@@ -55,6 +56,10 @@
     <ProjectReference Include="..\..\03 - Automata.Business\Automata.Entities\Automata.Entities.csproj">
       <Project>{7be009e1-0ac7-4ef6-a87a-b274da79c002}</Project>
       <Name>Automata.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\03 - Automata.Business\Automata.MethodParameters\Automata.MethodParameters.csproj">
+      <Project>{47fcde09-c572-4fbc-8aee-9bf7686e7e9f}</Project>
+      <Name>Automata.MethodParameters</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

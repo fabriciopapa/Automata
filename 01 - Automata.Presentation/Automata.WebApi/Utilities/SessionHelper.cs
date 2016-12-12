@@ -1,4 +1,4 @@
-﻿using Automata.UIProcess.Entities.Users;
+﻿using Automata.Entities;
 using Automata.WebApi.Classes;
 using System;
 using System.Collections.Generic;

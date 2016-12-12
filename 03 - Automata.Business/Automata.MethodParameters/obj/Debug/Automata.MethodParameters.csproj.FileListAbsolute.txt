@@ -1,0 +1,9 @@
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.MethodParameters.dll
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.MethodParameters.pdb
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.Entities.dll
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\EntityFramework.dll
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.Entities.pdb
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\EntityFramework.xml
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.csprojResolveAssemblyReference.cache
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.dll
+C:\Users\Papeitor\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.pdb

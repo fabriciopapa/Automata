@@ -1,4 +1,4 @@
-﻿using Automata.UIProcess.MethodParameters.Users;
+﻿using Automata.MethodParameters.Users;
 using Automata.WebApi.Utilities;
 using System;
 using System.Collections.Generic;

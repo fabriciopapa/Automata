@@ -110,6 +110,14 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\03 - Automata.Business\Automata.Entities\Automata.Entities.csproj">
+      <Project>{7be009e1-0ac7-4ef6-a87a-b274da79c002}</Project>
+      <Name>Automata.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\03 - Automata.Business\Automata.MethodParameters\Automata.MethodParameters.csproj">
+      <Project>{47fcde09-c572-4fbc-8aee-9bf7686e7e9f}</Project>
+      <Name>Automata.MethodParameters</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Automata.UIProcess\Automata.UIProcess.csproj">
       <Project>{d21bc201-038f-4b63-851f-97b51345ca0f}</Project>
       <Name>Automata.UIProcess</Name>

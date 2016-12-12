@@ -4,9 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Automata.MethodParameters
+namespace Automata.Entities.Common
 {
-    public class Class1
+    public enum OperationResult
     {
+        Success,
+        Error,
+        PartialSuccess
     }
 }

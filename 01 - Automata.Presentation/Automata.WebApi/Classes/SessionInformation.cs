@@ -1,4 +1,4 @@
-﻿using Automata.UIProcess.Entities.Users;
+﻿using Automata.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +14,7 @@ namespace Automata.WebApi.Classes
         {
             get
             {
-                return User != null ? User.UserId : -1;
+                return User != null ? User.PK_Id : -1;
             }
         }
 

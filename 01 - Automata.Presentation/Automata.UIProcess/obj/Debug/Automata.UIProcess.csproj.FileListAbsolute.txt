@@ -3,3 +3,13 @@ C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProce
 C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\obj\Debug\Automata.UIProcess.csprojResolveAssemblyReference.cache
 C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\obj\Debug\Automata.UIProcess.dll
 C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\obj\Debug\Automata.UIProcess.pdb
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.Entities.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.Logic.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.MethodParameters.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\WebDriver.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\EntityFramework.dll
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.Logic.pdb
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.Entities.pdb
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\Automata.MethodParameters.pdb
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\WebDriver.xml
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.UIProcess\bin\Debug\EntityFramework.xml

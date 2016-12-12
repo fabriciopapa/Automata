@@ -66,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>AutomataEntitiesModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Common\OperationResult.cs" />
     <Compile Include="Parameter.cs">
       <DependentUpon>AutomataEntitiesModel.tt</DependentUpon>
     </Compile>

@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Automata.UIProcess.MethodParameters.Users
+namespace Automata.MethodParameters.Users
 {
-    [System.Serializable]
-    public class LogInIn
+    public class LogInIn : BaseMethodIn
     {
         public string UserName { get; set; }
         public string Password { get; set; }

@@ -31,3 +31,4 @@ C:\Users\Papeitor\Documents\Automata\02 - Automata.Logic\Automata.WebApi\bin\Sys
 C:\Users\Papeitor\Documents\Automata\02 - Automata.Logic\Automata.WebApi\bin\System.Web.Http.WebHost.xml
 C:\Users\Papeitor\Documents\Automata\02 - Automata.Logic\Automata.WebApi\obj\Debug\Automata.WebApi.pdb
 C:\Users\Papeitor\Documents\Automata\02 - Automata.Logic\Automata.WebApi\obj\Debug\Automata.WebApi.csprojResolveAssemblyReference.cache
+C:\Users\Papeitor\Documents\Automata\01 - Automata.Presentation\Automata.WebApi\obj\Debug\Automata.WebApi.csprojResolveAssemblyReference.cache
