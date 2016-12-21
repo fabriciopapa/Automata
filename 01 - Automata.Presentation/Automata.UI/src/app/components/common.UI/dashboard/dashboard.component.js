@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../components.module'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../components.module', '../../../entities/entities.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -15,7 +15,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, components_module_1;
+    var core_1, router_1, components_module_1, entities_module_1;
     var DashboardComponent;
     return {
         setters:[
@@ -27,6 +27,9 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
             },
             function (components_module_1_1) {
                 components_module_1 = components_module_1_1;
+            },
+            function (entities_module_1_1) {
+                entities_module_1 = entities_module_1_1;
             }],
         execute: function() {
             DashboardComponent = (function (_super) {
@@ -36,12 +39,21 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
                 }
                 DashboardComponent.prototype.ngOnInit = function () {
                 };
+                DashboardComponent.prototype.navigateToProjects = function () {
+                    this.routerHelper.navigateTo(entities_module_1.FrontEndPages.projects);
+                };
                 DashboardComponent = __decorate([
                     core_1.Component({
                         selector: 'dashboard',
                         templateUrl: 'app/components/common.UI/dashboard/dashboard.component.html',
                         styleUrls: ['app/components/common.UI/dashboard/dashboard.component.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetButtonComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES,
+                            components_module_1.LoadingComponent,
+                            components_module_1.WidgetComponent,
+                            components_module_1.WidgetButtonComponent,
+                            components_module_1.WidgetHeaderComponent,
+                            components_module_1.WidgetBodyComponent,
+                            components_module_1.WidgetFooterComponent]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], DashboardComponent);

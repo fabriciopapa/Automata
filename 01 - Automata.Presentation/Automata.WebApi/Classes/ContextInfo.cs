@@ -12,9 +12,6 @@ namespace Automata.WebApi.Classes
         {
             SessionInformation sessionInformation = SessionHelper.SessionInformation;
 
-            UserAgent = HttpContext.Current.Request.UserAgent;
-            IpAddress = HttpContext.Current.Request.UserHostAddress;
-
             if (sessionInformation != null)
             {
                 UserId = sessionInformation.UserId;

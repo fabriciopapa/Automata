@@ -11,10 +11,17 @@ namespace Automata.Logic.Users
     {
         public LogInOut LogIn(LogInIn input)
         {
-            LogInOut result = new LogInOut() { OperationResult = Entities.Common.OperationResult.Error };
-            result = new Logic.Users.Users().LogIn(input);
+            LogInOut result = new LogInOut();
+            result = new DataAccess.Connectors.Users.UsersConnector().LogIn(input);
             if (result != null && result.User != null)
                 result.OperationResult = Entities.Common.OperationResult.Success;
+            return result;
+        }
+
+        public SignInOut SignIn(SignInIn input)
+        {
+            SignInOut result = new SignInOut();
+            result = new DataAccess.Connectors.Users.UsersConnector().SignIn(input);
             return result;
         }
     }

@@ -8,8 +8,8 @@ namespace Automata.Entities.Common
 {
     public enum OperationResult
     {
-        Success,
-        Error,
-        PartialSuccess
+        Success = 0,
+        PartialSuccess = 1,
+        Error = 2,
     }
 }

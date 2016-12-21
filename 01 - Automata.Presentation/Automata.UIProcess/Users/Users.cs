@@ -12,8 +12,15 @@ namespace Automata.UIProcess.Users
     {
         public LogInOut LogIn(LogInIn input)
         {
-            LogInOut output = new LogInOut() { OperationResult = OperationResult.Error };
+            LogInOut output = new LogInOut();
             output = new Logic.Users.Users().LogIn(input);
+            return output;
+        }
+
+        public SignInOut SignIn(SignInIn input)
+        {
+            SignInOut output = new SignInOut();
+            output = new Logic.Users.Users().SignIn(input);
             return output;
         }
     }

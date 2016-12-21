@@ -1,4 +1,4 @@
-System.register(['angular2/core', '../../../services/projects/projects.service', '../../../classes/classes.module', '../../components.module'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../../services/projects/projects.service', '../../../entities/entities.module', '../../components.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['angular2/core', '../../../services/projects/projects.service',
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, projects_service_1, classes_module_1, components_module_1;
+    var core_1, projects_service_1, entities_module_1, components_module_1;
     var ProjectsListComponent;
     return {
         setters:[
@@ -20,8 +20,8 @@ System.register(['angular2/core', '../../../services/projects/projects.service',
             function (projects_service_1_1) {
                 projects_service_1 = projects_service_1_1;
             },
-            function (classes_module_1_1) {
-                classes_module_1 = classes_module_1_1;
+            function (entities_module_1_1) {
+                entities_module_1 = entities_module_1_1;
             },
             function (components_module_1_1) {
                 components_module_1 = components_module_1_1;
@@ -63,7 +63,7 @@ System.register(['angular2/core', '../../../services/projects/projects.service',
                     var _this = this;
                     this._isLoading = true;
                     this._isError = false;
-                    var getProjectsIn = new classes_module_1.GetProjectsIn();
+                    var getProjectsIn = new entities_module_1.GetProjectsIn();
                     this.projectsService.getProjects(getProjectsIn).subscribe(function (response) { return _this.mapGetProjectsFromService(response); }, function (error) { return _this.processGetProjectsFromServiceError(error); });
                 };
                 ProjectsListComponent.prototype.mapGetProjectsFromService = function (response) {

@@ -14,7 +14,7 @@
           <Property Name="Code" Type="varbinary(max)" Nullable="false" />
           <Property Name="Public" Type="bit" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="FK_User" Type="int" Nullable="false" />
+          <Property Name="User_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Parameters">
           <Key>
@@ -22,10 +22,10 @@
           </Key>
           <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Position" Type="int" Nullable="false" />
-          <Property Name="FK_Procedure" Type="int" Nullable="false" />
-          <Property Name="FK_Type" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="ParameterType_PK_Type" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Procedure_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ParameterTypes">
           <Key>
@@ -41,7 +41,7 @@
           <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="Description" Type="varchar" MaxLength="400" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="FK_Assembly" Type="int" Nullable="false" />
+          <Property Name="Assembly_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Projects">
           <Key>
@@ -51,27 +51,27 @@
           <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Url" Type="varchar(max)" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="FK_User" Type="int" Nullable="false" />
+          <Property Name="User_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TestParameters">
           <Key>
             <PropertyRef Name="PK_Id" />
           </Key>
           <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FK_TestProcedure" Type="int" Nullable="false" />
-          <Property Name="FK_Parameter" Type="int" Nullable="false" />
           <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Parameter_PK_Id" Type="int" Nullable="false" />
+          <Property Name="TestProcedure_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TestProcedures">
           <Key>
             <PropertyRef Name="PK_Id" />
           </Key>
           <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="FK_Procedure" Type="int" Nullable="false" />
-          <Property Name="FK_Test" Type="int" Nullable="false" />
           <Property Name="Order" Type="int" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Procedure_PK_Id" Type="int" Nullable="false" />
+          <Property Name="Test_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Tests">
           <Key>
@@ -79,9 +79,9 @@
           </Key>
           <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
-          <Property Name="FK_Project" Type="int" Nullable="false" />
           <Property Name="Description" Type="varchar(max)" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Project_PK_Id" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Users">
           <Key>
@@ -103,7 +103,7 @@
               <PropertyRef Name="PK_Type" />
             </Principal>
             <Dependent Role="Parameters">
-              <PropertyRef Name="FK_Type" />
+              <PropertyRef Name="ParameterType_PK_Type" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -115,7 +115,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="Parameters">
-              <PropertyRef Name="FK_Procedure" />
+              <PropertyRef Name="Procedure_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -127,7 +127,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="Procedures">
-              <PropertyRef Name="FK_Assembly" />
+              <PropertyRef Name="Assembly_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -139,7 +139,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="TestProcedures">
-              <PropertyRef Name="FK_Procedure" />
+              <PropertyRef Name="Procedure_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -151,7 +151,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="TestProcedures">
-              <PropertyRef Name="FK_Test" />
+              <PropertyRef Name="Test_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -163,7 +163,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="TestParameters">
-              <PropertyRef Name="FK_TestProcedure" />
+              <PropertyRef Name="TestProcedure_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -175,7 +175,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="Tests">
-              <PropertyRef Name="FK_Project" />
+              <PropertyRef Name="Project_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -187,7 +187,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="Assemblies">
-              <PropertyRef Name="FK_User" />
+              <PropertyRef Name="User_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -199,7 +199,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="Projects">
-              <PropertyRef Name="FK_User" />
+              <PropertyRef Name="User_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -211,7 +211,7 @@
               <PropertyRef Name="PK_Id" />
             </Principal>
             <Dependent Role="TestParameters">
-              <PropertyRef Name="FK_Parameter" />
+              <PropertyRef Name="Parameter_PK_Id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -559,7 +559,7 @@
           </EntitySetMapping>
           <AssociationSetMapping Name="FK_Procedures_Assemblies" TypeName="AutomataModel.FK_Procedures_Assemblies" StoreEntitySet="Procedures">
             <EndProperty Name="Assemblies">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_Assembly" />
+              <ScalarProperty Name="PK_Id" ColumnName="Assembly_PK_Id" />
             </EndProperty>
             <EndProperty Name="Procedures">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -567,7 +567,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Users_Assemblies" TypeName="AutomataModel.FK_Users_Assemblies" StoreEntitySet="Assemblies">
             <EndProperty Name="Users">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_User" />
+              <ScalarProperty Name="PK_Id" ColumnName="User_PK_Id" />
             </EndProperty>
             <EndProperty Name="Assemblies">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -575,7 +575,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Parameters_ParameterTypes" TypeName="AutomataModel.FK_Parameters_ParameterTypes" StoreEntitySet="Parameters">
             <EndProperty Name="ParameterTypes">
-              <ScalarProperty Name="PK_Type" ColumnName="FK_Type" />
+              <ScalarProperty Name="PK_Type" ColumnName="ParameterType_PK_Type" />
             </EndProperty>
             <EndProperty Name="Parameters">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -583,7 +583,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Parameters_Procedures" TypeName="AutomataModel.FK_Parameters_Procedures" StoreEntitySet="Parameters">
             <EndProperty Name="Procedures">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_Procedure" />
+              <ScalarProperty Name="PK_Id" ColumnName="Procedure_PK_Id" />
             </EndProperty>
             <EndProperty Name="Parameters">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -591,7 +591,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_ValuesXTestProcedure_Parameters" TypeName="AutomataModel.FK_ValuesXTestProcedure_Parameters" StoreEntitySet="TestParameters">
             <EndProperty Name="Parameters">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_Parameter" />
+              <ScalarProperty Name="PK_Id" ColumnName="Parameter_PK_Id" />
             </EndProperty>
             <EndProperty Name="TestParameters">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -599,7 +599,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_ProceduresXTest_Procedures" TypeName="AutomataModel.FK_ProceduresXTest_Procedures" StoreEntitySet="TestProcedures">
             <EndProperty Name="Procedures">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_Procedure" />
+              <ScalarProperty Name="PK_Id" ColumnName="Procedure_PK_Id" />
             </EndProperty>
             <EndProperty Name="TestProcedures">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -607,7 +607,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Tests_Project" TypeName="AutomataModel.FK_Tests_Project" StoreEntitySet="Tests">
             <EndProperty Name="Projects">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_Project" />
+              <ScalarProperty Name="PK_Id" ColumnName="Project_PK_Id" />
             </EndProperty>
             <EndProperty Name="Tests">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -615,7 +615,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_Users_Projects" TypeName="AutomataModel.FK_Users_Projects" StoreEntitySet="Projects">
             <EndProperty Name="Users">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_User" />
+              <ScalarProperty Name="PK_Id" ColumnName="User_PK_Id" />
             </EndProperty>
             <EndProperty Name="Projects">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -623,7 +623,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_TestParameters_TestProcedure" TypeName="AutomataModel.FK_TestParameters_TestProcedure" StoreEntitySet="TestParameters">
             <EndProperty Name="TestProcedures">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_TestProcedure" />
+              <ScalarProperty Name="PK_Id" ColumnName="TestProcedure_PK_Id" />
             </EndProperty>
             <EndProperty Name="TestParameters">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -631,7 +631,7 @@
           </AssociationSetMapping>
           <AssociationSetMapping Name="FK_ProceduresXTest_Tests" TypeName="AutomataModel.FK_ProceduresXTest_Tests" StoreEntitySet="TestProcedures">
             <EndProperty Name="Tests">
-              <ScalarProperty Name="PK_Id" ColumnName="FK_Test" />
+              <ScalarProperty Name="PK_Id" ColumnName="Test_PK_Id" />
             </EndProperty>
             <EndProperty Name="TestProcedures">
               <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />

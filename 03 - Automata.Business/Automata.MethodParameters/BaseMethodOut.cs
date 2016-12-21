@@ -10,5 +10,10 @@ namespace Automata.MethodParameters
     public class BaseMethodOut
     {
         public OperationResult OperationResult { get; set; }
+
+        public BaseMethodOut()
+        {
+            this.OperationResult = OperationResult.Error;
+        }
     }
 }

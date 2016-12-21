@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../components.module'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../components.module', '../../../entities/entities.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -15,7 +15,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, components_module_1;
+    var core_1, router_1, components_module_1, entities_module_1;
     var TopComponent;
     return {
         setters:[
@@ -27,6 +27,9 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
             },
             function (components_module_1_1) {
                 components_module_1 = components_module_1_1;
+            },
+            function (entities_module_1_1) {
+                entities_module_1 = entities_module_1_1;
             }],
         execute: function() {
             TopComponent = (function (_super) {
@@ -41,7 +44,8 @@ System.register(['angular2/core', 'angular2/router', '../../components.module'],
                     configurable: true
                 });
                 TopComponent.prototype.logout = function () {
-                    this._onLogout.emit({});
+                    localStorage.removeItem('user');
+                    this.routerHelper.navigateTo(entities_module_1.FrontEndPages.logIn);
                 };
                 TopComponent = __decorate([
                     core_1.Component({

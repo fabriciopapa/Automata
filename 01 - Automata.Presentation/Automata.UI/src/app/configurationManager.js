@@ -11,7 +11,7 @@ System.register([], function(exports_1, context_1) {
                 Object.defineProperty(ConfigurationManager, "Keys", {
                     get: function () {
                         return {
-                            WebApiBaseUrl: "http://localhost:8181/api",
+                            WebApiBaseUrl: "http://localhost:8181/api"
                         };
                     },
                     enumerable: true,

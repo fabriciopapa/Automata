@@ -1,64 +1,62 @@
-import {Component, bind} from 'angular2/core';
-import {Router} from 'angular2/router';
-import {bootstrap} from 'angular2/platform/browser';
-import {HTTP_PROVIDERS} from 'angular2/http';
-import {FORM_PROVIDERS} from 'angular2/common';
-import {RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import { Component, bind, Injector, ComponentRef } from 'angular2/core';
+import { Router } from 'angular2/router';
+import { bootstrap } from 'angular2/platform/browser';
+import { HTTP_PROVIDERS } from 'angular2/http';
+import { FORM_PROVIDERS } from 'angular2/common';
+import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router';
 import 'rxjs/Rx';
 
-import {BaseComponent, SidebarComponent, TopComponent, DashboardComponent, ProjectsComponent, LoginComponent} from './components/components.module';
-import {SidebarToggleEvent, LoginResultEvent} from './classes/classes.module';
+import { BaseComponent, SidebarComponent, TopComponent, DashboardComponent, ProjectsComponent, LogInComponent } from './components/components.module';
+import { SidebarToggleEvent, LogInResultEvent, OperationResult, AppInjector } from './entities/entities.module';
+import { RouterHelperService, ContextInfoService } from './services/services.module';
+
+let bootstrapPromiseResolved = false;
 
 @Component({
     selector: 'app',
     templateUrl: 'app/app.html',
     styleUrls: ['app/app.css'],
-    directives: [ROUTER_DIRECTIVES, SidebarComponent, TopComponent, DashboardComponent, LoginComponent],
+    directives: [ROUTER_DIRECTIVES, SidebarComponent, TopComponent, DashboardComponent, LogInComponent],
     providers: [HTTP_PROVIDERS]
 })
 
 @RouteConfig([
-    {path: '/', component: DashboardComponent, name: 'DashboardComponent'},
-    {path: '/home', component: DashboardComponent, name: 'DashboardComponent'},
-    {path: '/projects', component: ProjectsComponent, name: 'ProjectsComponent'}
+    { path: '/logIn', component: LogInComponent, name: 'LogIn', useAsDefault: true },
+    { path: '/home', component: DashboardComponent, name: 'Home'},
+    { path: '/projects', component: ProjectsComponent, name: 'Projects' }
 ])
 
 class App {
 
-    private _toggle:boolean = false;
+    private _toggle: boolean = false;
     private _sidebarOptionName: string;
-    private _userAuthenticated: boolean;
+    private _usingPrivateSession: boolean;
     private _router: Router;
-    private _userLogged: boolean;
 
     get toggle(): boolean { return this._toggle; }
     get sidebarOptionName(): string { return this._sidebarOptionName; }
-    get userAuthenticated(): boolean { return this._userAuthenticated; }
-    get userLogged(): boolean { return this._userLogged; }
-
-    constructor(router: Router) {
-        this._router = router;
-        this._userLogged = false;
+    get usingPrivateSession(): any {
+        this._usingPrivateSession = this.contextInfo.userIsAuthenticated;
+        return this._usingPrivateSession;
     }
 
-    protected processLogin(event: LoginResultEvent): void{
-        var ea = 'eaea';
-        localStorage.setItem('user', ea.toString()); 
-        this._userLogged = true;
-        this._router.navigateByUrl('/home');
+    constructor(private contextInfo: ContextInfoService) {
+        this._usingPrivateSession = false;
     }
 
-    protected processSidebarToggle(event: SidebarToggleEvent): void{
+    protected processSidebarToggle(event: SidebarToggleEvent): void {
         this._toggle = event.value;
         this._sidebarOptionName = event.name;
     }
-
-    protected processLogout(event: any): void{
-        localStorage.removeItem('user');
-        this._userLogged = false;
-        this._router.navigateByUrl('/login');
-    }
 }
 
-//bootstrap(Main, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, UserListService, ServerListService, bind(LocationStrategy).toClass(HashLocationStrategy)]);
-bootstrap(App, [ROUTER_PROVIDERS, FORM_PROVIDERS, ROUTER_PROVIDERS, HTTP_PROVIDERS, bind(LocationStrategy).toClass(HashLocationStrategy)]);
+bootstrap(App, [ROUTER_PROVIDERS, 
+FORM_PROVIDERS, 
+ROUTER_PROVIDERS, 
+HTTP_PROVIDERS,
+ContextInfoService,
+RouterHelperService,
+bind(LocationStrategy).toClass(HashLocationStrategy)]).then((appRef: ComponentRef) => {
+        AppInjector(appRef.injector);
+        bootstrapPromiseResolved = true;
+});

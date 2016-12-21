@@ -9,6 +9,6 @@ namespace Automata.MethodParameters
     [Serializable]
     public class BaseMethodIn
     {
-
+        public int UserId { get; set; }
     }
 }

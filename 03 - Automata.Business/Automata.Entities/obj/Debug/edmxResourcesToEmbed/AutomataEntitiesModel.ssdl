@@ -9,7 +9,7 @@
     <Property Name="Code" Type="varbinary(max)" Nullable="false" />
     <Property Name="Public" Type="bit" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="FK_User" Type="int" Nullable="false" />
+    <Property Name="User_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Parameters">
     <Key>
@@ -17,10 +17,10 @@
     </Key>
     <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Position" Type="int" Nullable="false" />
-    <Property Name="FK_Procedure" Type="int" Nullable="false" />
-    <Property Name="FK_Type" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="ParameterType_PK_Type" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Procedure_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="ParameterTypes">
     <Key>
@@ -36,7 +36,7 @@
     <Property Name="Name" Type="varchar" MaxLength="100" Nullable="false" />
     <Property Name="Description" Type="varchar" MaxLength="400" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="FK_Assembly" Type="int" Nullable="false" />
+    <Property Name="Assembly_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Projects">
     <Key>
@@ -46,27 +46,27 @@
     <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="Url" Type="varchar(max)" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
-    <Property Name="FK_User" Type="int" Nullable="false" />
+    <Property Name="User_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TestParameters">
     <Key>
       <PropertyRef Name="PK_Id" />
     </Key>
     <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FK_TestProcedure" Type="int" Nullable="false" />
-    <Property Name="FK_Parameter" Type="int" Nullable="false" />
     <Property Name="Value" Type="varchar" MaxLength="200" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Parameter_PK_Id" Type="int" Nullable="false" />
+    <Property Name="TestProcedure_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="TestProcedures">
     <Key>
       <PropertyRef Name="PK_Id" />
     </Key>
     <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="FK_Procedure" Type="int" Nullable="false" />
-    <Property Name="FK_Test" Type="int" Nullable="false" />
     <Property Name="Order" Type="int" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Procedure_PK_Id" Type="int" Nullable="false" />
+    <Property Name="Test_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Tests">
     <Key>
@@ -74,9 +74,9 @@
     </Key>
     <Property Name="PK_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="Name" Type="varchar" MaxLength="200" Nullable="false" />
-    <Property Name="FK_Project" Type="int" Nullable="false" />
     <Property Name="Description" Type="varchar(max)" Nullable="false" />
     <Property Name="Active" Type="bit" Nullable="false" />
+    <Property Name="Project_PK_Id" Type="int" Nullable="false" />
   </EntityType>
   <EntityType Name="Users">
     <Key>
@@ -98,7 +98,7 @@
         <PropertyRef Name="PK_Type" />
       </Principal>
       <Dependent Role="Parameters">
-        <PropertyRef Name="FK_Type" />
+        <PropertyRef Name="ParameterType_PK_Type" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -110,7 +110,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="Parameters">
-        <PropertyRef Name="FK_Procedure" />
+        <PropertyRef Name="Procedure_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -122,7 +122,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="Procedures">
-        <PropertyRef Name="FK_Assembly" />
+        <PropertyRef Name="Assembly_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -134,7 +134,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="TestProcedures">
-        <PropertyRef Name="FK_Procedure" />
+        <PropertyRef Name="Procedure_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -146,7 +146,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="TestProcedures">
-        <PropertyRef Name="FK_Test" />
+        <PropertyRef Name="Test_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -158,7 +158,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="TestParameters">
-        <PropertyRef Name="FK_TestProcedure" />
+        <PropertyRef Name="TestProcedure_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -170,7 +170,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="Tests">
-        <PropertyRef Name="FK_Project" />
+        <PropertyRef Name="Project_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -182,7 +182,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="Assemblies">
-        <PropertyRef Name="FK_User" />
+        <PropertyRef Name="User_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -194,7 +194,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="Projects">
-        <PropertyRef Name="FK_User" />
+        <PropertyRef Name="User_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -206,7 +206,7 @@
         <PropertyRef Name="PK_Id" />
       </Principal>
       <Dependent Role="TestParameters">
-        <PropertyRef Name="FK_Parameter" />
+        <PropertyRef Name="Parameter_PK_Id" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

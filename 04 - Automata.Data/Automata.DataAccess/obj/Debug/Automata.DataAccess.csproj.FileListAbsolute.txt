@@ -24,3 +24,5 @@ C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\
 C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\obj\Debug\Automata.DataAccess.pdb
 C:\Users\Papeitor\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.MethodParameters.dll
 C:\Users\Papeitor\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.MethodParameters.pdb
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.MethodParameters.dll
+C:\Users\HP\Documents\Automata\04 - Automata.Data\Automata.DataAccess\bin\Debug\Automata.MethodParameters.pdb

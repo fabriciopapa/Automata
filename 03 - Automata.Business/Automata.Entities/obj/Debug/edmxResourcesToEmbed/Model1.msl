@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AutomataModel1StoreContainer" CdmEntityContainer="AutomataEntities1">
+    <EntitySetMapping Name="Assemblies">
+      <EntityTypeMapping TypeName="AutomataModel1.Assembly">
+        <MappingFragment StoreEntitySet="Assemblies">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Public" ColumnName="Public" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Parameters">
+      <EntityTypeMapping TypeName="AutomataModel1.Parameter">
+        <MappingFragment StoreEntitySet="Parameters">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ParameterTypes">
+      <EntityTypeMapping TypeName="AutomataModel1.ParameterType">
+        <MappingFragment StoreEntitySet="ParameterTypes">
+          <ScalarProperty Name="PK_Type" ColumnName="PK_Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Procedures">
+      <EntityTypeMapping TypeName="AutomataModel1.Procedure">
+        <MappingFragment StoreEntitySet="Procedures">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Projects">
+      <EntityTypeMapping TypeName="AutomataModel1.Project">
+        <MappingFragment StoreEntitySet="Projects">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Url" ColumnName="Url" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestParameters">
+      <EntityTypeMapping TypeName="AutomataModel1.TestParameter">
+        <MappingFragment StoreEntitySet="TestParameters">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Value" ColumnName="Value" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestProcedures">
+      <EntityTypeMapping TypeName="AutomataModel1.TestProcedure">
+        <MappingFragment StoreEntitySet="TestProcedures">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Order" ColumnName="Order" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tests">
+      <EntityTypeMapping TypeName="AutomataModel1.Test">
+        <MappingFragment StoreEntitySet="Tests">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="AutomataModel1.User">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="SecretAnswer" ColumnName="SecretAnswer" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="FK_Procedures_Assemblies" TypeName="AutomataModel1.FK_Procedures_Assemblies" StoreEntitySet="Procedures">
+      <EndProperty Name="Assemblies">
+        <ScalarProperty Name="PK_Id" ColumnName="Assembly_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="Procedures">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Users_Assemblies" TypeName="AutomataModel1.FK_Users_Assemblies" StoreEntitySet="Assemblies">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="PK_Id" ColumnName="User_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="Assemblies">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Parameters_ParameterTypes" TypeName="AutomataModel1.FK_Parameters_ParameterTypes" StoreEntitySet="Parameters">
+      <EndProperty Name="ParameterTypes">
+        <ScalarProperty Name="PK_Type" ColumnName="ParameterType_PK_Type" />
+      </EndProperty>
+      <EndProperty Name="Parameters">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Parameters_Procedures" TypeName="AutomataModel1.FK_Parameters_Procedures" StoreEntitySet="Parameters">
+      <EndProperty Name="Procedures">
+        <ScalarProperty Name="PK_Id" ColumnName="Procedure_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="Parameters">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ValuesXTestProcedure_Parameters" TypeName="AutomataModel1.FK_ValuesXTestProcedure_Parameters" StoreEntitySet="TestParameters">
+      <EndProperty Name="Parameters">
+        <ScalarProperty Name="PK_Id" ColumnName="Parameter_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="TestParameters">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ProceduresXTest_Procedures" TypeName="AutomataModel1.FK_ProceduresXTest_Procedures" StoreEntitySet="TestProcedures">
+      <EndProperty Name="Procedures">
+        <ScalarProperty Name="PK_Id" ColumnName="Procedure_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="TestProcedures">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Tests_Project" TypeName="AutomataModel1.FK_Tests_Project" StoreEntitySet="Tests">
+      <EndProperty Name="Projects">
+        <ScalarProperty Name="PK_Id" ColumnName="Project_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="Tests">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_Users_Projects" TypeName="AutomataModel1.FK_Users_Projects" StoreEntitySet="Projects">
+      <EndProperty Name="Users">
+        <ScalarProperty Name="PK_Id" ColumnName="User_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="Projects">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_TestParameters_TestProcedure" TypeName="AutomataModel1.FK_TestParameters_TestProcedure" StoreEntitySet="TestParameters">
+      <EndProperty Name="TestProcedures">
+        <ScalarProperty Name="PK_Id" ColumnName="TestProcedure_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="TestParameters">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="FK_ProceduresXTest_Tests" TypeName="AutomataModel1.FK_ProceduresXTest_Tests" StoreEntitySet="TestProcedures">
+      <EndProperty Name="Tests">
+        <ScalarProperty Name="PK_Id" ColumnName="Test_PK_Id" />
+      </EndProperty>
+      <EndProperty Name="TestProcedures">
+        <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

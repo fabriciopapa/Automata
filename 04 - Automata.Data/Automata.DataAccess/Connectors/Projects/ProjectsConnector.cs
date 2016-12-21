@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Automata.DataAccess.Connectors
+namespace Automata.DataAccess.Connectors.Projects
 {
     public class ProjectsConnector
     {

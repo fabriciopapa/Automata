@@ -1,6 +1,6 @@
 import {Component} from 'angular2/core';
 import {ProjectsService} from '../../../services/projects/projects.service';
-import {GetProjectsIn, GetProjectsOut} from '../../../classes/classes.module';
+import {GetProjectsIn, GetProjectsOut} from '../../../entities/entities.module';
 import {LoadingComponent, WidgetBodyComponent, WidgetComponent, WidgetFooterComponent, WidgetHeaderComponent, ErrorComponent} from '../../components.module';
 
 @Component({

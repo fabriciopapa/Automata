@@ -130,6 +130,10 @@
       <Project>{47fcde09-c572-4fbc-8aee-9bf7686e7e9f}</Project>
       <Name>Automata.MethodParameters</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\04 - Automata.Data\Automata.DataAccess\Automata.DataAccess.csproj">
+      <Project>{bf3e30d5-850a-413e-9904-983365ef4e28}</Project>
+      <Name>Automata.DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

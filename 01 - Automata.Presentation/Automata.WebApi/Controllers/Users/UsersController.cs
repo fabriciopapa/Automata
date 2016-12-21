@@ -1,4 +1,5 @@
-﻿using Automata.MethodParameters.Users;
+﻿using Automata.Entities.Common;
+using Automata.MethodParameters.Users;
 using Automata.WebApi.Utilities;
 using System;
 using System.Collections.Generic;
@@ -14,11 +15,30 @@ namespace Automata.WebApi.Controllers.Users
 
         [HttpGet]
         [ActionName("LogIn")]
-        public LogInOut LogIn(LogInIn input)
+        public LogInOut LogIn([FromUri]LogInIn input)
         {
             LogInOut output = new LogInOut();
             output = new Automata.UIProcess.Users.Users().LogIn(input);
             SessionHelper.SignIn(output.User);
+            return output;
+        }
+
+        [HttpGet]
+        [ActionName("LogOut")]
+        public LogOutOut LogOut([FromUri]LogOutIn input)
+        {
+            LogOutOut output = new LogOutOut();
+            SessionHelper.SignOut();
+            output.OperationResult = OperationResult.Success;
+            return output;
+        }
+
+        [HttpGet]
+        [ActionName("SignIn")]
+        public SignInOut SignIn([FromUri]SignInIn input)
+        {
+            SignInOut output = new SignInOut();
+            output = new Automata.UIProcess.Users.Users().SignIn(input);
             return output;
         }
     }

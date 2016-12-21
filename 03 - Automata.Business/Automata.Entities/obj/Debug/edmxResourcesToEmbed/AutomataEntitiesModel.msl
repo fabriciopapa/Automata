@@ -92,7 +92,7 @@
     </EntitySetMapping>
     <AssociationSetMapping Name="FK_Procedures_Assemblies" TypeName="AutomataModel.FK_Procedures_Assemblies" StoreEntitySet="Procedures">
       <EndProperty Name="Assemblies">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_Assembly" />
+        <ScalarProperty Name="PK_Id" ColumnName="Assembly_PK_Id" />
       </EndProperty>
       <EndProperty Name="Procedures">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -100,7 +100,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Users_Assemblies" TypeName="AutomataModel.FK_Users_Assemblies" StoreEntitySet="Assemblies">
       <EndProperty Name="Users">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_User" />
+        <ScalarProperty Name="PK_Id" ColumnName="User_PK_Id" />
       </EndProperty>
       <EndProperty Name="Assemblies">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -108,7 +108,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Parameters_ParameterTypes" TypeName="AutomataModel.FK_Parameters_ParameterTypes" StoreEntitySet="Parameters">
       <EndProperty Name="ParameterTypes">
-        <ScalarProperty Name="PK_Type" ColumnName="FK_Type" />
+        <ScalarProperty Name="PK_Type" ColumnName="ParameterType_PK_Type" />
       </EndProperty>
       <EndProperty Name="Parameters">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -116,7 +116,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Parameters_Procedures" TypeName="AutomataModel.FK_Parameters_Procedures" StoreEntitySet="Parameters">
       <EndProperty Name="Procedures">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_Procedure" />
+        <ScalarProperty Name="PK_Id" ColumnName="Procedure_PK_Id" />
       </EndProperty>
       <EndProperty Name="Parameters">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -124,7 +124,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_ValuesXTestProcedure_Parameters" TypeName="AutomataModel.FK_ValuesXTestProcedure_Parameters" StoreEntitySet="TestParameters">
       <EndProperty Name="Parameters">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_Parameter" />
+        <ScalarProperty Name="PK_Id" ColumnName="Parameter_PK_Id" />
       </EndProperty>
       <EndProperty Name="TestParameters">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -132,7 +132,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_ProceduresXTest_Procedures" TypeName="AutomataModel.FK_ProceduresXTest_Procedures" StoreEntitySet="TestProcedures">
       <EndProperty Name="Procedures">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_Procedure" />
+        <ScalarProperty Name="PK_Id" ColumnName="Procedure_PK_Id" />
       </EndProperty>
       <EndProperty Name="TestProcedures">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -140,7 +140,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Tests_Project" TypeName="AutomataModel.FK_Tests_Project" StoreEntitySet="Tests">
       <EndProperty Name="Projects">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_Project" />
+        <ScalarProperty Name="PK_Id" ColumnName="Project_PK_Id" />
       </EndProperty>
       <EndProperty Name="Tests">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -148,7 +148,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_Users_Projects" TypeName="AutomataModel.FK_Users_Projects" StoreEntitySet="Projects">
       <EndProperty Name="Users">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_User" />
+        <ScalarProperty Name="PK_Id" ColumnName="User_PK_Id" />
       </EndProperty>
       <EndProperty Name="Projects">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -156,7 +156,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_TestParameters_TestProcedure" TypeName="AutomataModel.FK_TestParameters_TestProcedure" StoreEntitySet="TestParameters">
       <EndProperty Name="TestProcedures">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_TestProcedure" />
+        <ScalarProperty Name="PK_Id" ColumnName="TestProcedure_PK_Id" />
       </EndProperty>
       <EndProperty Name="TestParameters">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />
@@ -164,7 +164,7 @@
     </AssociationSetMapping>
     <AssociationSetMapping Name="FK_ProceduresXTest_Tests" TypeName="AutomataModel.FK_ProceduresXTest_Tests" StoreEntitySet="TestProcedures">
       <EndProperty Name="Tests">
-        <ScalarProperty Name="PK_Id" ColumnName="FK_Test" />
+        <ScalarProperty Name="PK_Id" ColumnName="Test_PK_Id" />
       </EndProperty>
       <EndProperty Name="TestProcedures">
         <ScalarProperty Name="PK_Id" ColumnName="PK_Id" />

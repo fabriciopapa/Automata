@@ -6,16 +6,16 @@
                 <span class="menu-icon glyphicon glyphicon-transfer"></span>
             </a>
         </li>
-        <li class="sidebar-list">
-            <a [routerLink]="['DashboardComponent']" (click)="toggleQuickOption('DashboardComponent')" ngClass="{{isMenuOptionActive('DashboardComponent') ? 'active' : ''}}">
+        <li class="sidebar-list" style="cursor: pointer;">
+            <a (click)="toggleQuickOption('home'); navigateTo('home');" ngClass="{{isMenuOptionActive('home') ? 'active' : ''}}">
                 Dashboard 
-                <span class="menu-icon fa fa-home" ngClass="{{isQuickOptionActive('DashboardComponent') ? 'active' : ''}}"></span>
+                <span class="menu-icon fa fa-home" ngClass="{{isQuickOptionActive('home') ? 'active' : ''}}"></span>
             </a>
         </li>
-        <li class="sidebar-list">
-            <a [routerLink]="['ProjectsComponent']" (click)="toggleQuickOption('ProjectsComponent')" ngClass="{{isMenuOptionActive('ProjectsComponent') ? 'active' : ''}}">
+        <li class="sidebar-list" style="cursor: pointer;">
+            <a (click)="toggleQuickOption('projects'); navigateTo('projects');" ngClass="{{isMenuOptionActive('projects') ? 'active' : ''}}">
                 Projects 
-                <span class="menu-icon fa fa-table" ngClass="{{isQuickOptionActive('ProjectsComponent') ? 'active' : ''}}"></span>
+                <span class="menu-icon fa fa-table" ngClass="{{isQuickOptionActive('projects') ? 'active' : ''}}"></span>
             </a>
         </li>
     </ul>

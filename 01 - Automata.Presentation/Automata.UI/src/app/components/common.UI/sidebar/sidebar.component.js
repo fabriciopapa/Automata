@@ -1,4 +1,4 @@
-System.register(['angular2/core', 'angular2/router', '../../components.module', '../../../classes/classes.module'], function(exports_1, context_1) {
+System.register(['angular2/core', 'angular2/router', '../../components.module', '../../../entities/entities.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __extends = (this && this.__extends) || function (d, b) {
@@ -15,7 +15,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, router_1, components_module_1, classes_module_1;
+    var core_1, router_1, components_module_1, entities_module_1;
     var SidebarComponent;
     return {
         setters:[
@@ -28,18 +28,17 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
             function (components_module_1_1) {
                 components_module_1 = components_module_1_1;
             },
-            function (classes_module_1_1) {
-                classes_module_1 = classes_module_1_1;
+            function (entities_module_1_1) {
+                entities_module_1 = entities_module_1_1;
             }],
         execute: function() {
             SidebarComponent = (function (_super) {
                 __extends(SidebarComponent, _super);
-                function SidebarComponent(router) {
+                function SidebarComponent() {
                     _super.call(this);
                     this._mobileView = 992;
                     this._toggle = false;
                     this._onToggled = new core_1.EventEmitter();
-                    this._router = router;
                     this.initialize();
                 }
                 Object.defineProperty(SidebarComponent.prototype, "onToggled", {
@@ -55,7 +54,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 });
                 SidebarComponent.prototype.initialize = function () {
                     this.attachEvents();
-                    this._selectedOption = 'DashboardComponent';
+                    this._selectedOption = 'home';
                 };
                 SidebarComponent.prototype.attachEvents = function () {
                     var _this = this;
@@ -79,7 +78,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 SidebarComponent.prototype.toggleSidebar = function (optionName) {
                     this._toggle = !this._toggle;
                     localStorage.setItem('toggle', this._toggle.toString());
-                    var sidebarToggleEvent = new classes_module_1.SidebarToggleEvent();
+                    var sidebarToggleEvent = new entities_module_1.SidebarToggleEvent();
                     sidebarToggleEvent.value = this._toggle;
                     sidebarToggleEvent.name = optionName;
                     this.onToggled.emit(sidebarToggleEvent);
@@ -92,9 +91,6 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 };
                 SidebarComponent.prototype.isQuickOptionActive = function (optionName) {
                     var result;
-                    if (this._router.currentInstruction != undefined && this._router.currentInstruction.component != undefined && this._router.currentInstruction.component.componentType.name != undefined) {
-                        this._selectedOption = this._router.currentInstruction.component.componentType.name;
-                    }
                     if (!this._toggle && optionName == this.selectedOption) {
                         result = 'active';
                     }
@@ -105,9 +101,6 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 };
                 SidebarComponent.prototype.isMenuOptionActive = function (optionName) {
                     var result;
-                    if (this._router.currentInstruction != undefined && this._router.currentInstruction.component != undefined && this._router.currentInstruction.component.componentType.name != undefined) {
-                        this._selectedOption = this._router.currentInstruction.component.componentType.name;
-                    }
                     if (this._toggle && optionName == this.selectedOption) {
                         result = 'active';
                     }
@@ -116,15 +109,27 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                     }
                     return result;
                 };
+                SidebarComponent.prototype.navigateTo = function (value) {
+                    var page = entities_module_1.FrontEndPages.getPageByValue(value);
+                    if (page != undefined) {
+                        this.routerHelper.navigateTo(page);
+                    }
+                };
                 SidebarComponent = __decorate([
                     core_1.Component({
                         selector: 'sidebar',
                         templateUrl: 'app/components/common.UI/sidebar/sidebar.component.html',
                         styleUrls: ['app/components/common.UI/sidebar/sidebar.component.css'],
                         outputs: ['onToggled'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetButtonComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES,
+                            components_module_1.LoadingComponent,
+                            components_module_1.WidgetComponent,
+                            components_module_1.WidgetButtonComponent,
+                            components_module_1.WidgetHeaderComponent,
+                            components_module_1.WidgetBodyComponent,
+                            components_module_1.WidgetFooterComponent]
                     }), 
-                    __metadata('design:paramtypes', [router_1.Router])
+                    __metadata('design:paramtypes', [])
                 ], SidebarComponent);
                 return SidebarComponent;
             }(components_module_1.BaseComponent));
