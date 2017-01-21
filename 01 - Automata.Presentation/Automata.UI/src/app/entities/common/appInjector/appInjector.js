@@ -5,18 +5,17 @@ System.register([], function(exports_1, context_1) {
     return {
         setters:[],
         execute: function() {
-            if (!window.icb) {
-                window.icb = {
+            if (!window.automata) {
+                window.automata = {
                     routerHelper: {},
-                    unity: {},
                     appInjector: {}
                 };
             }
             exports_1("AppInjector", AppInjector = function (injector) {
                 if (injector) {
-                    window.icb.appInjector.appInjectorReference = injector;
+                    window.automata.appInjector.appInjectorReference = injector;
                 }
-                return window.icb.appInjector.appInjectorReference;
+                return window.automata.appInjector.appInjectorReference;
             });
         }
     }

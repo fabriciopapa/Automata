@@ -24,5 +24,12 @@ namespace Automata.Logic.Users
             result = new DataAccess.Connectors.Users.UsersConnector().SignIn(input);
             return result;
         }
+
+        //public GetDashboardOut GetDashboard(GetDashboardIn input)
+        //{
+        //    GetDashboardOut result = new GetDashboardOut();
+        //    result = new DataAccess.Connectors.Users.UsersConnector().SignIn(input);
+        //    return result;
+        //}
     }
 }

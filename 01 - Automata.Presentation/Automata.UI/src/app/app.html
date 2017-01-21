@@ -1,9 +1,5 @@
-<div *ngIf="!usingPrivateSession">
-    <logIn (onLogin)="processLogin($event)"></logIn>
-</div>
-
-<div *ngIf="usingPrivateSession" id="page-wrapper" [ngClass]="{'open': toggle}">
-    <sidebar (onToggled)="processSidebarToggle($event)"></sidebar>
-    <top (onLogout)="processLogout($event)"></top>
+<div id="page-wrapper" [ngClass]="{'open': toggle}">
+    <sidebar *ngIf="usingPrivateSession" (onToggled)="processSidebarToggle($event)"></sidebar>
+    <top *ngIf="usingPrivateSession" (onLogout)="processLogout($event)"></top>
     <router-outlet></router-outlet>
 </div>

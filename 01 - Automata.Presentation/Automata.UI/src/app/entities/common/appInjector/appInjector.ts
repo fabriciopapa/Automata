@@ -1,17 +1,16 @@
 import { Injector } from 'angular2/core';
 
-if (!window.icb) {
-    window.icb = {
+if (!window.automata) {
+    window.automata = {
         routerHelper: {},
-        unity: {},
         appInjector: {}
     };
 }
 
 export const AppInjector = (injector?: Injector): Injector => {
     if (injector) {
-        window.icb.appInjector.appInjectorReference = injector;
+        window.automata.appInjector.appInjectorReference = injector;
     }
 
-    return window.icb.appInjector.appInjectorReference;
+    return window.automata.appInjector.appInjectorReference;
 };

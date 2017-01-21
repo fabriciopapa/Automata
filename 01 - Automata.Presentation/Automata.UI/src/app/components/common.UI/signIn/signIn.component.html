@@ -1,23 +1,28 @@
 <div class="login">
 	<div class="login-screen">
-		<div class="app-title">
+		<div class="app-title" (click)="goToLogIn()" style="cursor: pointer;">
 			<h1>Automata</h1>
 		</div>
 		<br/>
 		<div class="login-form">
 			<div class="control-group">
-				<input #userName type="text" class="login-field" value="" placeholder="username" id="login-name">
-				<label class="login-field-icon fui-user" for="login-name"></label>
+				<input #userName type="text" class="login-field" placeholder="user name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'user name'" />
 			</div>
-
 			<div class="control-group">
-				<input #password type="password" class="login-field" value="" placeholder="password" id="login-pass">
-				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				<input #password type="password" class="login-field" placeholder="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" />
 			</div>
-
-			<a class="btn btn-primary btn-large btn-block" (click)='login()'>login</a>
+			<div class="control-group">
+				<input #name type="text" class="login-field" placeholder="name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'name'" />
+			</div>
+			<div class="control-group">
+				<input #lastName type="text" class="login-field" placeholder="last name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'last name'" />
+			</div>
+			<div class="control-group">
+				<input #secretAnswer type="text" class="login-field" placeholder="secret answer" onfocus="this.placeholder = ''" onblur="this.placeholder = 'secret answer'" />
+			</div>
+			<a class="btn btn-primary btn-large btn-block" (click)='signIn()'>sign in</a>
 		</div>
 		<label *ngIf="invalidCredentials" class="login-field-icon fui-lock" for="login-pass">The credentials are not valid.</label>
-		<label *ngIf="requiredFieldsNotEntered" class="login-field-icon fui-lock" for="login-pass">All required field were not entered.</label>
+		<label *ngIf="!requiredFieldsEntered" class="login-field-icon fui-lock" for="login-pass">All required field were not entered.</label>
 	</div>
 </div>

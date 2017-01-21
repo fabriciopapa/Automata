@@ -8,6 +8,7 @@ export class ContextInfoService {
     
     static _user: User;
     static _userIsAuthenticated: boolean;
+    static _isLoading: boolean;
     
     constructor() {
     }
@@ -26,5 +27,13 @@ export class ContextInfoService {
 
     set userIsAuthenticated(value: boolean) {
         ContextInfoService._userIsAuthenticated = value;
+    }
+
+    get isLoading(): boolean {
+        return ContextInfoService._isLoading;
+    }
+
+    set isLoading(value: boolean) {
+        ContextInfoService._isLoading = value;
     }
 }

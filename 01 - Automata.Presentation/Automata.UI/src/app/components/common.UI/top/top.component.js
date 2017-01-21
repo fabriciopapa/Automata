@@ -44,7 +44,8 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                     configurable: true
                 });
                 TopComponent.prototype.logout = function () {
-                    localStorage.removeItem('user');
+                    this.contextInfo.user = undefined;
+                    this.contextInfo.userIsAuthenticated = false;
                     this.routerHelper.navigateTo(entities_module_1.FrontEndPages.logIn);
                 };
                 TopComponent = __decorate([

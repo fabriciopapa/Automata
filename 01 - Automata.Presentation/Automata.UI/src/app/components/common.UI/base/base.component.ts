@@ -2,7 +2,7 @@ import { Component, Injector } from 'angular2/core';
 import { RouteConfig, ROUTER_DIRECTIVES, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, Location, Router } from 'angular2/router';
 import { ConfigurationManager } from '../../../configurationManager';
 import { RouterHelperService, ContextInfoService } from '../../../services/services.module';
-import { AppInjector } from '../../../entities/entities.module';
+import { AppInjector, FrontEndPages } from '../../../entities/entities.module';
 
 export class BaseComponent {
 
@@ -34,5 +34,10 @@ export class BaseComponent {
     }
 
     constructor() {
+    }
+    
+    protected navigateTo(page: FrontEndPages, linkParams?: any) {
+        this.contextInfo.isLoading = true;
+        this.routerHelper.navigateTo(page, linkParams);
     }
 }

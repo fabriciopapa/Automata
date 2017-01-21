@@ -1,28 +1,24 @@
 <div class="login">
 	<div class="login-screen">
-		<div class="app-title" (click)='goToLogIn()'>
+		<div class="app-title" (click)='goToLogIn()' style="cursor: pointer;">
 			<h1>Automata</h1>
 		</div>
 		<br/>
 		<div class="login-form">
 			<div class="control-group">
-				<input #userName type="text" class="login-field" value="" placeholder="username" id="login-name">
+				<input #userName type="text" class="login-field" placeholder="user name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'user name'" />
 				<label class="login-field-icon fui-user" for="login-name"></label>
 			</div>
-
 			<div class="control-group">
-				<input #password type="password" class="login-field" value="" placeholder="password" id="login-pass">
+				<input #password type="password" class="login-field" placeholder="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" />
 				<label class="login-field-icon fui-lock" for="login-pass"></label>
 			</div>
-
 			<div class="control-group">
-				<a class="btn btn-primary btn-large btn-block" (click)='logIn()'>logIn</a>
+				<a class="btn btn-primary btn-large btn-block" (click)='logIn()'>log in</a>
 			</div>
-
 			<div class="control-group">
-				<a class="btn btn-primary btn-large btn-block" (click)='signIn()'>signIn</a>
+				<a class="btn btn-primary btn-large btn-block" (click)='signIn()'>sign in</a>
 			</div>
-			
 			<div class="control-group">
 				<label *ngIf="invalidCredentials" class="login-field-icon fui-lock" for="login-pass">The credentials are not valid.</label>
 				<label *ngIf="!requiredFieldsEntered" class="login-field-icon fui-lock" for="login-pass">All required field were not entered.</label>

@@ -60,8 +60,10 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                     this.routerHelper.navigateTo(entities_module_1.FrontEndPages.logIn);
                 };
                 LogInComponent.prototype.goToHome = function (event) {
-                    this.contextInfo.userIsAuthenticated = true;
                     this.routerHelper.navigateTo(entities_module_1.FrontEndPages.home);
+                };
+                LogInComponent.prototype.signIn = function () {
+                    this.navigateTo(entities_module_1.FrontEndPages.signIn);
                 };
                 LogInComponent.prototype.logIn = function () {
                     this._invalidCredentials = false;
@@ -79,6 +81,7 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                         logInResultEvent.result = result;
                         if (result.User) {
                             this.contextInfo.user = result.User;
+                            this.contextInfo.userIsAuthenticated = true;
                             this.goToHome();
                         }
                     }
@@ -88,9 +91,6 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                 };
                 LogInComponent.prototype.onLogInError = function (error) {
                     this._invalidCredentials = true;
-                };
-                LogInComponent.prototype.signIn = function () {
-                    this.routerHelper.navigateTo(entities_module_1.FrontEndPages.signIn);
                 };
                 __decorate([
                     core_1.ViewChild('userName'), 

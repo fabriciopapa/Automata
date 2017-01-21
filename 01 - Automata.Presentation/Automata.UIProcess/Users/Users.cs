@@ -23,5 +23,12 @@ namespace Automata.UIProcess.Users
             output = new Logic.Users.Users().SignIn(input);
             return output;
         }
+
+        //public GetDashboardOut GetDashboard(GetDashboardIn input)
+        //{
+        //    GetDashboardOut output = new GetDashboardOut();
+        //    output = new Logic.Users.Users().GetDashboard(input);
+        //    return output;
+        //}
     }
 }

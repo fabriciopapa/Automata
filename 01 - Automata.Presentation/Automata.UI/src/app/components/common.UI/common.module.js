@@ -1,4 +1,4 @@
-System.register(['./base/base.component', './loading/loading.component', './error/error.component', './widget-footer/widget-footer.component', './widget-body/widget-body.component', './widget-header/widget-header.component', './widget-button/widget-button.component', './widget/widget.component', './logIn/logIn.component', './top/top.component', './sidebar/sidebar.component', './dashboard/dashboard.component'], function(exports_1, context_1) {
+System.register(['./base/base.component', './loading/loading.component', './error/error.component', './widget-footer/widget-footer.component', './widget-body/widget-body.component', './widget-header/widget-header.component', './widget-button/widget-button.component', './widget/widget.component', './logIn/logIn.component', './signIn/signIn.component', './top/top.component', './sidebar/sidebar.component', './dashboard/dashboard.component'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     return {
@@ -46,6 +46,11 @@ System.register(['./base/base.component', './loading/loading.component', './erro
             function (logIn_component_1_1) {
                 exports_1({
                     "LogInComponent": logIn_component_1_1["LogInComponent"]
+                });
+            },
+            function (signIn_component_1_1) {
+                exports_1({
+                    "SignInComponent": signIn_component_1_1["SignInComponent"]
                 });
             },
             function (top_component_1_1) {

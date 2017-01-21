@@ -69,16 +69,26 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                     this._toggle = event.value;
                     this._sidebarOptionName = event.name;
                 };
+                App.prototype.isLoading = function () {
+                    return this.contextInfo.isLoading;
+                };
                 App = __decorate([
                     core_1.Component({
                         selector: 'app',
                         templateUrl: 'app/app.html',
                         styleUrls: ['app/app.css'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.SidebarComponent, components_module_1.TopComponent, components_module_1.DashboardComponent, components_module_1.LogInComponent],
+                        directives: [router_1.ROUTER_DIRECTIVES,
+                            components_module_1.SidebarComponent,
+                            components_module_1.TopComponent,
+                            components_module_1.DashboardComponent,
+                            components_module_1.LogInComponent,
+                            components_module_1.SignInComponent,
+                            components_module_1.LoadingComponent],
                         providers: [http_1.HTTP_PROVIDERS]
                     }),
                     router_1.RouteConfig([
                         { path: '/logIn', component: components_module_1.LogInComponent, name: 'LogIn', useAsDefault: true },
+                        { path: '/signIn', component: components_module_1.SignInComponent, name: 'SignIn' },
                         { path: '/home', component: components_module_1.DashboardComponent, name: 'Home' },
                         { path: '/projects', component: components_module_1.ProjectsComponent, name: 'Projects' }
                     ]), 

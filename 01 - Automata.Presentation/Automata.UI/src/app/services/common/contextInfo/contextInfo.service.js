@@ -41,6 +41,16 @@ System.register(['angular2/core'], function(exports_1, context_1) {
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(ContextInfoService.prototype, "isLoading", {
+                    get: function () {
+                        return ContextInfoService._isLoading;
+                    },
+                    set: function (value) {
+                        ContextInfoService._isLoading = value;
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 ContextInfoService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])

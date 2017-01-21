@@ -37,7 +37,7 @@ namespace Automata.DataAccess.Connectors.Users
             {
                 context.Configuration.ProxyCreationEnabled = false;
                 User user = context.Users.SingleOrDefault(u => u.UserName == input.UserName);
-                if (user != null)
+                if (user != null && user.Active == false)
                 {
                     user.UserName = input.UserName;
                     user.Password = input.Password;
@@ -45,6 +45,10 @@ namespace Automata.DataAccess.Connectors.Users
                     user.LastName = input.LastName;
                     user.SecretAnswer = input.SecretAnswer;
                     user.Active = true;
+                    output.OperationResult = Entities.Common.OperationResult.PartialSuccess;
+                }
+                else if (user != null && user.Active == true) {
+                    output.OperationResult = Entities.Common.OperationResult.Error;
                 }
                 else
                 {
@@ -55,13 +59,56 @@ namespace Automata.DataAccess.Connectors.Users
                     user.LastName = input.LastName;
                     user.SecretAnswer = input.SecretAnswer;
                     user.Active = true;
+                    output.OperationResult = Entities.Common.OperationResult.PartialSuccess;
                 }
 
-                context.SaveChanges();
-                output.OperationResult = Entities.Common.OperationResult.Success;
+                if (output.OperationResult == Entities.Common.OperationResult.PartialSuccess)
+                {
+                    context.SaveChanges();
+                    output.OperationResult = Entities.Common.OperationResult.Success;
+                }
+                else
+                {
+                    output.OperationResult = Entities.Common.OperationResult.Error;
+                }
             }
             
             return output;
         }
+
+        //public GetDashboardOut GetDashboard(GetDashboardOut input)
+        //{
+        //    GetDashboardOut output = new GetDashboardOut();
+
+        //    using (AutomataEntities context = new AutomataEntities())
+        //    {
+        //        context.Configuration.ProxyCreationEnabled = false;
+        //        User user = context.Users.SingleOrDefault(u => u.UserName == input.UserName);
+        //        if (user != null)
+        //        {
+        //            user.UserName = input.UserName;
+        //            user.Password = input.Password;
+        //            user.Name = input.Name;
+        //            user.LastName = input.LastName;
+        //            user.SecretAnswer = input.SecretAnswer;
+        //            user.Active = true;
+        //        }
+        //        else
+        //        {
+        //            user = new User();
+        //            user.UserName = input.UserName;
+        //            user.Password = input.Password;
+        //            user.Name = input.Name;
+        //            user.LastName = input.LastName;
+        //            user.SecretAnswer = input.SecretAnswer;
+        //            user.Active = true;
+        //        }
+
+        //        context.SaveChanges();
+        //        output.OperationResult = Entities.Common.OperationResult.Success;
+        //    }
+
+        //    return output;
+        //}
     }
 }

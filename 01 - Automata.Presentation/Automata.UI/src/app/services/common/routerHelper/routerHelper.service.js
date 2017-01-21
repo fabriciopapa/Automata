@@ -23,32 +23,32 @@ System.register(["angular2/core", 'angular2/router'], function(exports_1, contex
         execute: function() {
             RouterHelperService = (function () {
                 function RouterHelperService(router) {
-                    if (!window.icb.routerHelper.router) {
-                        window.icb.routerHelper.router = router;
+                    if (!window.automata.routerHelper.router) {
+                        window.automata.routerHelper.router = router;
                     }
                 }
                 Object.defineProperty(RouterHelperService.prototype, "router", {
                     get: function () {
-                        return window.icb.routerHelper.router;
+                        return window.automata.routerHelper.router;
                     },
                     enumerable: true,
                     configurable: true
                 });
                 RouterHelperService.prototype.addConfiguration = function (definitions) {
-                    window.icb.routerHelper.router.config(definitions);
+                    window.automata.routerHelper.router.config(definitions);
                 };
                 RouterHelperService.prototype.navigateTo = function (page, linkParams) {
                     setTimeout(function () {
-                        if (!window.icb.routerHelper.router.navigating) {
+                        if (!window.automata.routerHelper.router.navigating) {
                             var navigateToPage = page.toString().charAt(0).toUpperCase() + page.toString().slice(1);
-                            window.icb.routerHelper.router.navigate([navigateToPage, linkParams]);
+                            window.automata.routerHelper.router.navigate([navigateToPage, linkParams]);
                         }
                     }, 100);
                 };
                 RouterHelperService.prototype.navigateByUrl = function (url) {
                     setTimeout(function () {
-                        if (!window.icb.routerHelper.router.navigating) {
-                            window.icb.routerHelper.router.navigateByUrl(url);
+                        if (!window.automata.routerHelper.router.navigating) {
+                            window.automata.routerHelper.router.navigateByUrl(url);
                         }
                     }, 100);
                 };

@@ -48,6 +48,10 @@ System.register(['../../../configurationManager', '../../../services/services.mo
                     enumerable: true,
                     configurable: true
                 });
+                BaseComponent.prototype.navigateTo = function (page, linkParams) {
+                    this.contextInfo.isLoading = true;
+                    this.routerHelper.navigateTo(page, linkParams);
+                };
                 return BaseComponent;
             }());
             exports_1("BaseComponent", BaseComponent);

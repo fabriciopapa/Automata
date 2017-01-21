@@ -23,7 +23,8 @@ export class TopComponent extends BaseComponent {
     }
 
     protected logout(): void {
-        localStorage.removeItem('user');
+        this.contextInfo.user = undefined;
+        this.contextInfo.userIsAuthenticated = false;
         this.routerHelper.navigateTo(FrontEndPages.logIn)
     }
 }

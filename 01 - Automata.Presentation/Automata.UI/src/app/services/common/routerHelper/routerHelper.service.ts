@@ -7,32 +7,32 @@ import { FrontEndPages } from "../../../entities/entities.module";
 export class RouterHelperService {
 
     constructor(router: Router) {
-        if (!window.icb.routerHelper.router) {
-            window.icb.routerHelper.router = router;
+        if (!window.automata.routerHelper.router) {
+            window.automata.routerHelper.router = router;
         }
     }
 
     get router() {
-        return window.icb.routerHelper.router;
+        return window.automata.routerHelper.router;
     }
 
     addConfiguration(definitions: RouteDefinition[]) {
-        window.icb.routerHelper.router.config(definitions);
+        window.automata.routerHelper.router.config(definitions);
     }
 
     public navigateTo(page: FrontEndPages, linkParams?: any) {
         setTimeout(() => {
-            if (!window.icb.routerHelper.router.navigating) {
+            if (!window.automata.routerHelper.router.navigating) {
                 let navigateToPage: string = page.toString().charAt(0).toUpperCase() + page.toString().slice(1);
-                window.icb.routerHelper.router.navigate([navigateToPage, linkParams]);
+                window.automata.routerHelper.router.navigate([navigateToPage, linkParams]);
             }
         }, 100);
     }
 
     public navigateByUrl(url: string) {
         setTimeout(() => {
-            if (!window.icb.routerHelper.router.navigating) {
-                window.icb.routerHelper.router.navigateByUrl(url);
+            if (!window.automata.routerHelper.router.navigating) {
+                window.automata.routerHelper.router.navigateByUrl(url);
             }
         }, 100);
     }

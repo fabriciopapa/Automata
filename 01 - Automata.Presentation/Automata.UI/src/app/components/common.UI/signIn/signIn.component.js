@@ -1,6 +1,11 @@
-System.register(['angular2/core', '../../../entities/entities.module', '../../../services/services.module'], function(exports_1, context_1) {
+System.register(['angular2/core', '../../../entities/entities.module', '../../../services/services.module', '../../components.module'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
+    var __extends = (this && this.__extends) || function (d, b) {
+        for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,7 +15,7 @@ System.register(['angular2/core', '../../../entities/entities.module', '../../..
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, entities_module_1, services_module_1;
+    var core_1, entities_module_1, services_module_1, components_module_1;
     var SignInComponent;
     return {
         setters:[
@@ -22,12 +27,17 @@ System.register(['angular2/core', '../../../entities/entities.module', '../../..
             },
             function (services_module_1_1) {
                 services_module_1 = services_module_1_1;
+            },
+            function (components_module_1_1) {
+                components_module_1 = components_module_1_1;
             }],
         execute: function() {
-            SignInComponent = (function () {
+            SignInComponent = (function (_super) {
+                __extends(SignInComponent, _super);
                 function SignInComponent(usersService) {
+                    _super.call(this);
                     this._invalidCredentials = false;
-                    this._requiredFieldsNotEntered = false;
+                    this._requiredFieldsEntered = true;
                     this._onSignIn = new core_1.EventEmitter();
                     this._usersService = usersService;
                 }
@@ -36,13 +46,29 @@ System.register(['angular2/core', '../../../entities/entities.module', '../../..
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(SignInComponent.prototype, "invalidCredentials", {
+                    get: function () { return this._invalidCredentials; },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(SignInComponent.prototype, "requiredFieldsEntered", {
+                    get: function () { return this._requiredFieldsEntered; },
+                    enumerable: true,
+                    configurable: true
+                });
                 SignInComponent.prototype.signIn = function () {
-                    this._requiredFieldsNotEntered = this._userName.nativeElement.value != '' &&
-                        this._password.nativeElement.value != '';
-                    if (!this._requiredFieldsNotEntered) {
+                    this._requiredFieldsEntered = this._userName.nativeElement.value != '' &&
+                        this._password.nativeElement.value != '' &&
+                        this._name.nativeElement.value != '' &&
+                        this._lastName.nativeElement.value != '' &&
+                        this._secretAnswer.nativeElement.value != '';
+                    if (!this._requiredFieldsEntered) {
                         var input = new entities_module_1.SignInIn();
                         input.UserName = this._userName.nativeElement.value;
                         input.Password = this._password.nativeElement.value;
+                        input.Name = this._name.nativeElement.value;
+                        input.LastName = this._lastName.nativeElement.value;
+                        input.SecretAnswer = this._secretAnswer.nativeElement.value;
                         this._usersService.signIn(input).subscribe(this.mapSignInResponse.bind(this), this.onSignInError.bind(this));
                     }
                 };
@@ -59,6 +85,9 @@ System.register(['angular2/core', '../../../entities/entities.module', '../../..
                 SignInComponent.prototype.onSignInError = function (error) {
                     this._invalidCredentials = true;
                 };
+                SignInComponent.prototype.goToLogIn = function () {
+                    this.routerHelper.navigateTo(entities_module_1.FrontEndPages.logIn);
+                };
                 __decorate([
                     core_1.ViewChild('userName'), 
                     __metadata('design:type', core_1.ElementRef)
@@ -67,6 +96,18 @@ System.register(['angular2/core', '../../../entities/entities.module', '../../..
                     core_1.ViewChild('password'), 
                     __metadata('design:type', core_1.ElementRef)
                 ], SignInComponent.prototype, "_password", void 0);
+                __decorate([
+                    core_1.ViewChild('name'), 
+                    __metadata('design:type', core_1.ElementRef)
+                ], SignInComponent.prototype, "_name", void 0);
+                __decorate([
+                    core_1.ViewChild('lastName'), 
+                    __metadata('design:type', core_1.ElementRef)
+                ], SignInComponent.prototype, "_lastName", void 0);
+                __decorate([
+                    core_1.ViewChild('secretAnswer'), 
+                    __metadata('design:type', core_1.ElementRef)
+                ], SignInComponent.prototype, "_secretAnswer", void 0);
                 SignInComponent = __decorate([
                     core_1.Component({
                         selector: 'signIn',
@@ -78,7 +119,7 @@ System.register(['angular2/core', '../../../entities/entities.module', '../../..
                     __metadata('design:paramtypes', [services_module_1.UsersService])
                 ], SignInComponent);
                 return SignInComponent;
-            }());
+            }(components_module_1.BaseComponent));
             exports_1("SignInComponent", SignInComponent);
         }
     }

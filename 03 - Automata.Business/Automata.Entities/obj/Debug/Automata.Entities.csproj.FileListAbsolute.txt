@@ -16,4 +16,3 @@ C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debu
 C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.dll
 C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.pdb
-C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.csprojResolveAssemblyReference.cache

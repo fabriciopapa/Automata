@@ -18,6 +18,7 @@ export class LogInComponent extends BaseComponent {
     private _usersService: UsersService;
     private _invalidCredentials: Boolean = false;
     private _requiredFieldsEntered: Boolean = true;
+    
     @ViewChild('userName') protected _userName: ElementRef;
     @ViewChild('password') protected _password: ElementRef;
 
@@ -36,8 +37,11 @@ export class LogInComponent extends BaseComponent {
     }
 
     protected goToHome(event?: any): void {
-        this.contextInfo.userIsAuthenticated = true;
         this.routerHelper.navigateTo(FrontEndPages.home);
+    }
+
+    protected signIn(): void {
+        this.navigateTo(FrontEndPages.signIn);
     }
     
     protected logIn(): void {
@@ -57,6 +61,7 @@ export class LogInComponent extends BaseComponent {
             logInResultEvent.result = result;
             if(result.User){
                 this.contextInfo.user = result.User;
+                this.contextInfo.userIsAuthenticated = true;
                 this.goToHome();
             }
         }
@@ -67,9 +72,5 @@ export class LogInComponent extends BaseComponent {
 
     protected onLogInError(error: any) {
         this._invalidCredentials = true;
-    }
-
-    protected signIn(): void {
-        this.routerHelper.navigateTo(FrontEndPages.signIn);
     }
 }
