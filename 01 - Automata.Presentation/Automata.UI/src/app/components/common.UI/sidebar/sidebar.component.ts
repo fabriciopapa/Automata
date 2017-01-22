@@ -23,12 +23,9 @@ export class SidebarComponent extends BaseComponent {
     private _mobileView: number = 992;
     private _toggle: boolean = false;
     private _onToggled: EventEmitter<SidebarToggleEvent> = new EventEmitter<SidebarToggleEvent>();
-    private _selectedOption: string;
 
     get onToggled(): EventEmitter<SidebarToggleEvent> { return this._onToggled; }
     set onToggled(value: EventEmitter<SidebarToggleEvent>) { this._onToggled = value; }
-
-    get selectedOption(): string { return this._selectedOption; }
 
     constructor() {
         super();
@@ -37,7 +34,6 @@ export class SidebarComponent extends BaseComponent {
 
     protected initialize() {
         this.attachEvents();
-        this._selectedOption = 'home';
     }
 
     protected attachEvents() {
@@ -61,6 +57,10 @@ export class SidebarComponent extends BaseComponent {
     protected toggleSidebar(optionName: string) {
         this._toggle = !this._toggle;
         localStorage.setItem('toggle', this._toggle.toString());
+        
+        if(optionName != '' && optionName != undefined){
+            this.contextInfo.dashboardOption = optionName;
+        }
 
         let sidebarToggleEvent: SidebarToggleEvent = new SidebarToggleEvent();
         sidebarToggleEvent.value = this._toggle;
@@ -69,7 +69,7 @@ export class SidebarComponent extends BaseComponent {
     }
 
     protected toggleQuickOption(optionName: string) {
-        this._selectedOption = optionName;
+        this.contextInfo.dashboardOption = optionName;
 
         if (this._toggle) {
             this.toggleSidebar(optionName);
@@ -79,7 +79,7 @@ export class SidebarComponent extends BaseComponent {
     protected isQuickOptionActive(optionName: string): string {
         let result: string;
 
-        if (!this._toggle && optionName == this.selectedOption) {
+        if (!this._toggle && optionName == this.contextInfo.dashboardOption) {
             result = 'active';
         }
         else {
@@ -91,7 +91,7 @@ export class SidebarComponent extends BaseComponent {
     protected isMenuOptionActive(optionName: string): string {
         let result: string;
 
-        if (this._toggle && optionName == this.selectedOption) {
+        if (this._toggle && optionName == this.contextInfo.dashboardOption) {
             result = 'active';
         }
         else {

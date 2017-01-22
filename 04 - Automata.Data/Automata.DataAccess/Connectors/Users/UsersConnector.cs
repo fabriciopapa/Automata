@@ -59,6 +59,7 @@ namespace Automata.DataAccess.Connectors.Users
                     user.LastName = input.LastName;
                     user.SecretAnswer = input.SecretAnswer;
                     user.Active = true;
+                    context.Users.Add(user);
                     output.OperationResult = Entities.Common.OperationResult.PartialSuccess;
                 }
 

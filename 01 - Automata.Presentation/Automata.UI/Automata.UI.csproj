@@ -34,7 +34,6 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
-  <ItemGroup />
   <ItemGroup>
     <TypeScriptCompile Include="src\app\components\components.module.ts" />
     <TypeScriptCompile Include="typings\browser.d.ts" />
@@ -124,6 +123,7 @@
     <None Include=".jshintrc" />
     <None Include="LICENSE" />
     <None Include="package.json" />
+    <None Include="packages.config" />
     <None Include="README.md" />
     <None Include="src\app\app.js.map" />
     <None Include="src\app\classes\classes.module.js.map" />
@@ -155,7 +155,6 @@
     <None Include="src\app\services\services.module.js.map" />
     <None Include="tsconfig.json" />
     <None Include="typings.json" />
-    <None Include="web.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

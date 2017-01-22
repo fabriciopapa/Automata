@@ -37,12 +37,10 @@ let bootstrapPromiseResolved = false;
 class App {
 
     private _toggle: boolean = false;
-    private _sidebarOptionName: string;
     private _usingPrivateSession: boolean;
     private _router: Router;
 
     get toggle(): boolean { return this._toggle; }
-    get sidebarOptionName(): string { return this._sidebarOptionName; }
     get usingPrivateSession(): any {
         this._usingPrivateSession = this.contextInfo.userIsAuthenticated;
         return this._usingPrivateSession;
@@ -54,7 +52,6 @@ class App {
 
     protected processSidebarToggle(event: SidebarToggleEvent): void {
         this._toggle = event.value;
-        this._sidebarOptionName = event.name;
     }
     
     protected isLoading(): boolean {

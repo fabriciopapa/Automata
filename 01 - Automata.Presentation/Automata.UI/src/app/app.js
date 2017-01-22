@@ -52,11 +52,6 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(App.prototype, "sidebarOptionName", {
-                    get: function () { return this._sidebarOptionName; },
-                    enumerable: true,
-                    configurable: true
-                });
                 Object.defineProperty(App.prototype, "usingPrivateSession", {
                     get: function () {
                         this._usingPrivateSession = this.contextInfo.userIsAuthenticated;
@@ -67,7 +62,6 @@ System.register(['angular2/core', 'angular2/platform/browser', 'angular2/http', 
                 });
                 App.prototype.processSidebarToggle = function (event) {
                     this._toggle = event.value;
-                    this._sidebarOptionName = event.name;
                 };
                 App.prototype.isLoading = function () {
                     return this.contextInfo.isLoading;

@@ -34,12 +34,16 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
         execute: function() {
             LogInComponent = (function (_super) {
                 __extends(LogInComponent, _super);
-                function LogInComponent(usersService) {
+                function LogInComponent(usersService, commonService) {
                     _super.call(this);
                     this._invalidCredentials = false;
                     this._requiredFieldsEntered = true;
+                    this._signInButtonDisabled = false;
+                    this._logInButtonDisabled = false;
                     this._onLogIn = new core_1.EventEmitter();
                     this._usersService = usersService;
+                    this._commonService = commonService;
+                    this.pingServer();
                 }
                 Object.defineProperty(LogInComponent.prototype, "onLogIn", {
                     get: function () { return this._onLogIn; },
@@ -56,6 +60,20 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(LogInComponent.prototype, "logInButtonDisabled", {
+                    get: function () { return this._logInButtonDisabled; },
+                    enumerable: true,
+                    configurable: true
+                });
+                Object.defineProperty(LogInComponent.prototype, "signInButtonDisabled", {
+                    get: function () { return this._signInButtonDisabled; },
+                    enumerable: true,
+                    configurable: true
+                });
+                LogInComponent.prototype.pingServer = function () {
+                    var input = new entities_module_1.BaseMethodIn();
+                    this._commonService.pingServer(input).subscribe();
+                };
                 LogInComponent.prototype.goToLogIn = function () {
                     this.routerHelper.navigateTo(entities_module_1.FrontEndPages.logIn);
                 };
@@ -66,13 +84,16 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                     this.navigateTo(entities_module_1.FrontEndPages.signIn);
                 };
                 LogInComponent.prototype.logIn = function () {
-                    this._invalidCredentials = false;
-                    this._requiredFieldsEntered = this._userName.nativeElement.value != "" && this._password.nativeElement.value != "";
-                    if (this._requiredFieldsEntered) {
-                        var input = new entities_module_1.LogInIn();
-                        input.UserName = this._userName.nativeElement.value;
-                        input.Password = this._password.nativeElement.value;
-                        this._usersService.logIn(input).subscribe(this.mapLogInResponse.bind(this), this.onLogInError.bind(this));
+                    if (!this._logInButtonDisabled) {
+                        this._invalidCredentials = false;
+                        this._requiredFieldsEntered = this._userName.nativeElement.value != "" && this._password.nativeElement.value != "";
+                        if (this._requiredFieldsEntered) {
+                            this.switchButtons(false);
+                            var input = new entities_module_1.LogInIn();
+                            input.UserName = this._userName.nativeElement.value;
+                            input.Password = this._password.nativeElement.value;
+                            this._usersService.logIn(input).subscribe(this.mapLogInResponse.bind(this), this.onLogInError.bind(this));
+                        }
                     }
                 };
                 LogInComponent.prototype.mapLogInResponse = function (result) {
@@ -86,11 +107,16 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                         }
                     }
                     else {
-                        this._invalidCredentials = true;
+                        this.onLogInError();
                     }
                 };
                 LogInComponent.prototype.onLogInError = function (error) {
                     this._invalidCredentials = true;
+                    this.switchButtons(true);
+                };
+                LogInComponent.prototype.switchButtons = function (enable) {
+                    this._signInButtonDisabled = !enable;
+                    this._logInButtonDisabled = !enable;
                 };
                 __decorate([
                     core_1.ViewChild('userName'), 
@@ -104,11 +130,13 @@ System.register(['angular2/core', '../../../services/services.module', '../../..
                     core_1.Component({
                         selector: 'logIn',
                         outputs: ['onLogIn'],
-                        providers: [services_module_1.UsersService],
+                        providers: [services_module_1.UsersService,
+                            services_module_1.CommonService
+                        ],
                         templateUrl: 'app/components/common.UI/logIn/logIn.component.html',
                         styleUrls: ['app/components/common.UI/logIn/logIn.component.css']
                     }), 
-                    __metadata('design:paramtypes', [services_module_1.UsersService])
+                    __metadata('design:paramtypes', [services_module_1.UsersService, services_module_1.CommonService])
                 ], LogInComponent);
                 return LogInComponent;
             }(components_module_1.BaseComponent));

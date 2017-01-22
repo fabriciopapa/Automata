@@ -16,3 +16,12 @@ C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\
 C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.dll
 C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.pdb
 C:\Users\HP\Documents\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.csprojResolveAssemblyReference.cache
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.MethodParameters.dll
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.MethodParameters.pdb
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.Entities.dll
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\EntityFramework.dll
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\Automata.Entities.pdb
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\bin\Debug\EntityFramework.xml
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.csprojResolveAssemblyReference.cache
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.dll
+C:\Solutions\Automata\03 - Automata.Business\Automata.MethodParameters\obj\Debug\Automata.MethodParameters.pdb

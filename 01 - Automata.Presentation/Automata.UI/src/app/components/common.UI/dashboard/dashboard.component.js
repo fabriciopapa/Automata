@@ -40,6 +40,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 DashboardComponent.prototype.ngOnInit = function () {
                 };
                 DashboardComponent.prototype.navigateToProjects = function () {
+                    this.contextInfo.dashboardOption = entities_module_1.FrontEndPages.projects.toString();
                     this.routerHelper.navigateTo(entities_module_1.FrontEndPages.projects);
                 };
                 DashboardComponent = __decorate([

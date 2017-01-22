@@ -47,14 +47,8 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                     enumerable: true,
                     configurable: true
                 });
-                Object.defineProperty(SidebarComponent.prototype, "selectedOption", {
-                    get: function () { return this._selectedOption; },
-                    enumerable: true,
-                    configurable: true
-                });
                 SidebarComponent.prototype.initialize = function () {
                     this.attachEvents();
-                    this._selectedOption = 'home';
                 };
                 SidebarComponent.prototype.attachEvents = function () {
                     var _this = this;
@@ -78,20 +72,23 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 SidebarComponent.prototype.toggleSidebar = function (optionName) {
                     this._toggle = !this._toggle;
                     localStorage.setItem('toggle', this._toggle.toString());
+                    if (optionName != '' && optionName != undefined) {
+                        this.contextInfo.dashboardOption = optionName;
+                    }
                     var sidebarToggleEvent = new entities_module_1.SidebarToggleEvent();
                     sidebarToggleEvent.value = this._toggle;
                     sidebarToggleEvent.name = optionName;
                     this.onToggled.emit(sidebarToggleEvent);
                 };
                 SidebarComponent.prototype.toggleQuickOption = function (optionName) {
-                    this._selectedOption = optionName;
+                    this.contextInfo.dashboardOption = optionName;
                     if (this._toggle) {
                         this.toggleSidebar(optionName);
                     }
                 };
                 SidebarComponent.prototype.isQuickOptionActive = function (optionName) {
                     var result;
-                    if (!this._toggle && optionName == this.selectedOption) {
+                    if (!this._toggle && optionName == this.contextInfo.dashboardOption) {
                         result = 'active';
                     }
                     else {
@@ -101,7 +98,7 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                 };
                 SidebarComponent.prototype.isMenuOptionActive = function (optionName) {
                     var result;
-                    if (this._toggle && optionName == this.selectedOption) {
+                    if (this._toggle && optionName == this.contextInfo.dashboardOption) {
                         result = 'active';
                     }
                     else {

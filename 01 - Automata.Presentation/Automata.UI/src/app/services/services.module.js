@@ -1,4 +1,4 @@
-System.register(['./base/base.service', './projects/projects.service', './users/users.service', './common/routerHelper/routerHelper.service', './common/contextInfo/contextInfo.service'], function(exports_1, context_1) {
+System.register(['./base/base.service', './projects/projects.service', './users/users.service', './common/routerHelper/routerHelper.service', './common/contextInfo/contextInfo.service', './common/common.service'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     return {
@@ -26,6 +26,11 @@ System.register(['./base/base.service', './projects/projects.service', './users/
             function (contextInfo_service_1_1) {
                 exports_1({
                     "ContextInfoService": contextInfo_service_1_1["ContextInfoService"]
+                });
+            },
+            function (common_service_1_1) {
+                exports_1({
+                    "CommonService": common_service_1_1["CommonService"]
                 });
             }],
         execute: function() {

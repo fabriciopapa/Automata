@@ -1,7 +1,7 @@
 import { Injectable } from 'angular2/core';
 
 import { ConfigurationManager } from '../../../configurationManager';
-import { User } from '../../../entities/entities.module';
+import { User, FrontEndPages } from '../../../entities/entities.module';
 
 @Injectable()
 export class ContextInfoService {
@@ -9,6 +9,7 @@ export class ContextInfoService {
     static _user: User;
     static _userIsAuthenticated: boolean;
     static _isLoading: boolean;
+    static _dashboardOption: string = FrontEndPages.home.toString();
     
     constructor() {
     }
@@ -35,5 +36,13 @@ export class ContextInfoService {
 
     set isLoading(value: boolean) {
         ContextInfoService._isLoading = value;
+    }
+
+    get dashboardOption(): string {
+        return ContextInfoService._dashboardOption;
+    }
+
+    set dashboardOption(value: string) {
+        ContextInfoService._dashboardOption = value;
     }
 }

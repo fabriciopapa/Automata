@@ -6,22 +6,22 @@
 		<br/>
 		<div class="login-form">
 			<div class="control-group">
-				<input #userName type="text" class="login-field" placeholder="user name" onfocus="this.placeholder = ''" onblur="this.placeholder = 'user name'" />
-				<label class="login-field-icon fui-user" for="login-name"></label>
+				<label class="login-field-icon fui-user" for="login-name">user</label>
+				<input #userName type="text" class="login-field" />
 			</div>
 			<div class="control-group">
-				<input #password type="password" class="login-field" placeholder="password" onfocus="this.placeholder = ''" onblur="this.placeholder = 'password'" />
-				<label class="login-field-icon fui-lock" for="login-pass"></label>
+				<label class="login-field-icon fui-lock" for="login-pass">password</label>
+				<input #password type="password" class="login-field" />
 			</div>
 			<div class="control-group">
-				<a class="btn btn-primary btn-large btn-block" (click)='logIn()'>log in</a>
+				<button class="btn btn-primary btn-large btn-block" (click)="logIn()" [disabled]="logInButtonDisabled">log in</button>
 			</div>
 			<div class="control-group">
-				<a class="btn btn-primary btn-large btn-block" (click)='signIn()'>sign in</a>
+				<button class="btn btn-primary btn-large btn-block" (click)="signIn()" [disabled]="signInButtonDisabled">sign in</button>
 			</div>
 			<div class="control-group">
-				<label *ngIf="invalidCredentials" class="login-field-icon fui-lock" for="login-pass">The credentials are not valid.</label>
-				<label *ngIf="!requiredFieldsEntered" class="login-field-icon fui-lock" for="login-pass">All required field were not entered.</label>
+				<label *ngIf="invalidCredentials" class="login-field-icon fui-lock" >The credentials are not valid.</label>
+				<label *ngIf="!requiredFieldsEntered" class="login-field-icon fui-lock">All required fields were not entered.</label>
 			</div>
 		</div>
 	</div>

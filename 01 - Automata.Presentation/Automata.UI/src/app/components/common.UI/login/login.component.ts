@@ -1,14 +1,16 @@
 import { Component, ElementRef, EventEmitter, ViewChild } from 'angular2/core';
 import { Router } from 'angular2/router';
 
-import { UsersService } from '../../../services/services.module';
-import { LogInResultEvent, LogInIn, LogInOut, OperationResult, FrontEndPages } from '../../../entities/entities.module';
+import { UsersService, CommonService } from '../../../services/services.module';
+import { LogInResultEvent, LogInIn, LogInOut, OperationResult, FrontEndPages, BaseMethodIn, BaseMethodOut } from '../../../entities/entities.module';
 import { BaseComponent } from '../../components.module';
 
 @Component({
     selector: 'logIn',
     outputs: ['onLogIn'],
-    providers: [UsersService],
+    providers: [UsersService,
+        CommonService
+    ],
     templateUrl: 'app/components/common.UI/logIn/logIn.component.html',
     styleUrls: ['app/components/common.UI/logIn/logIn.component.css']
 })
@@ -16,8 +18,11 @@ import { BaseComponent } from '../../components.module';
 export class LogInComponent extends BaseComponent {
     private _onLogIn: EventEmitter<LogInResultEvent>;
     private _usersService: UsersService;
+    private _commonService: CommonService;
     private _invalidCredentials: Boolean = false;
     private _requiredFieldsEntered: Boolean = true;
+    protected _signInButtonDisabled: Boolean = false;
+    protected _logInButtonDisabled: Boolean = false;
     
     @ViewChild('userName') protected _userName: ElementRef;
     @ViewChild('password') protected _password: ElementRef;
@@ -25,11 +30,20 @@ export class LogInComponent extends BaseComponent {
     get onLogIn(): EventEmitter<LogInResultEvent> { return this._onLogIn; }
     get invalidCredentials(): Boolean { return this._invalidCredentials; }
     get requiredFieldsEntered(): Boolean { return this._requiredFieldsEntered; }
+    get logInButtonDisabled(): Boolean { return this._logInButtonDisabled; }
+    get signInButtonDisabled(): Boolean { return this._signInButtonDisabled; }
 
-    constructor(usersService: UsersService) {
+    constructor(usersService: UsersService, commonService: CommonService) {
         super();
         this._onLogIn = new EventEmitter();
         this._usersService = usersService;
+        this._commonService = commonService;
+        this.pingServer();
+    }
+    
+    protected pingServer() {
+        let input: BaseMethodIn = new BaseMethodIn();
+        this._commonService.pingServer(input).subscribe();
     }
 
     protected goToLogIn(): void {
@@ -45,13 +59,16 @@ export class LogInComponent extends BaseComponent {
     }
     
     protected logIn(): void {
-        this._invalidCredentials = false;
-        this._requiredFieldsEntered = this._userName.nativeElement.value != "" && this._password.nativeElement.value != "";
-        if (this._requiredFieldsEntered) {
-            let input: LogInIn = new LogInIn();
-            input.UserName = this._userName.nativeElement.value;
-            input.Password = this._password.nativeElement.value;
-            this._usersService.logIn(input).subscribe(this.mapLogInResponse.bind(this), this.onLogInError.bind(this));
+        if(!this._logInButtonDisabled){
+            this._invalidCredentials = false;
+            this._requiredFieldsEntered = this._userName.nativeElement.value != "" && this._password.nativeElement.value != "";
+            if (this._requiredFieldsEntered) {
+                this.switchButtons(false);
+                let input: LogInIn = new LogInIn();
+                input.UserName = this._userName.nativeElement.value;
+                input.Password = this._password.nativeElement.value;
+                this._usersService.logIn(input).subscribe(this.mapLogInResponse.bind(this), this.onLogInError.bind(this));
+            }
         }
     }
 
@@ -66,11 +83,17 @@ export class LogInComponent extends BaseComponent {
             }
         }
         else {
-            this._invalidCredentials = true;
+            this.onLogInError();
         }
     }
 
-    protected onLogInError(error: any) {
+    protected onLogInError(error?: any) {
         this._invalidCredentials = true;
+        this.switchButtons(true);
+    }
+
+    protected switchButtons(enable: Boolean) {
+        this._signInButtonDisabled = !enable;
+        this._logInButtonDisabled = !enable;
     }
 }

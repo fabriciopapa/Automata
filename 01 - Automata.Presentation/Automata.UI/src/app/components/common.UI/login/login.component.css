@@ -4,18 +4,15 @@
 }
 
 .login-screen {
+    position: absolute;
+    width: 300px;
+    top: 17%;
+    left: 50%;
+    margin: -100px 0 0 -150px;
+    height: 430px;
     background-color: #FFF;
     padding: 20px;
     border-radius: 5px;
-}
-
-.login-screen {
-    position: absolute;
-    width: 300px;
-    top: 40%;
-    left: 50%;
-    margin: -100px 0 0 -150px;
-    height: 380px;
 }
     
 .app-title {
@@ -28,7 +25,8 @@
 }
 
 .control-group {
-    margin-bottom: 10px;
+    margin: 10px 1px 10px 1px;
+    text-align: center;
 }
 
 input {

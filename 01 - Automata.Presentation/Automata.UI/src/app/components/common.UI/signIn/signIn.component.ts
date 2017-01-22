@@ -18,6 +18,8 @@ export class SignInComponent extends BaseComponent {
     private _usersService: UsersService;
     private _invalidCredentials: Boolean = false;
     private _requiredFieldsEntered: Boolean = true;
+    private _signInButtonDisabled: Boolean = false;
+    private _successfulySignedIn: Boolean = false;
 
     @ViewChild('userName') protected _userName: ElementRef;
     @ViewChild('password') protected _password: ElementRef;
@@ -28,6 +30,8 @@ export class SignInComponent extends BaseComponent {
     get onSignIn(): EventEmitter<SignInResultEvent> { return this._onSignIn; }
     get invalidCredentials(): Boolean { return this._invalidCredentials; }
     get requiredFieldsEntered(): Boolean { return this._requiredFieldsEntered; }
+    get signInButtonDisabled(): Boolean { return this._signInButtonDisabled; }
+    get successfulySignedIn(): Boolean { return this._successfulySignedIn; }
 
     constructor(usersService: UsersService) {
         super();
@@ -36,38 +40,53 @@ export class SignInComponent extends BaseComponent {
     }
 
     protected signIn(): void {
-        this._requiredFieldsEntered = this._userName.nativeElement.value != '' && 
-                                         this._password.nativeElement.value != '' && 
-                                         this._name.nativeElement.value != '' &&
-                                         this._lastName.nativeElement.value != '' &&
-                                         this._secretAnswer.nativeElement.value != '';
-        if(!this._requiredFieldsEntered){
-            let input: SignInIn = new SignInIn();
-            input.UserName = this._userName.nativeElement.value;
-            input.Password = this._password.nativeElement.value;
-            input.Name = this._name.nativeElement.value;
-            input.LastName = this._lastName.nativeElement.value;
-            input.SecretAnswer = this._secretAnswer.nativeElement.value;
-            this._usersService.signIn(input).subscribe(this.mapSignInResponse.bind(this), this.onSignInError.bind(this));
+        if (!this._signInButtonDisabled) {
+            this._invalidCredentials = false;
+            this._successfulySignedIn = false;
+            this._requiredFieldsEntered = this._userName.nativeElement.value != '' &&
+                this._password.nativeElement.value != '' &&
+                this._name.nativeElement.value != '' &&
+                this._lastName.nativeElement.value != '' &&
+                this._secretAnswer.nativeElement.value != '';
+            if (this._requiredFieldsEntered) {
+                this.switchButtons(false);
+                let input: SignInIn = new SignInIn();
+                input.UserName = this._userName.nativeElement.value;
+                input.Password = this._password.nativeElement.value;
+                input.Name = this._name.nativeElement.value;
+                input.LastName = this._lastName.nativeElement.value;
+                input.SecretAnswer = this._secretAnswer.nativeElement.value;
+                this._usersService.signIn(input).subscribe(this.mapSignInResponse.bind(this), this.onSignInError.bind(this));
+            }
         }
     }
 
-    protected mapSignInResponse(result: SignInOut){
-        if(result.OperationResult == OperationResult.Success){
-            let signInResultEvent = new SignInResultEvent();
-            signInResultEvent.result = result;
-            this._onSignIn.emit(signInResultEvent);
+    protected mapSignInResponse(result: SignInOut) {
+        this.switchButtons(true);
+        if (result.OperationResult == OperationResult.Success) {
+            this._successfulySignedIn = true;
+            this._userName.nativeElement.value = '';
+            this._password.nativeElement.value = '';
+            this._name.nativeElement.value = '';
+            this._lastName.nativeElement.value = '';
+            this._secretAnswer.nativeElement.value = '';
         }
-        else{
+        else {
             this._invalidCredentials = true;
         }
     }
 
-    protected onSignInError(error: any){
+    protected onSignInError(error: any) {
         this._invalidCredentials = true;
+        this._successfulySignedIn = false;
+        this.switchButtons(true);
     }
-    
+
     protected goToLogIn(): void {
         this.routerHelper.navigateTo(FrontEndPages.logIn);
+    }
+
+    protected switchButtons(enable: Boolean) {
+        this._signInButtonDisabled = !enable;
     }
 }

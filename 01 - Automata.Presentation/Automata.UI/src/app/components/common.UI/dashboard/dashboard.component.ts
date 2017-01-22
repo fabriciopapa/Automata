@@ -28,6 +28,7 @@ export class DashboardComponent extends BaseComponent {
     }
 
     protected navigateToProjects() {
+        this.contextInfo.dashboardOption = FrontEndPages.projects.toString();
         this.routerHelper.navigateTo(FrontEndPages.projects)
     }
 }
