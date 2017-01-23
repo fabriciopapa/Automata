@@ -88,7 +88,7 @@ GO
 CREATE TABLE [dbo].[Assemblies] (
     [PK_Id] int IDENTITY(1,1) NOT NULL,
     [Name] varchar(50)  NOT NULL,
-    [Code] varbinary(max)  NOT NULL,
+    [Code] varchar(max)  NOT NULL,
     [Public] bit  NOT NULL,
     [Active] bit  NOT NULL,
     [User_PK_Id] int  NOT NULL

@@ -1,4 +1,4 @@
-System.register(['./common/baseMethodIn', './common/baseMethodOut', './projects/getProjectsIn', './projects/getProjectsOut', './users/logInIn', './users/logInOut', './users/logOutIn', './users/logOutOut', './users/signInIn', './users/signInOut'], function(exports_1, context_1) {
+System.register(['./common/baseMethodIn', './common/baseMethodOut', './projects/getProjectsIn', './projects/getProjectsOut', './users/logInIn', './users/logInOut', './users/logOutIn', './users/logOutOut', './users/signInIn', './users/signInOut', './users/getDashboardIn', './users/getDashboardOut'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     return {
@@ -51,6 +51,16 @@ System.register(['./common/baseMethodIn', './common/baseMethodOut', './projects/
             function (signInOut_1_1) {
                 exports_1({
                     "SignInOut": signInOut_1_1["SignInOut"]
+                });
+            },
+            function (getDashboardIn_1_1) {
+                exports_1({
+                    "GetDashboardIn": getDashboardIn_1_1["GetDashboardIn"]
+                });
+            },
+            function (getDashboardOut_1_1) {
+                exports_1({
+                    "GetDashboardOut": getDashboardOut_1_1["GetDashboardOut"]
                 });
             }],
         execute: function() {

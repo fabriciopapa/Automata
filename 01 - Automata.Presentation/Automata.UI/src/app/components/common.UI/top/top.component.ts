@@ -8,7 +8,14 @@ import { FrontEndPages } from '../../../entities/entities.module';
     selector: 'top',
     templateUrl: 'app/components/common.UI/top/top.component.html',
     outputs: ['onLogout'],
-    directives: [ROUTER_DIRECTIVES, LoadingComponent, WidgetComponent, WidgetButtonComponent, WidgetHeaderComponent, WidgetBodyComponent, WidgetFooterComponent]
+    directives: [ROUTER_DIRECTIVES, 
+        LoadingComponent, 
+        WidgetComponent, 
+        WidgetButtonComponent, 
+        WidgetHeaderComponent, 
+        WidgetBodyComponent, 
+        WidgetFooterComponent
+    ]
 })
 
 export class TopComponent extends BaseComponent {
@@ -16,6 +23,12 @@ export class TopComponent extends BaseComponent {
     private _onLogout: EventEmitter<any>;
 
     get onLogout(): EventEmitter<any> { return this._onLogout; }
+    get userName(): string { 
+        if(this.contextInfo.user != undefined){
+            return this.contextInfo.user.Name;
+        }
+        return '';
+    }
 
     constructor() {
         super();

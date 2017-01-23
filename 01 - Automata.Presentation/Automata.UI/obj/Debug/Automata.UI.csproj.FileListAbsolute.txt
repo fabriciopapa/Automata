@@ -11,4 +11,3 @@ C:\Solutions\Automata\01 - Automata.Presentation\Automata.UI\bin\Debug\Automata.
 C:\Solutions\Automata\01 - Automata.Presentation\Automata.UI\bin\Debug\Automata.UI.pdb
 C:\Solutions\Automata\01 - Automata.Presentation\Automata.UI\obj\Debug\Automata.UI.dll
 C:\Solutions\Automata\01 - Automata.Presentation\Automata.UI\obj\Debug\Automata.UI.pdb
-C:\Solutions\Automata\01 - Automata.Presentation\Automata.UI\obj\Debug\Automata.UI.csprojResolveAssemblyReference.cache

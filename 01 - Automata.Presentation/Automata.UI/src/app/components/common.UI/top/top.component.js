@@ -43,6 +43,16 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                     enumerable: true,
                     configurable: true
                 });
+                Object.defineProperty(TopComponent.prototype, "userName", {
+                    get: function () {
+                        if (this.contextInfo.user != undefined) {
+                            return this.contextInfo.user.Name;
+                        }
+                        return '';
+                    },
+                    enumerable: true,
+                    configurable: true
+                });
                 TopComponent.prototype.logout = function () {
                     this.contextInfo.user = undefined;
                     this.contextInfo.userIsAuthenticated = false;
@@ -53,7 +63,14 @@ System.register(['angular2/core', 'angular2/router', '../../components.module', 
                         selector: 'top',
                         templateUrl: 'app/components/common.UI/top/top.component.html',
                         outputs: ['onLogout'],
-                        directives: [router_1.ROUTER_DIRECTIVES, components_module_1.LoadingComponent, components_module_1.WidgetComponent, components_module_1.WidgetButtonComponent, components_module_1.WidgetHeaderComponent, components_module_1.WidgetBodyComponent, components_module_1.WidgetFooterComponent]
+                        directives: [router_1.ROUTER_DIRECTIVES,
+                            components_module_1.LoadingComponent,
+                            components_module_1.WidgetComponent,
+                            components_module_1.WidgetButtonComponent,
+                            components_module_1.WidgetHeaderComponent,
+                            components_module_1.WidgetBodyComponent,
+                            components_module_1.WidgetFooterComponent
+                        ]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], TopComponent);

@@ -3,7 +3,7 @@ import { Http, Response } from "angular2/http";
 import 'rxjs/Rx';
 
 import { BaseService } from '../services.module';
-import { LogInIn, LogInOut, LogOutIn, LogOutOut, SignInIn, SignInOut } from '../../entities/entities.module';
+import { LogInIn, LogInOut, LogOutIn, LogOutOut, SignInIn, SignInOut, GetDashboardIn, GetDashboardOut } from '../../entities/entities.module';
 import { Dictionary } from '../../entities/entities.module';
 
 @Injectable()
@@ -46,6 +46,18 @@ export class UsersService extends BaseService {
 
     private mapSignInResponse(info: any): SignInOut {
         let result = <SignInOut>info;
+        return result;
+    }
+
+    public getDashboard(input: GetDashboardIn): any {
+        let parameters = new Dictionary<string, GetDashboardIn>();
+        parameters.add("input", input);
+        let response = this.executeGet("Users", "GetDashboard", parameters).map(this.mapSignInResponse.bind(this));
+        return response;
+    }
+
+    private mapGetDashboardResponse(info: any): GetDashboardOut {
+        let result = <GetDashboardOut>info;
         return result;
     }
 }

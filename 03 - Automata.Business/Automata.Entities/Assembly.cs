@@ -21,7 +21,7 @@ namespace Automata.Entities
     
         public int PK_Id { get; set; }
         public string Name { get; set; }
-        public byte[] Code { get; set; }
+        public string Code { get; set; }
         public bool Public { get; set; }
         public bool Active { get; set; }
     

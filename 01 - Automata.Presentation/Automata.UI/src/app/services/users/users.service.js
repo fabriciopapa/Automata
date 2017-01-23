@@ -68,6 +68,16 @@ System.register(["angular2/core", "angular2/http", 'rxjs/Rx', '../services.modul
                     var result = info;
                     return result;
                 };
+                UsersService.prototype.getDashboard = function (input) {
+                    var parameters = new entities_module_1.Dictionary();
+                    parameters.add("input", input);
+                    var response = this.executeGet("Users", "GetDashboard", parameters).map(this.mapSignInResponse.bind(this));
+                    return response;
+                };
+                UsersService.prototype.mapGetDashboardResponse = function (info) {
+                    var result = info;
+                    return result;
+                };
                 UsersService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [http_1.Http])

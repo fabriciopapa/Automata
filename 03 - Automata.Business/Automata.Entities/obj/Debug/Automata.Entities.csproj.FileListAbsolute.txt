@@ -25,4 +25,3 @@ C:\Solutions\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automat
 C:\Solutions\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.pdb
 C:\Solutions\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.xml
 C:\Solutions\Automata\03 - Automata.Business\Automata.Entities\bin\Debug\EntityFramework.SqlServer.xml
-C:\Solutions\Automata\03 - Automata.Business\Automata.Entities\obj\Debug\Automata.Entities.csprojResolveAssemblyReference.cache

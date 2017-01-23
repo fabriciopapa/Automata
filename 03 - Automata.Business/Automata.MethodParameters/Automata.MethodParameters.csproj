@@ -42,6 +42,8 @@
     <Compile Include="BaseMethodIn.cs" />
     <Compile Include="BaseMethodOut.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Users\GetDashboardIn.cs" />
+    <Compile Include="Users\GetDashboardOut.cs" />
     <Compile Include="Users\SignInIn.cs" />
     <Compile Include="Users\SignInOut.cs" />
     <Compile Include="Users\LogOutOut.cs" />

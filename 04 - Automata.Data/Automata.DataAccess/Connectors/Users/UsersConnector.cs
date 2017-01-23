@@ -77,39 +77,37 @@ namespace Automata.DataAccess.Connectors.Users
             return output;
         }
 
-        //public GetDashboardOut GetDashboard(GetDashboardOut input)
-        //{
-        //    GetDashboardOut output = new GetDashboardOut();
+        public GetDashboardOut GetDashboard(GetDashboardIn input)
+        {
+            GetDashboardOut output = new GetDashboardOut();
 
-        //    using (AutomataEntities context = new AutomataEntities())
-        //    {
-        //        context.Configuration.ProxyCreationEnabled = false;
-        //        User user = context.Users.SingleOrDefault(u => u.UserName == input.UserName);
-        //        if (user != null)
-        //        {
-        //            user.UserName = input.UserName;
-        //            user.Password = input.Password;
-        //            user.Name = input.Name;
-        //            user.LastName = input.LastName;
-        //            user.SecretAnswer = input.SecretAnswer;
-        //            user.Active = true;
-        //        }
-        //        else
-        //        {
-        //            user = new User();
-        //            user.UserName = input.UserName;
-        //            user.Password = input.Password;
-        //            user.Name = input.Name;
-        //            user.LastName = input.LastName;
-        //            user.SecretAnswer = input.SecretAnswer;
-        //            user.Active = true;
-        //        }
+            using (AutomataEntities context = new AutomataEntities())
+            {
+                context.Configuration.ProxyCreationEnabled = false;
+                User user = context.Users
+                    .Include("Projects")
+                    .Include("Projects.Tests")
+                    .Include("Assemblies")
+                    .Include("Assemblies.Procedures")
+                    .SingleOrDefault(u => u.PK_Id == input.UserId);
 
-        //        context.SaveChanges();
-        //        output.OperationResult = Entities.Common.OperationResult.Success;
-        //    }
+                if (user != null)
+                {
+                    output.ProjectsCount = user.Projects.Count;
+                    foreach(Project p in user.Projects)
+                    {
+                        output.TestsCount += p.Tests.Count;
+                    }
+                    output.PagesCount = user.Assemblies.Count;
+                    foreach(Assembly a in user.Assemblies)
+                    {
+                        output.MethodsCount += a.Procedures.Count;
+                    }
+                    output.OperationResult = Entities.Common.OperationResult.Success;
+                }
+            }
 
-        //    return output;
-        //}
+            return output;
+        }
     }
 }

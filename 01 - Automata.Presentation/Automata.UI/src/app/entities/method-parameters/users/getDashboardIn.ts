@@ -1,5 +1,5 @@
 import { BaseMethodIn } from '../../entities.module';
 
-export class LogOutIn extends BaseMethodIn {
+export class GetDashboardIn extends BaseMethodIn {
 
 }

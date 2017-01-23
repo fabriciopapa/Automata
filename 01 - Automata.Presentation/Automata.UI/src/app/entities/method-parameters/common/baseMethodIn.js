@@ -8,6 +8,12 @@ System.register([], function(exports_1, context_1) {
             BaseMethodIn = (function () {
                 function BaseMethodIn() {
                 }
+                Object.defineProperty(BaseMethodIn.prototype, "UserId", {
+                    get: function () { return this._userId; },
+                    set: function (value) { this._userId = value; },
+                    enumerable: true,
+                    configurable: true
+                });
                 return BaseMethodIn;
             }());
             exports_1("BaseMethodIn", BaseMethodIn);

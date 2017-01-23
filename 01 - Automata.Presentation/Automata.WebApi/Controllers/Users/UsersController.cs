@@ -42,13 +42,13 @@ namespace Automata.WebApi.Controllers.Users
             return output;
         }
 
-        //[HttpGet]
-        //[ActionName("GetDashboard")]
-        //public GetDashboardOut GetDashboard([FromUri]GetDashboardIn input)
-        //{
-        //    GetDashboardOut output = new GetDashboardOut();
-        //    output = new Automata.UIProcess.Users.Users().SignIn(input);
-        //    return output;
-        //}
+        [HttpGet]
+        [ActionName("GetDashboard")]
+        public GetDashboardOut GetDashboard([FromUri]GetDashboardIn input)
+        {
+            GetDashboardOut output = new GetDashboardOut();
+            output = new Automata.UIProcess.Users.Users().GetDashboard(input);
+            return output;
+        }
     }
 }

@@ -8,3 +8,5 @@ export { LogOutIn } from './users/logOutIn';
 export { LogOutOut } from './users/logOutOut';
 export { SignInIn } from './users/signInIn';
 export { SignInOut } from './users/signInOut';
+export { GetDashboardIn } from './users/getDashboardIn';
+export { GetDashboardOut } from './users/getDashboardOut';

@@ -7,22 +7,22 @@ System.register(['../../entities.module'], function(exports_1, context_1) {
         d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
     };
     var entities_module_1;
-    var LogOutIn;
+    var GetDashboardIn;
     return {
         setters:[
             function (entities_module_1_1) {
                 entities_module_1 = entities_module_1_1;
             }],
         execute: function() {
-            LogOutIn = (function (_super) {
-                __extends(LogOutIn, _super);
-                function LogOutIn() {
+            GetDashboardIn = (function (_super) {
+                __extends(GetDashboardIn, _super);
+                function GetDashboardIn() {
                     _super.apply(this, arguments);
                 }
-                return LogOutIn;
+                return GetDashboardIn;
             }(entities_module_1.BaseMethodIn));
-            exports_1("LogOutIn", LogOutIn);
+            exports_1("GetDashboardIn", GetDashboardIn);
         }
     }
 });
-//# sourceMappingURL=logOutIn.js.map
+//# sourceMappingURL=getDashboardIn.js.map
